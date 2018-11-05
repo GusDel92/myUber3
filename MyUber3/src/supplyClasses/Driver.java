@@ -1,16 +1,15 @@
 package supplyClasses;
 
-public class Customer {
+public class Driver {
 
 	public String name;
 	public String surname;
-	public Coordinates coordinates;
+	public String state;
 	
-	public Customer() {
-		this.name="Robert";
-		this.surname="Bebert";
-		this.coordinates.x=0;
-		this.coordinates.y=0;
+	public Driver() {
+		this.name="Gérard";
+		this.surname="Gégé";
+		this.state="Au repos";
 	}
 
 	public String getName() {
@@ -29,12 +28,12 @@ public class Customer {
 		this.surname = surname;
 	}
 
-	public Coordinates getCoordinates() {
-		return coordinates;
+	public String getState() {
+		return state;
 	}
 
-	public void setCoordinates(Coordinates coordinates) {
-		this.coordinates = coordinates;
+	public void setState(String state) {
+		this.state = state;
 	}
 
 }
