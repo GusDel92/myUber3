@@ -18,6 +18,9 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_LtvyMNXqEeivJ6eJ4fVg3w"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_LtwZQNXqEeivJ6eJ4fVg3w" value="1"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_bN0AgOGgEeijloW-DpKNfw" name="createRide" concurrency="concurrent">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_c-UfYOGhEeijloW-DpKNfw" name="ride" type="_ex31UNXoEeivJ6eJ4fVg3w" direction="out"/>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_XFW1kNXoEeivJ6eJ4fVg3w" name="CarFactory">
     <ownedAttribute xmi:type="uml:Property" xmi:id="_GoM_QNXrEeivJ6eJ4fVg3w" name="car" type="_XUvqgNXqEeivJ6eJ4fVg3w" association="_GoLKENXrEeivJ6eJ4fVg3w">
