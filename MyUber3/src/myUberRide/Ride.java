@@ -1,6 +1,6 @@
 package myUberRide;
 
-public class Ride {
+public abstract class Ride {
 
 	public int driverId;
 	public double rate;
