@@ -8,7 +8,7 @@ import myUberTools.Message;
 public class Customer {
 
 	private static int counter = 0;
-	private int id;
+	private int customerID;
 	public String name;
 	public String surname;
 	public Coordinates coordinates;
@@ -17,7 +17,7 @@ public class Customer {
 	
 	public Customer() {
 		counter++;
-		this.id=counter;
+		this.customerID=counter;
 		this.name=null;
 		this.surname=null;
 		this.coordinates.longitude=0;
