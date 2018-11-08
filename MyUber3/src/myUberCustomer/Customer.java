@@ -7,16 +7,24 @@ import myUberTools.Message;
 
 public class Customer {
 
+	private static int counter = 0;
+	private int id;
 	public String name;
 	public String surname;
 	public Coordinates coordinates;
     ArrayList<Message> messageBox = new ArrayList<Message>();
 	
+	
 	public Customer() {
-		this.name="Robert";
-		this.surname="Bebert";
+		counter++;
+		this.id=counter;
+		this.name=null;
+		this.surname=null;
 		this.coordinates.longitude=0;
 		this.coordinates.latitude=0;
+		
+		
+		Customers.getInstance().addCustomer(this);
 	}
 
 	public String getName() {

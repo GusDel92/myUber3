@@ -1,19 +1,38 @@
 package myUberDriver;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Drivers {
 	
-	public void addDriver(int id) {
-		//ajout d'un nouveau driver à la base de donnée, avec id unique; comment?
+	private ArrayList<Driver> driversList = new ArrayList<Driver>();
+	
+	private static Drivers instance = new Drivers();
+	
+	public static Drivers getInstance(){
+			
+			return instance;
 	}
 	
-	public void getDriverInfo(Driver driver) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("What is your name?");
-		driver.setName(scan.nextLine());
-		System.out.println("What is your surname?");
-		driver.setSurname(scan.nextLine());
-		scan.close();
+	/**
+	 * This method adds a driver to the list of created users
+	 * @param driver
+	 */
+	public void addDriver(Driver driver) {
+			
+			this.driversList.add(driver);
+			
 	}
+
+	public ArrayList<Driver> getDriversList() {
+		return driversList;
+	}
+
+	public void setDriversList(ArrayList<Driver> driversList) {
+		this.driversList = driversList;
+	}
+
+	public static void setInstance(Drivers instance) {
+		Drivers.instance = instance;
+	}
+
 }

@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 public class Customers {
 
-	public Customers() {
-		// TODO Auto-generated constructor stub
-	}
-
 private ArrayList<Customer> customersList = new ArrayList<Customer>();
 	
 	private static Customers instance = new Customers();
@@ -18,7 +14,7 @@ private ArrayList<Customer> customersList = new ArrayList<Customer>();
 	}
 	
 	/**
-	 * This method adds a user to the list of created users
+	 * This method adds a customer to the list of created users
 	 * @param customer
 	 */
 	public void addCustomer(Customer customer) {
