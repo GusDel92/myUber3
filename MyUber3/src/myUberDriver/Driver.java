@@ -1,5 +1,7 @@
 package myUberDriver;
 
+import myUberRide.Ride;
+
 public class Driver {
 	
 	private int id;
