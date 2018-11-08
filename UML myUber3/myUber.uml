@@ -37,10 +37,47 @@
     <ownedAttribute xmi:type="uml:Property" xmi:id="_X9qngNXxEeivJ6eJ4fVg3w" name="traffic">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_L6M4YOKkEeija4iADaOZ6Q" name="customers"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_YWFxUOKkEeija4iADaOZ6Q" name="driver" type="_fxf0YNXqEeivJ6eJ4fVg3w"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_6GmecOKkEeija4iADaOZ6Q" name="price">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cqOOEOKmEeija4iADaOZ6Q" name="status">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_i7IygOKmEeija4iADaOZ6Q" name="startingDate" type="_pxGPoOKkEeija4iADaOZ6Q"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ooW0AOKmEeija4iADaOZ6Q" name="endingDate" type="_pxGPoOKkEeija4iADaOZ6Q"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_jSN0ANXoEeivJ6eJ4fVg3w" name="Price">
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_ghYVANXxEeivJ6eJ4fVg3w" name="inf5"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_uhRh4NXyEeivJ6eJ4fVg3w" name="rate5to10"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_jSN0ANXoEeivJ6eJ4fVg3w" name="PlanPrice">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_ghYVANXxEeivJ6eJ4fVg3w" name="lengthRateInf5">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_6TxfIOKhEeija4iADaOZ6Q" value="3.3"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_uhRh4NXyEeivJ6eJ4fVg3w" name="lengthRate5to10">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_cO0dwOKhEeija4iADaOZ6Q" name="lengthRate10to20">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_nFeeQOKhEeija4iADaOZ6Q" name="lengthRateSup20">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_7PaA8OKhEeija4iADaOZ6Q" name="rateLowTraffic">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      <defaultValue xmi:type="uml:LiteralReal" xmi:id="_DtGmAOKiEeija4iADaOZ6Q" value="1.1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_YnYAgOKiEeija4iADaOZ6Q" name="rateMediumTraffic">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_e2hDUOKiEeija4iADaOZ6Q" name="rateHeavyTraffic">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+    </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="_5xNaEOKgEeija4iADaOZ6Q" name="getPrice">
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_FulLAOKhEeija4iADaOZ6Q" name="type" type="_ex31UNXoEeivJ6eJ4fVg3w"/>
+      <ownedParameter xmi:type="uml:Parameter" xmi:id="_SJKcYOKhEeija4iADaOZ6Q" name="price" direction="out">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Real"/>
+      </ownedParameter>
+    </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_90G-UNXoEeivJ6eJ4fVg3w" name="UberX">
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_pqqHUNXpEeivJ6eJ4fVg3w" client="_90G-UNXoEeivJ6eJ4fVg3w" supplier="_ex31UNXoEeivJ6eJ4fVg3w" contract="_ex31UNXoEeivJ6eJ4fVg3w"/>
@@ -84,10 +121,11 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_n0tOINXwEeivJ6eJ4fVg3w" name="coordinates" type="_5omVQNXqEeivJ6eJ4fVg3w"/>
-    <ownedAttribute xmi:type="uml:Property" xmi:id="_qgfe8NXwEeivJ6eJ4fVg3w" name="currentDriver"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_qgfe8NXwEeivJ6eJ4fVg3w" name="currentDriver" type="_fxf0YNXqEeivJ6eJ4fVg3w"/>
     <ownedAttribute xmi:type="uml:Property" xmi:id="_yK8pMNXwEeivJ6eJ4fVg3w" name="freeSeats">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
     </ownedAttribute>
+    <ownedOperation xmi:type="uml:Operation" xmi:id="__q30wOKjEeija4iADaOZ6Q" name="addOwner"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Class" xmi:id="_YQ80ENXqEeivJ6eJ4fVg3w" name="Standard">
     <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="_CK7isNXrEeivJ6eJ4fVg3w" client="_YQ80ENXqEeivJ6eJ4fVg3w" supplier="_XUvqgNXqEeivJ6eJ4fVg3w" contract="_XUvqgNXqEeivJ6eJ4fVg3w"/>
@@ -132,7 +170,7 @@
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
     </ownedAttribute>
   </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_8m9j0NXqEeivJ6eJ4fVg3w" name="ServiceTime"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8m9j0NXqEeivJ6eJ4fVg3w" name="Oberver/observable"/>
   <packagedElement xmi:type="uml:Association" xmi:id="_GoLKENXrEeivJ6eJ4fVg3w" memberEnd="_GoM_QNXrEeivJ6eJ4fVg3w _GoNmUtXrEeivJ6eJ4fVg3w">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GoMYMNXrEeivJ6eJ4fVg3w" source="org.eclipse.papyrus">
       <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GoMYMdXrEeivJ6eJ4fVg3w" key="nature" value="UML_Nature"/>
@@ -140,6 +178,14 @@
     <ownedEnd xmi:type="uml:Property" xmi:id="_GoNmUtXrEeivJ6eJ4fVg3w" name="carfactory" type="_XFW1kNXoEeivJ6eJ4fVg3w" association="_GoLKENXrEeivJ6eJ4fVg3w"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_aG6d4NXvEeivJ6eJ4fVg3w"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_pxGPoOKkEeija4iADaOZ6Q" name="Date">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_yENVUOKkEeija4iADaOZ6Q" name="date">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_yYimkOKkEeija4iADaOZ6Q"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_yYotMOKkEeija4iADaOZ6Q" value="*"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Oh1hoOKnEeija4iADaOZ6Q" name="Customers"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_vVCBcNXvEeivJ6eJ4fVg3w">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_vVEdsNXvEeivJ6eJ4fVg3w" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
