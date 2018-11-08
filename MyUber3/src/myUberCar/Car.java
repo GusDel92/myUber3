@@ -3,8 +3,10 @@ package myUberCar;
 
 import java.util.ArrayList;
 
-import myUberSupplyClasses.Coordinates;
-import myVelibUsers.User;
+import myUberTools.Coordinates;
+import myUberDriver.Driver;
+
+
 
 
 
@@ -13,10 +15,12 @@ public abstract class Car {
 	
 	private int carID;
 	private int totalSeats;
-	private ArrayList<Drivers> ownersList;
+	private ArrayList<Driver> ownersList;
 	private Coordinates carPosition;
 	private int currentDriver; 
 	private int freeseats;
+	private String type;
+	
 	
 	public Car(int carID) {
 		super();
@@ -29,13 +33,108 @@ public abstract class Car {
 	
 		
 	}
+	
 
-	public ArrayList<Drivers> getOwnersList() {
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	
+	public int getCarID() {
+		return carID;
+	}
+
+
+	public void setCarID(int carID) {
+		this.carID = carID;
+	}
+
+
+	public int getTotalSeats() {
+		return totalSeats;
+	}
+
+
+	public void setTotalSeats(int totalSeats) {
+		this.totalSeats = totalSeats;
+	}
+
+
+	public Coordinates getCarPosition() {
+		return carPosition;
+	}
+
+
+	public void setCarPosition(Coordinates carPosition) {
+		this.carPosition = carPosition;
+	}
+
+
+	public int getCurrentDriver() {
+		return currentDriver;
+	}
+
+
+	public void setCurrentDriver(int currentDriver) {
+		this.currentDriver = currentDriver;
+	}
+
+
+	public int getFreeseats() {
+		return freeseats;
+	}
+
+
+	public void setFreeseats(int freeseats) {
+		this.freeseats = freeseats;
+	}
+
+
+	public ArrayList<Driver> getOwnersList() {
 		return ownersList;
 	}
 
-	public void setOwnersList(ArrayList<Drivers> ownersList) {
+	public void setOwnersList(ArrayList<Driver> ownersList) {
 		this.ownersList = ownersList;
 	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + carID;
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Car other = (Car) obj;
+		if (carID != other.carID)
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
+
+
+	
+	
 
 }
