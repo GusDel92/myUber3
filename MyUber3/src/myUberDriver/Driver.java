@@ -18,11 +18,12 @@ public class Driver {
 	private double totalDrivingCustomersTime;
 	private double totalOffDutyTime;
 	
-	public Driver() {
+	public Driver(String name, String surname) {
 		counter++;
 		this.driverID=counter;
 		this.state="Offline";
-		this.name=null;
+		this.name=name;
+		this.surname=surname;
 		this.rate=0;
 		this.rideNbr=0;
 		this.totalInCarTime=0;
@@ -31,20 +32,8 @@ public class Driver {
 		this.totalOffDutyTime=0;
 	}
 
-	public void getDriverInfo(Driver driver) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter your name: ");
-		driver.setName(scan.nextLine());
-		System.out.println("Enter your surname: ");
-		driver.setSurname(scan.nextLine());
-		scan.close();
-	}
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getSurname() {
@@ -63,11 +52,14 @@ public class Driver {
 		this.state = state;
 	}
 	
+	//ça marche de mettre this ici? ou bien public void acceptRide(Driver driver, Ride ride) {, puis changer this par driver?
 	public void acceptRide(Ride ride) {
 		ride.driverId=this.driverID;
 		this.state="On-a-ride";
+		ride.status="confirmed";
 	}
 	
+	//même question que pcdmt
 	public void computeNewRate(Ride ride) {
 		this.rate=(this.rate+ride.rate)/(this.rideNbr);
 	}
