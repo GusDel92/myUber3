@@ -96,15 +96,15 @@ public abstract class Ride {
 	public void comparePrices(Coordinates departure, Coordinates destination) {
 		Traffic traf = new Traffic();
 		this.traffic=traf.getTraffic();
-		//for (String typeOfRide : RideFactory.getTypeOfRides()) {
-			//ride=RideFactory.createRide(typeOfRide, departure, destination, traffic);
-			//computePrice(ride);
-		//	System.out.println("The price for an"+typeDeRide+"ride is"+ride.price+"€.");
+		for (String typeOfRide : RideFactory.getTypeOfRides()) {
+			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
+			computePrice(ride);
+			System.out.println("The price for an"+typeOfRide+"ride is"+ride.price+"€.");
 			 
 		}
 
 		
-//	}
+	}
 	
 	//prochaine méthode totalement inutile en fait je pense
 	//quand une course est lancée, elle n'accepte plus de nouveau client, sauf pour le UberPool où cette méthode est Override.

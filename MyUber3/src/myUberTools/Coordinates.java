@@ -39,7 +39,7 @@ public class Coordinates {
 	 */
 	public double distanceTo(Coordinates position) {
 		
-		int R = 6378000; //Rayon de la terre en m�tre
+		int R = 6378000; //Rayon de la terre en metre
 				 
 		double lat_a = Math.toRadians(this.latitude);
 		double lon_a = Math.toRadians(this.longitude);
