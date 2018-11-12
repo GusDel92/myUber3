@@ -14,7 +14,7 @@ public abstract class Ride {
 	private Coordinates departure;
 	private Coordinates destination;
 	protected String type;
-	private int nbrPassengers;
+	private int nbrOfPassengers;
 	private double length;
 	private Traffic traffic;
 	private double duration;
@@ -46,6 +46,22 @@ public abstract class Ride {
 		computeDuration(this);
 	}
 	
+	public int getNbrOfPassengers() {
+		return nbrOfPassengers;
+	}
+
+	public void setNbrOfPassengers(int nbrOfPassengers) {
+		this.nbrOfPassengers = nbrOfPassengers;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	private void computeLength(Ride ride) {
 		ride.length=Math.sqrt(Math.pow(ride.departure.latitude-ride.destination.latitude, 2)+Math.pow(ride.departure.longitude-ride.destination.longitude,2));
 		
