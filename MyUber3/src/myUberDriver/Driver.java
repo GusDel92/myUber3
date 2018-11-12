@@ -54,9 +54,10 @@ public class Driver {
 	
 	//ça marche de mettre this ici? ou bien public void acceptRide(Driver driver, Ride ride) {, puis changer this par driver?
 	public void acceptRide(Ride ride) {
-		ride.driverId=this.driverID;
+		ride.driver=this;
 		this.state="On-a-ride";
 		ride.status="confirmed";
+		
 	}
 	
 	//même question que pcdmt

@@ -35,6 +35,10 @@ public class Traffic {
 		return null;
 	}
 
+	public String getActualTraffic() {
+		return actualTraffic;
+	}
+
 	public Traffic() {
 		this.actualTraffic = getTraffic();
 	}

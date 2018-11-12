@@ -3,6 +3,7 @@ package myUberCustomer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import myUberRide.Ride;
 import myUberTools.Coordinates;
 import myUberTools.Message;
 
@@ -75,5 +76,9 @@ public class Customer {
 		this.coordinates = coordinates;
 	}
 	
+	public void cancelRide(Ride ride) {
+		ride.status="canceled";
+		ride.driver.setState("on-duty");
+	}
 
 }
