@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import myUberCar.Car;
 import myUberCustomer.Customer;
 import myUberDriver.Driver;
+import myUberDriver.Drivers;
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
 
@@ -75,18 +76,24 @@ public abstract class Ride {
 		//on donne le prix
 		ride.price=ride.basicRate*ride.length*ride.trafficRate;
 	}
-	
-	//cette méthode a-t-elle sa place ici ?
 	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
 	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride
-	public void comparePrices(Coordinates departure, Coordinates destination) {
-		Traffic traf = new Traffic();
-		this.traffic=traf;
-		for (String typeOfRide : RideFactory.getTypeOfRides()) {
-			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
-			computePrice(ride);
-			System.out.println("The price for an"+typeOfRide+"ride is"+ride.price+"€.");	 
-		}	
+
+	public double getPrice() {
+		return price;
 	}
+	
+	//public Car getClosestCarFromDeparture(){
+		//ArrayList<Car> carsWhoDeclined = new ArrayList<Car>();
+		//trier les voitures par ordre de proximitié avec le point (méthode en doc texte sur mon bureau)
+		//
+	//	for (Driver availableDriver : Drivers.getOnDutyDrivers()) {
+		//	if (driversWhoDeclined.contains(availableDriver)==false) {
+				
+		//	}
+	//	}
+		
+		//return null;
+	//}
 	
 }

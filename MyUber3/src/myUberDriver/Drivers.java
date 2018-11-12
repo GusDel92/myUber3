@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Drivers {
 	
 	private ArrayList<Driver> driversList = new ArrayList<Driver>();
-	private ArrayList<Driver> onDutyDrivers = new ArrayList<Driver>();
+	private static ArrayList<Driver> onDutyDrivers = new ArrayList<Driver>();
 	
 	private static Drivers instance = new Drivers();
 	
@@ -34,10 +34,14 @@ public class Drivers {
 		Drivers.instance = instance;
 	}
 
-	public ArrayList<Driver> getOnDutyDrivers() {
+	public static ArrayList<Driver> getOnDutyDrivers() {
 		return onDutyDrivers;
 	}
 
+	public ArrayList<Driver> getOnDutyDrivers(Driver driver) {
+		return onDutyDrivers;
+	}
+	
 	public void addOnDutyDriver(Driver driver) {
 		this.onDutyDrivers.add(driver);
 	}
