@@ -128,7 +128,7 @@ public abstract class Ride {
 			for (Driver potentialDriver : this.potentialDrivers) {
 				if (potentialDriver.getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialDriver.getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialDriver.getName()+" do you want to take a "+this.type+" ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
 					if (answer.equalsIgnoreCase("yes")){
 						this.driver=potentialDriver;
