@@ -2,7 +2,7 @@ package myUberRide;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.io.*;
 import myUberCar.Car;
 import myUberDriver.Driver;
 import myUberTools.Coordinates;
@@ -34,6 +34,7 @@ public class PoolRequest {
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialDriver.getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
+					//Thread.sleep(10000);
 					if (answer.equalsIgnoreCase("yes")){
 						this.driver=potentialDriver;
 						this.status="confirmed";
