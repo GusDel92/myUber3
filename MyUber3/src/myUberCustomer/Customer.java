@@ -96,7 +96,8 @@ public class Customer {
 		for (Ride possibleRide : this.rideOrder) {
 			if (possibleRide.equals(selectedRide)) {
 				selectedRide.status="unconfirmed";
-				
+				rideOrder=null;
+				//ajout de la ride à la liste des rides
 			} //the ride is waiting to be confirmed by a driver
 		}
 	}
