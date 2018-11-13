@@ -112,7 +112,7 @@ public class Customer {
 			ride.status="canceled";
 			ride.driver.setState("on-duty");
 			}
-		else {System.out.println("Aucune course à annuler");}
+		else {System.out.println("Action impossible.");}
 	}
 
 
