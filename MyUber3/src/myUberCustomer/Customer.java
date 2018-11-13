@@ -29,8 +29,8 @@ public class Customer {
 		this.customerID=counter;
 		this.name=name;
 		this.surname=surname;
-		this.coordinates.longitude=0;
-		this.coordinates.latitude=0;
+		this.coordinates.setLongitude(0);
+		this.coordinates.setLatitude(0);
 		
 		
 		Customers.getInstance().addCustomer(this);
@@ -42,8 +42,8 @@ public class Customer {
 		this.name=name;
 		this.surname=surname;
 		this.creditCardNbr=creditCardNbr;
-		this.coordinates.longitude=0;
-		this.coordinates.latitude=0;
+		this.coordinates.setLongitude(0);
+		this.coordinates.setLatitude(0);
 		
 		
 		Customers.getInstance().addCustomer(this);
@@ -101,14 +101,18 @@ public class Customer {
 			if (potentialRide.equals(selectedRide)) {
 				selectedRide.status="unconfirmed";
 				potentialRideOrder=null;
-				//ajout de la ride à la liste des riderequests. A FAIRE !
+				selectedRide.proposeRideToDrivers();
+				//ajout de la ride à la liste des riderequests. A FAIRE ?
 			} //the ride is waiting to be confirmed by a driver 
 		}
 	}
 	
 	public void cancelRide(Ride ride) {
-		ride.status="canceled";
-		ride.driver.setState("on-duty");
+		if (ride.status=="unconfirmed") {
+			ride.status="canceled";
+			ride.driver.setState("on-duty");
+			}
+		else {System.out.println("Aucune course à annuler");}
 	}
 
 

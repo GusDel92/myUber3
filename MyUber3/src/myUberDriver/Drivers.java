@@ -43,10 +43,10 @@ public class Drivers {
 	}
 	
 	public void addOnDutyDriver(Driver driver) {
-		this.onDutyDrivers.add(driver);
+		Drivers.onDutyDrivers.add(driver);
 	}
 
 	public void removeOnDutyDriver(Driver driver) {
-		this.onDutyDrivers.remove(driver);
+		Drivers.onDutyDrivers.remove(driver);
 	}
 }

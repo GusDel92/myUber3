@@ -2,6 +2,7 @@ package myUberDriver;
 
 import java.util.Scanner;
 
+import myUberCar.Car;
 import myUberRide.Ride;
 
 public class Driver {
@@ -11,6 +12,7 @@ public class Driver {
 	private String name;
 	private String surname;
 	private String state;
+	private Car actualCar;
 	private double rate;
 	private int rideNbr;
 	private double totalInCarTime;
@@ -52,6 +54,14 @@ public class Driver {
 		this.state = state;
 	}
 	
+	public Car getActualCar() {
+		return actualCar;
+	}
+
+	public void setActualCar(Car actualCar) {
+		this.actualCar = actualCar;
+	}
+
 	//ça marche de mettre this ici? ou bien public void acceptRide(Driver driver, Ride ride) {, puis changer this par driver?
 	public void acceptRide(Ride ride) {
 		ride.driver=this;

@@ -1,6 +1,7 @@
 package myUberRide;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import myUberCar.Car;
 import myUberCustomer.Customer;
@@ -19,11 +20,12 @@ public abstract class Ride {
 	private Traffic traffic;
 	private double duration;
 	private double price;
+	protected ArrayList<Driver> potentialDrivers = new ArrayList<Driver>();
 	public String status;
 	//private Date startDate;
 	//private Date endDate;
 	private Car car;
-	ArrayList<Customer> customers = new ArrayList<Customer>();
+	private Customer customer;
 	public Driver driver;
 	public double rate;
 	
@@ -37,6 +39,7 @@ public abstract class Ride {
 	public double rateLowTraffic;
 	public double rateMediumTraffic;
 	public double rateHeavyTraffic;
+	public PoolRequest request;
 	
 	public Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
 		this.traffic=traffic;
@@ -61,14 +64,22 @@ public abstract class Ride {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	public ArrayList<Driver> getPotentialDrivers() {
+		return potentialDrivers;
+	}
+
+	public void setPotentialDrivers(ArrayList<Driver> potentialDrivers) {
+		this.potentialDrivers = potentialDrivers;
+	}
 
 	private void computeLength(Ride ride) {
-		ride.length=Math.sqrt(Math.pow(ride.departure.latitude-ride.destination.latitude, 2)+Math.pow(ride.departure.longitude-ride.destination.longitude,2));
+		ride.length=Math.sqrt(Math.pow(ride.departure.getLatitude()-ride.destination.getLatitude(), 2)+Math.pow(ride.departure.getLongitude()-ride.destination.getLongitude(),2));
 		
 	}
 
-	public void addCustomer(Ride ride, Customer customer) {
-		ride.customers.add(customer);
+	public Customer getCustomer() {
+		return this.customer;
 	}
 
 	//this function returns the duration of the ride in minutes (length must be given in km)
@@ -111,5 +122,42 @@ public abstract class Ride {
 		
 		//return null;
 	//}
+	
+	public void proposeRideToDrivers() {
+		while (this.status=="unconfirmed") {	
+			for (Driver potentialDriver : this.potentialDrivers) {
+				if (potentialDriver.getState()=="on-duty") {
+					Scanner sc = new Scanner(System.in);
+					System.out.println(potentialDriver.getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					String answer = sc.next();
+					if (answer.equalsIgnoreCase("yes")){
+						this.driver=potentialDriver;
+						this.status="confirmed";
+						this.car=this.driver.getActualCar();
+						this.driver.setState("on-a-ride");
+						this.manageRide();
+					sc.close();
+					}
+					
+				}
+			}
+			System.out.println("There is no available driver for your ride. Please try again.");
+			//supprimer la ride
+		}	
+	}
+
+	public void manageRide() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Client"+this.customer.getSurname()+"récupéré ?");
+		String answer = sc.next();
+		if (answer=="yes") {
+			this.setStatus("ongoing");
+			System.out.println("Course terminée ?");
+			String answer2 = sc.next();
+			if (answer2=="yes") {this.setStatus("completed");}
+			}
+		
+		sc.close();
+	}
 	
 }

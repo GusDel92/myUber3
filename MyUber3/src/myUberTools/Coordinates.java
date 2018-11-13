@@ -5,19 +5,19 @@ import java.util.Scanner;
 
 public class Coordinates {
 
-	public double longitude;
-	public double latitude;
+	private double longitude;
+	private double latitude;
 	
-	protected double getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
-	protected void setLongitude(double x) {
+	public void setLongitude(double x) {
 		this.longitude = x;
 	}
-	protected double getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
-	protected void setLatitude(double y) {
+	public void setLatitude(double y) {
 		this.latitude = y;
 	}
 	
