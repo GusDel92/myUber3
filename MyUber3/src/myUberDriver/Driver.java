@@ -64,4 +64,27 @@ public class Driver {
 		this.rate=(this.rate+ride.rate)/(this.rideNbr);
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + driverID;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Driver other = (Driver) obj;
+		if (driverID != other.driverID)
+			return false;
+		return true;
+	}
+	
+
 }
