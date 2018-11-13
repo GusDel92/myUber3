@@ -3,18 +3,25 @@ package myUberCustomer;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import myUberCar.Car;
+import myUberRide.Ride;
+import myUberRide.RideFactory;
 import myUberTools.Coordinates;
 import myUberTools.Message;
+import myUberTools.Traffic;
 
 public class Customer {
 
 	private static int counter = 0;
 	private int customerID;
 	private int creditCardNbr;
-	public String name;
-	public String surname;
-	public Coordinates coordinates;
+	private String name;
+	private String surname;
+	private Coordinates coordinates;
     ArrayList<Message> messageBox = new ArrayList<Message>();
+    ArrayList<Car> potentialCarsForActualRide;
+    ArrayList<Ride> potentialRideOrder;
+    
 	
 	
 	public Customer(String name, String surname) {
@@ -75,51 +82,34 @@ public class Customer {
 		this.coordinates = coordinates;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + customerID;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Customer other = (Customer) obj;
-		if (customerID != other.customerID)
-			return false;
-		return true;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + customerID;
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Customer other = (Customer) obj;
-		if (customerID != other.customerID)
-			return false;
-		return true;
+	
+	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
+	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride
+	public void comparePrices(Coordinates departure, Coordinates destination) {
+		Traffic traf = new Traffic();
+		for (String typeOfRide : RideFactory.getTypeOfRides()) {
+			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traf);
+			this.potentialRideOrder.add(ride);
+			ride.computePrice(ride);
+			System.out.println("The price for an"+typeOfRide+"ride is"+ride.getPrice()+"€.");	 
+		}	
 	}
 	
+	//le for et if nous permettent de vérifier que c'est bien une des rides pour lesquelles le client a demandé le prix
+	public void selectRide(Ride selectedRide) {
+		for (Ride potentialRide : this.potentialRideOrder) {
+			if (potentialRide.equals(selectedRide)) {
+				selectedRide.status="unconfirmed";
+				potentialRideOrder=null;
+				//ajout de la ride à la liste des riderequests. A FAIRE !
+			} //the ride is waiting to be confirmed by a driver 
+		}
+	}
 	
-	
+	public void cancelRide(Ride ride) {
+		ride.status="canceled";
+		ride.driver.setState("on-duty");
+	}
+
 
 }

@@ -1,11 +1,8 @@
 package myUberRide;
 
-import myUberDriver.Driver;
-import myUberDriver.Drivers;
 import java.util.ArrayList;
 
 public class PoolRequests {
-	private PoolRequest notFilledRequest;
 	ArrayList<PoolRequest> currentRequests = new ArrayList<PoolRequest>();
 	private static PoolRequests instance = new PoolRequests();
 	
