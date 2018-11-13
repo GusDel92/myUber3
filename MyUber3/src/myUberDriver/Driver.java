@@ -65,4 +65,5 @@ public class Driver {
 		this.rate=(this.rate+ride.rate)/(this.rideNbr);
 	}
 
+	
 }
