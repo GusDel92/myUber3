@@ -1,10 +1,11 @@
 package myUberRide;
 
 import myUberTools.Coordinates;
+import myUberTools.Traffic;
 
 public class UberBlack extends Ride {
 
-	public UberBlack(Coordinates departure, Coordinates destination, String traffic) {
+	public UberBlack(Coordinates departure, Coordinates destination, Traffic traffic) {
 		super(departure, destination, traffic);
 		// TODO Auto-generated constructor stub
 		this.type="uberblack";

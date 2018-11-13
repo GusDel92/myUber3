@@ -2,6 +2,7 @@ package myUberRide;
 
 import java.util.ArrayList;
 import myUberTools.Coordinates;
+import myUberTools.Traffic;
 
 public class RideFactory {
 	
@@ -20,8 +21,7 @@ public class RideFactory {
 		return typeOfRides;
 	}
 
-
-	public static Ride createRide(String rideType, Coordinates departure, Coordinates destination, String traffic) {
+	public static Ride createRide(String rideType, Coordinates departure, Coordinates destination, Traffic traffic) {
 		if (rideType==null) {return null;}
 		if (rideType.equalsIgnoreCase("UBERX")) {return new UberX(departure, destination, traffic);}
 		if (rideType.equalsIgnoreCase("UBERVAN")) {return new UberVan(departure, destination, traffic);}

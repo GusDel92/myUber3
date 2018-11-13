@@ -54,9 +54,10 @@ public class Driver {
 	
 	//ça marche de mettre this ici? ou bien public void acceptRide(Driver driver, Ride ride) {, puis changer this par driver?
 	public void acceptRide(Ride ride) {
-		ride.driverId=this.driverID;
+		ride.driver=this;
 		this.state="On-a-ride";
 		ride.status="confirmed";
+		
 	}
 	
 	//même question que pcdmt
@@ -64,27 +65,6 @@ public class Driver {
 		this.rate=(this.rate+ride.rate)/(this.rideNbr);
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + driverID;
-		return result;
-	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Driver other = (Driver) obj;
-		if (driverID != other.driverID)
-			return false;
-		return true;
-	}
 	
-
 }
