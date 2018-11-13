@@ -2,6 +2,9 @@ package myUberRide;
 
 import java.util.Scanner;
 
+import myUberCar.BerlineCar;
+import myUberCar.StandardCar;
+import myUberCar.VanCar;
 import myUberDriver.Driver;
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
@@ -37,5 +40,17 @@ public class UberPool extends Ride {
 			}
 		
 		sc.close();
+	}
+
+	@Override
+	public void visit(StandardCar standardCar) {
+	}
+
+	@Override
+	public void visit(BerlineCar berlineCar) {		
+	}
+
+	@Override
+	public void visit(VanCar vanCar) {
 	}
 }

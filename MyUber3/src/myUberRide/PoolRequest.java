@@ -3,17 +3,21 @@ package myUberRide;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
+
+import myUberCar.BerlineCar;
 import myUberCar.Car;
+import myUberCar.StandardCar;
+import myUberCar.VanCar;
 import myUberDriver.Driver;
 import myUberTools.Coordinates;
 
-public class PoolRequest {
+public class PoolRequest implements Request{
 	
 	ArrayList<Ride> ridesOfTheRequest=new ArrayList<Ride>();
 	private int totalNbrOfPassengers;
 	private String status;
-	protected ArrayList<Driver> potentialDrivers = new ArrayList<Driver>();
-	public Driver driver;
+	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
+	private Driver driver;
 	private Car car;
 	private Coordinates departure;
 	private Coordinates destination;
@@ -29,16 +33,16 @@ public class PoolRequest {
 	
 	public void proposeRequestToDrivers(PoolRequest request) {
 		while (this.status=="unconfirmed") {	
-			for (Driver potentialDriver : this.potentialDrivers) {
-				if (potentialDriver.getState()=="on-duty") {
+			for (Car potentialCar : this.potentialCars) {
+				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialDriver.getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
 					//Thread.sleep(10000);
 					if (answer.equalsIgnoreCase("yes")){
-						this.driver=potentialDriver;
+						this.car=potentialCar;
 						this.status="confirmed";
-						this.car=this.driver.getActualCar();
+						this.driver=this.car.getCurrentDriver();
 						this.driver.setState("on-a-ride");
 						for (Ride ride : ridesOfTheRequest) {
 							ride.manageRide();}
@@ -51,5 +55,22 @@ public class PoolRequest {
 			//supprimer la ride
 		}	
 	}
+
+	@Override
+	public void visit(StandardCar standardCar) {
+		this.potentialCars.add(standardCar);
+		
+	}
+
+	@Override
+	public void visit(BerlineCar berlineCar) {
+		this.potentialCars.add(berlineCar);
+	}
+
+	@Override
+	public void visit(VanCar vanCar) {
+		this.potentialCars.add(vanCar);
+	}
+	
 	
 }

@@ -1,5 +1,7 @@
 package myUberCar;
 
+import myUberRide.Request;
+
 public class VanCar extends Car {
 
 	public VanCar(int VanID) {
@@ -8,5 +10,9 @@ public class VanCar extends Car {
 		
 		setTotalSeats(6);
 	}
-
+	
+	@Override
+	public void accept(Request visitor) {
+		visitor.visit(this);
+	}
 }

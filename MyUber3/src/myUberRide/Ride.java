@@ -10,7 +10,7 @@ import myUberDriver.Drivers;
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
 
-public abstract class Ride {
+public abstract class Ride implements Request{
 
 	private Coordinates departure;
 	private Coordinates destination;
@@ -20,7 +20,7 @@ public abstract class Ride {
 	private Traffic traffic;
 	private double duration;
 	private double price;
-	protected ArrayList<Driver> potentialDrivers = new ArrayList<Driver>();
+	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
 	public String status;
 	//private Date startDate;
 	//private Date endDate;
@@ -65,12 +65,12 @@ public abstract class Ride {
 		this.status = status;
 	}
 	
-	public ArrayList<Driver> getPotentialDrivers() {
-		return potentialDrivers;
+	public ArrayList<Car> getPotentialDrivers() {
+		return potentialCars;
 	}
 
-	public void setPotentialDrivers(ArrayList<Driver> potentialDrivers) {
-		this.potentialDrivers = potentialDrivers;
+	public void setPotentialDrivers(ArrayList<Car> potentialDrivers) {
+		this.potentialCars = potentialDrivers;
 	}
 
 	private void computeLength(Ride ride) {
@@ -125,15 +125,15 @@ public abstract class Ride {
 	
 	public void proposeRideToDrivers() {
 		while (this.status=="unconfirmed") {	
-			for (Driver potentialDriver : this.potentialDrivers) {
-				if (potentialDriver.getState()=="on-duty") {
+			for (Car potentialCar : this.potentialCars) {
+				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialDriver.getName()+" do you want to take a "+this.type+" ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a "+this.type+" ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
 					if (answer.equalsIgnoreCase("yes")){
-						this.driver=potentialDriver;
+						this.driver=potentialCar.getCurrentDriver();
 						this.status="confirmed";
-						this.car=this.driver.getActualCar();
+						this.car=potentialCar;
 						this.driver.setState("on-a-ride");
 						this.manageRide();
 					sc.close();

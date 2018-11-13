@@ -5,11 +5,7 @@ import java.util.ArrayList;
 
 import myUberTools.Coordinates;
 import myUberDriver.Driver;
-
-
-
-
-
+import myUberRide.Request;
 
 public abstract class Car {
 	
@@ -17,7 +13,7 @@ public abstract class Car {
 	private int totalSeats;
 	private ArrayList<Driver> ownersList;
 	private Coordinates carPosition;
-	private int currentDriver; 
+	private Driver currentDriver; 
 	private int freeseats;
 	private String type;
 	
@@ -34,7 +30,10 @@ public abstract class Car {
 		
 	}
 	
-
+	public void accept(Request visitor) {
+		
+	}
+	
 	public String getType() {
 		return type;
 	}
@@ -75,12 +74,12 @@ public abstract class Car {
 	}
 
 
-	public int getCurrentDriver() {
+	public Driver getCurrentDriver() {
 		return currentDriver;
 	}
 
 
-	public void setCurrentDriver(int currentDriver) {
+	public void setCurrentDriver(Driver currentDriver) {
 		this.currentDriver = currentDriver;
 	}
 

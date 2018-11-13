@@ -1,5 +1,8 @@
 package myUberRide;
 
+import myUberCar.BerlineCar;
+import myUberCar.StandardCar;
+import myUberCar.VanCar;
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
 
@@ -16,6 +19,19 @@ public class UberBlack extends Ride {
 		this.rateLowTraffic=1;
 		this.rateMediumTraffic=1.3;
 		this.rateHeavyTraffic=1.6;
+	}
+
+	@Override
+	public void visit(StandardCar standardCar) {
+	}
+
+	@Override
+	public void visit(BerlineCar berlineCar) {
+		this.potentialCars.add(berlineCar);
+	}
+
+	@Override
+	public void visit(VanCar vanCar) {		
 	}
 
 }
