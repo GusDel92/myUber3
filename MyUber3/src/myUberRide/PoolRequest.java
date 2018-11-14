@@ -98,6 +98,8 @@ public class PoolRequest implements Request{
 	}
 
 	public void proposeRequestToDrivers(PoolRequest request){
+		recoverPotentialCars();
+		sortPotentialCars();
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
