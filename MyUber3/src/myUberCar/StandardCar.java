@@ -1,11 +1,16 @@
 package myUberCar;
 
+import myUberDriver.Driver;
 import myUberRide.Request;
 
 public class StandardCar extends Car {
 
-	public StandardCar(int StandardID) {
-		super(StandardID);		
+	private static int standardID = 0;
+	
+	public StandardCar(String type, Driver owner) {
+		super(type, owner);
+		standardID++;
+		this.setCarID(standardID);
 		setTotalSeats(4);
 		
 	}

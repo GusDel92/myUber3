@@ -1,13 +1,16 @@
 package myUberCar;
 
+import myUberDriver.Driver;
 import myUberRide.Request;
 
 public class VanCar extends Car {
 
-	public VanCar(int VanID) {
-		super(VanID);
-		// TODO Auto-generated constructor stub
-		
+	private static int vanCarCounter = 0;
+	
+	public VanCar(String type, Driver owner) {
+		super(type, owner);
+		vanCarCounter++;
+		this.setCarID(vanCarCounter);
 		setTotalSeats(6);
 	}
 	

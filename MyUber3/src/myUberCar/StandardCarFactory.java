@@ -11,11 +11,10 @@ public class StandardCarFactory extends CarFactory {
 		 
 	}
 
-	@Override
 	public StandardCar createCar() {
 		
 		StandardID++;
-		return new StandardCar(StandardID);
+		return new StandardCar(null, null);
 		
 	}
 

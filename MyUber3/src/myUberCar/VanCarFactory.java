@@ -1,7 +1,6 @@
 package myUberCar;
 
-import myVelibBicycles.MechanicalBicycle;
-import myVelibBicycles.MechanicalBicycleFactory;
+import myUberDriver.Driver;
 
 public class VanCarFactory extends CarFactory {
 	
@@ -14,10 +13,10 @@ public class VanCarFactory extends CarFactory {
 	}
 
 	@Override
-	public VanCar createCar() {
+	public VanCar createCar(String type, Driver owner) {
 		
 		VanID++;
-		return new VanCar(VanID);
+		return new VanCar(type, owner);
 		
 		
 	}

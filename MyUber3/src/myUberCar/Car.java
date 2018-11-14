@@ -19,9 +19,9 @@ public abstract class Car {
 	private String actualTypeOfRideDesiredByDriver;
 	
 	
-	public Car(int carID) {
-		super();
-		this.carID = carID;
+	public Car(String type, Driver owner) {
+		this.type=type;
+		this.ownersList.add(owner);
 	}
 	
 	
