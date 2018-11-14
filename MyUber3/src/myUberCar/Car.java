@@ -16,6 +16,7 @@ public abstract class Car {
 	private Driver currentDriver; 
 	private int freeseats;
 	private String type;
+	private String actualTypeOfRideDesiredByDriver;
 	
 	
 	public Car(int carID) {
@@ -100,6 +101,16 @@ public abstract class Car {
 
 	public void setOwnersList(ArrayList<Driver> ownersList) {
 		this.ownersList = ownersList;
+	}
+
+
+	public String getActualTypeOfRideDesiredByDriver() {
+		return actualTypeOfRideDesiredByDriver;
+	}
+
+
+	public void setActualTypeOfRideDesiredByDriver(String actualTypeOfRideDesiredByDriver) {
+		this.actualTypeOfRideDesiredByDriver = actualTypeOfRideDesiredByDriver;
 	}
 
 

@@ -59,18 +59,24 @@ public class PoolRequest implements Request{
 
 	@Override
 	public void visit(StandardCar standardCar) {
-		this.potentialCars.add(standardCar);
+		if (standardCar.getCurrentDriver().getState()=="on-duty" & standardCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+			this.potentialCars.add(standardCar);
+		}
 		
 	}
 
 	@Override
 	public void visit(BerlineCar berlineCar) {
-		this.potentialCars.add(berlineCar);
+		if (berlineCar.getCurrentDriver().getState()=="on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+			this.potentialCars.add(berlineCar);
+		}
 	}
 
 	@Override
 	public void visit(VanCar vanCar) {
-		this.potentialCars.add(vanCar);
+		if (vanCar.getCurrentDriver().getState()=="on-duty" & vanCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+			this.potentialCars.add(vanCar);
+		}
 	}
 	
 	
