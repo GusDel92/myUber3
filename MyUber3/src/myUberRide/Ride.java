@@ -123,6 +123,9 @@ public abstract class Ride implements Request{
 		//return null;
 	//}
 	
+	/**
+	 * 
+	 */
 	public void proposeRideToDrivers() {
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
@@ -156,7 +159,6 @@ public abstract class Ride implements Request{
 			String answer2 = sc.next();
 			if (answer2=="yes") {this.setStatus("completed");}
 			}
-		
 		sc.close();
 	}
 	

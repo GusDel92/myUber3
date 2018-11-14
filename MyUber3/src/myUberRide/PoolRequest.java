@@ -22,21 +22,22 @@ public class PoolRequest implements Request{
 	private Coordinates departure;
 	private Coordinates destination;
 	
-	public void addRide(Ride ride) {
+	public boolean addRide(Ride ride) {
 		if (this.ridesOfTheRequest.size()<3 & this.totalNbrOfPassengers+ride.getNbrOfPassengers()<=4) {  //On peut mettre 9 si on considère qu'un van peut faire uberPool. Pas hyper utile et ça complique pas mal.
 			ridesOfTheRequest.add(ride);
 			this.totalNbrOfPassengers=this.totalNbrOfPassengers+ride.getNbrOfPassengers();
 			ride.status="unconfirmed";
+			return true;
 		}
-		else {return;}
+		return false;
 	}
 	
-	public void proposeRequestToDrivers(PoolRequest request) {
+	public void proposeRequestToDrivers(PoolRequest request){
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a UberPool ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
 					//Thread.sleep(10000);
 					if (answer.equalsIgnoreCase("yes")){

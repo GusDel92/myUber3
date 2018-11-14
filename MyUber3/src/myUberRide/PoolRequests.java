@@ -15,6 +15,7 @@ public class PoolRequests {
 		PoolRequest request = new PoolRequest();
 		currentRequests.add(request);
 		request.ridesOfTheRequest.add(ride);
+		ride.setStatus("unconfirmed");
 		return request;
 	}
 	
@@ -24,8 +25,8 @@ public class PoolRequests {
 	
 	public static void manageNewRide(Ride ride) {
 		for (PoolRequest existingRequest : currentRequests) {
-			while (ride.getStatus()!="unconfirmed") {existingRequest.addRide(ride);
-			existingRequest.proposeRequestToDrivers(existingRequest);
+			while (ride.getStatus()!="unconfirmed") {if (existingRequest.addRide(ride)==true){
+			existingRequest.proposeRequestToDrivers(existingRequest);}
 			} //on essaie de mettre la ride dans une request existante; il peut y avoir un pb de thread si un driver accepte la request au moment où une ride s'y ajoute. Solution: n'envoyer que les Request "complètes" (soit 4 personnes soit 3 Ride dedans). Facile à faire, il suffit de modifier cete méthode.
 		if (ride.getStatus()!="unconfirmed") {
 			PoolRequest nouvelleRequest=createRequest(ride);
