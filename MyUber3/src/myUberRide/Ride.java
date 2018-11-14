@@ -2,8 +2,8 @@ package myUberRide;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import myUberCar.Car;
+import myUberCar.CarFactory;
 import myUberCustomer.Customer;
 import myUberDriver.Driver;
 import myUberDriver.Drivers;
@@ -73,6 +73,14 @@ public abstract class Ride implements Request{
 		this.potentialCars = potentialDrivers;
 	}
 
+	public Coordinates getDeparture() {
+		return departure;
+	}
+
+	public Coordinates getDestination() {
+		return destination;
+	}
+
 	private void computeLength(Ride ride) {
 		ride.length=Math.sqrt(Math.pow(ride.departure.getLatitude()-ride.destination.getLatitude(), 2)+Math.pow(ride.departure.getLongitude()-ride.destination.getLongitude(),2));
 		
@@ -110,23 +118,32 @@ public abstract class Ride implements Request{
 		return price;
 	}
 	
-	//public Car getClosestCarFromDeparture(){
-		//ArrayList<Car> carsWhoDeclined = new ArrayList<Car>();
-		//trier les voitures par ordre de proximitié avec le point (méthode en doc texte sur mon bureau)
-		//
-	//	for (Driver availableDriver : Drivers.getOnDutyDrivers()) {
-		//	if (driversWhoDeclined.contains(availableDriver)==false) {
-				
-		//	}
-	//	}
-		
-		//return null;
-	//}
+	public void recoverPotentialCars(){
+		for (Car car : CarFactory.getAllCars()){
+			car.accept(this);
+		}
+	}
 	
-	/**
-	 * 
-	 */
+	public void sortPotentialCars() {
+		int n = potentialCars.size();
+		for (int i=0;i<=n;i++) {
+			for (int j=0;j<=n-1;i++) {
+				Car car1 = potentialCars.get(j);
+				Car car2 = potentialCars.get(j+1);
+				double distanceFromDeparture1 = car1.getCarPosition().distanceTo(departure);
+				double distanceFromDeparture2 = car2.getCarPosition().distanceTo(departure);
+				if (distanceFromDeparture1>distanceFromDeparture2){
+					potentialCars.remove(j);
+					potentialCars.add(j+1, car1);
+				}
+			}
+		}
+	}
+	
+	
 	public void proposeRideToDrivers() {
+		recoverPotentialCars();
+		sortPotentialCars();
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {

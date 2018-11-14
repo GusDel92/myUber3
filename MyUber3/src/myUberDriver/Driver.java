@@ -7,7 +7,7 @@ import myUberRide.Ride;
 
 public class Driver {
 	
-	private static int counter = 0;
+	private static int driverCounter = 0;
 	private int driverID;
 	private String name;
 	private String surname;
@@ -21,8 +21,8 @@ public class Driver {
 	private double totalOffDutyTime;
 	
 	public Driver(String name, String surname) {
-		counter++;
-		this.driverID=counter;
+		driverCounter++;
+		this.driverID=driverCounter;
 		this.state="Offline";
 		this.name=name;
 		this.surname=surname;

@@ -6,6 +6,7 @@ import java.io.*;
 
 import myUberCar.BerlineCar;
 import myUberCar.Car;
+import myUberCar.CarFactory;
 import myUberCar.StandardCar;
 import myUberCar.VanCar;
 import myUberDriver.Driver;
@@ -32,6 +33,70 @@ public class PoolRequest implements Request{
 		return false;
 	}
 	
+	public void recoverPotentialCars(){
+		for (Car car : CarFactory.getAllCars()){
+			car.accept(this);
+		}
+	}
+	
+	private double minimalCost(Car car) {
+		ArrayList<Coordinates> pickUpPoints = new ArrayList<Coordinates>();
+		ArrayList<Coordinates> dropOffPoints = new ArrayList<Coordinates>();
+		ArrayList<Coordinates> possibleNextStops = new ArrayList<Coordinates>();
+		Coordinates currentPosition = car.getCarPosition();
+		double minimalCost=0;
+		
+		for (Ride ride : ridesOfTheRequest) {
+			pickUpPoints.add(ride.getDeparture());
+			dropOffPoints.add(ride.getDestination());
+			possibleNextStops.add(ride.getDeparture());
+		}
+		
+		while (possibleNextStops.isEmpty()==false) {
+			//on trie les prochains stop par ordre croissant de distance avec la position actuelle
+			int k = possibleNextStops.size();
+			for (int j=0;j<=k-1;j++) {
+				Coordinates nextPossibleStop1 = possibleNextStops.get(j);
+				Coordinates nextPossibleStop2 = possibleNextStops.get(j+1);
+				double distToNextPossibleStop1 = currentPosition.distanceTo(nextPossibleStop1);
+				double distToNextPossibleStop2 = currentPosition.distanceTo(nextPossibleStop2);
+				if (distToNextPossibleStop1>distToNextPossibleStop2) {
+					possibleNextStops.remove(j);
+					possibleNextStops.add(j+1, nextPossibleStop1);
+				}
+				//quand c'est trié, on va au plus près, c'est à dire le premier de la liste
+				Coordinates nextStop = possibleNextStops.get(0);
+				minimalCost+=currentPosition.distanceTo(nextStop);
+				currentPosition=nextStop;
+				if (pickUpPoints.contains(nextStop)){
+					possibleNextStops.add(dropOffPoints.get(pickUpPoints.indexOf(nextStop)));
+				}
+				possibleNextStops.remove(0);
+				
+			}
+			
+			
+		}
+
+		return minimalCost;
+	}
+		
+	public void sortPotentialCars() {
+		int n = potentialCars.size();
+		for (int i=1;i<=n;i++) {
+			for (int j=1;j<=n-1;i++) {
+				Car car1 = potentialCars.get(j);
+				Car car2 = potentialCars.get(j+1);
+				double minimalCost1 = minimalCost(car1);
+				double minimalCost2 = minimalCost(car2);
+				if (minimalCost1>minimalCost2){
+					potentialCars.remove(j);
+					potentialCars.add(j+1, car1);
+				}
+			}
+		}
+	}
+
 	public void proposeRequestToDrivers(PoolRequest request){
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {

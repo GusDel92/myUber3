@@ -39,16 +39,16 @@ public class Coordinates {
 	 */
 	public double distanceTo(Coordinates position) {
 		
-		int R = 6378000; //Rayon de la terre en metre
+		//int R = 6378000; //Rayon de la terre en metre
 				 
-		double lat_a = Math.toRadians(this.latitude);
-		double lon_a = Math.toRadians(this.longitude);
-		double lat_b = Math.toRadians(position.getLatitude());
-		double lon_b = Math.toRadians(position.getLongitude());
+		//double lat_a = Math.toRadians(this.latitude);
+		//double lon_a = Math.toRadians(this.longitude);
+		//double lat_b = Math.toRadians(position.getLatitude());
+		//double lon_b = Math.toRadians(position.getLongitude());
 				     
-		double d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)));
-		return d;
-		
+		//double d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)));
+		//return d;
+		return Math.sqrt(Math.pow(position.getLatitude()-this.getLatitude(), 2)+Math.pow(position.getLongitude()-this.getLongitude(),2));
 	}
 	@Override
 	public int hashCode() {
