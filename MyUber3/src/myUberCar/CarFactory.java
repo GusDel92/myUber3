@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import myUberDriver.Driver;
 
-public abstract class CarFactory {
+public class CarFactory {
 
 	private static ArrayList<Car> allCars = new ArrayList<Car>();
+	
+	public CarFactory() {
+	}
 
 	public Car createCar(String type, Driver owner) {
 		if (type.equalsIgnoreCase("van")){

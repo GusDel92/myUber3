@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Drivers {
 	
-	private ArrayList<Driver> driversList = new ArrayList<Driver>();
+	private static ArrayList<Driver> driversList = new ArrayList<Driver>();
 	private static ArrayList<Driver> onDutyDrivers = new ArrayList<Driver>();
 	
 	private static Drivers instance = new Drivers();
@@ -18,8 +18,8 @@ public class Drivers {
 	 * This method adds a driver to the list of created users
 	 * @param driver
 	 */
-	public void addDriver(Driver driver) {
-			this.driversList.add(driver);		
+	public static void addDriver(Driver driver) {
+			driversList.add(driver);		
 	}
 
 	public ArrayList<Driver> getDriversList() {
