@@ -14,7 +14,7 @@ public class Driver {
 	private String state;
 	private Car actualCar;
 	private double rate;
-	private int rideNbr;
+	private int totalNumberOfRides;
 	private double totalInCarTime;
 	private double totalOnDutyTime;
 	private double totalDrivingCustomersTime;
@@ -27,7 +27,7 @@ public class Driver {
 		this.name=name;
 		this.surname=surname;
 		this.rate=0;
-		this.rideNbr=0;
+		this.totalNumberOfRides=0;
 		this.totalInCarTime=0;
 		this.totalOnDutyTime=0;
 		this.totalDrivingCustomersTime=0;
@@ -64,6 +64,16 @@ public class Driver {
 		this.actualCar = actualCar;
 	}
 
+	public int getTotalNumberOfRides() {
+		return totalNumberOfRides;
+	}
+
+
+	public void setTotalNumberOfRides(int totalNumberOfRides) {
+		this.totalNumberOfRides = totalNumberOfRides;
+	}
+
+
 	public void acceptRide(Ride ride) {
 		ride.driver=this;
 		this.state="On-a-ride";
@@ -72,7 +82,7 @@ public class Driver {
 	}
 	
 	public void computeNewRate(Ride ride) {
-		this.rate=(this.rate+ride.rate)/(this.rideNbr);
+		this.rate=(this.rate+ride.rate)/(this.totalNumberOfRides);
 	}
 
 	public void connect(Car car, String desiredTypeOfRide) {

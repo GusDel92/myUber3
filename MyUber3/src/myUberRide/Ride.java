@@ -175,7 +175,11 @@ public abstract class Ride implements Request{
 			this.setStatus("ongoing");
 			System.out.println("Course terminée ?");
 			String answer2 = sc.next();
-			if (answer2=="yes") {this.setStatus("completed");}
+			if (answer2=="yes") {
+				this.setStatus("completed");
+				this.customer.setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
+				this.driver.setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
+				}
 			}
 		sc.close();
 	}
