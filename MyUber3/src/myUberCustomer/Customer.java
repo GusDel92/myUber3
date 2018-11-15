@@ -32,8 +32,7 @@ public class Customer {
 		this.customerID=counter;
 		this.name=name;
 		this.surname=surname;
-		this.coordinates.setLongitude(0);
-		this.coordinates.setLatitude(0);
+		this.coordinates = new Coordinates();
 		this.totalAmountOfCashSpent = 0;
 		this.totalNumberOfRides=0;
 		this.totalTimeSpentOnCar=0;
@@ -48,8 +47,7 @@ public class Customer {
 		this.name=name;
 		this.surname=surname;
 		this.creditCardNbr=creditCardNbr;
-		this.coordinates.setLongitude(0);
-		this.coordinates.setLatitude(0);
+		this.coordinates = new Coordinates();
 		this.totalAmountOfCashSpent = 0;
 		this.totalNumberOfRides=0;
 		this.totalTimeSpentOnCar=0;
