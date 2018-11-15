@@ -12,7 +12,8 @@ public class StandardCar extends Car {
 		standardID++;
 		this.setCarID(standardID);
 		setTotalSeats(4);
-		
+		this.possibleTypesOfRide.add("uberX");
+		this.possibleTypesOfRide.add("uberPool");
 	}
 	
 	@Override

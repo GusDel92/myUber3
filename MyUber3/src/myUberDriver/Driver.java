@@ -62,7 +62,6 @@ public class Driver {
 		this.actualCar = actualCar;
 	}
 
-	//ça marche de mettre this ici? ou bien public void acceptRide(Driver driver, Ride ride) {, puis changer this par driver?
 	public void acceptRide(Ride ride) {
 		ride.driver=this;
 		this.state="On-a-ride";
@@ -70,11 +69,37 @@ public class Driver {
 		
 	}
 	
-	//même question que pcdmt
 	public void computeNewRate(Ride ride) {
 		this.rate=(this.rate+ride.rate)/(this.rideNbr);
 	}
 
+	public void connect(Car car, String desiredTypeOfRide) {
+		if (car.getOwnersList().contains(this)){
+			if (car.getCurrentDriver()==null) {
+				if (car.getPossibleTypesOfRide().contains(desiredTypeOfRide)) {
+				car.setCurrentDriver(this);
+				this.setActualCar(car);
+				this.setState("on-duty");
+				Drivers.addOnDutyDriver(this);
+				}
+				else {System.out.println("Imposible d'effectuer ce type de ride avec votre voiture.");}
+			}
+			else {System.out.println("Cette voiture est déjà occupée.");}
+		}
+		else {System.out.println("Vous n'êtes pas propriétaire de cette voiture.");}
+	}
 
+	public void disconnect() {
+		this.getActualCar().setActualTypeOfRideDesiredByDriver(null);
+		this.getActualCar().setCurrentDriver(null);
+		this.setActualCar(null);
+		this.setState("offline");	
+	}
 	
+	public void takeABreak() {
+		if (this.getState()=="on-duty") {this.setState("off-duty");}
+	}
+	public void endOfTheBreak() {
+		if (this.getState()=="off-duty") {this.setState("on-duty");}
+	}
 }

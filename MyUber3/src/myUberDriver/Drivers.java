@@ -42,7 +42,7 @@ public class Drivers {
 		return onDutyDrivers;
 	}
 	
-	public void addOnDutyDriver(Driver driver) {
+	public static void addOnDutyDriver(Driver driver) {
 		Drivers.onDutyDrivers.add(driver);
 	}
 

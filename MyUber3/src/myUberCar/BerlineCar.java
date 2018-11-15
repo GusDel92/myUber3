@@ -12,6 +12,9 @@ public class BerlineCar extends Car {
 		berlineID++;
 		this.setCarID(berlineID);
 		setTotalSeats(4);
+		this.possibleTypesOfRide.add("uberX");
+		this.possibleTypesOfRide.add("uberBlack");
+		this.possibleTypesOfRide.add("uberPool");
 	}
 	
 	@Override

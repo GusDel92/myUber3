@@ -12,6 +12,9 @@ public class VanCar extends Car {
 		vanCarCounter++;
 		this.setCarID(vanCarCounter);
 		setTotalSeats(6);
+		this.possibleTypesOfRide.add("uberVan");
+		this.possibleTypesOfRide.add("uberPool");
+		this.possibleTypesOfRide.add("uberX");
 	}
 	
 	@Override

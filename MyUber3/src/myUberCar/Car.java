@@ -11,12 +11,13 @@ public abstract class Car {
 	
 	private int carID;
 	private int totalSeats;
-	private ArrayList<Driver> ownersList;
+	private ArrayList<Driver> ownersList = new ArrayList<Driver>();
 	private Coordinates carPosition;
 	private Driver currentDriver; 
 	private int freeseats;
 	private String type;
 	private String actualTypeOfRideDesiredByDriver;
+	protected ArrayList<String> possibleTypesOfRide = new ArrayList<String>();
 	
 	
 	public Car(String type, Driver owner) {
@@ -101,6 +102,16 @@ public abstract class Car {
 
 	public void setOwnersList(ArrayList<Driver> ownersList) {
 		this.ownersList = ownersList;
+	}
+
+
+	public ArrayList<String> getPossibleTypesOfRide() {
+		return possibleTypesOfRide;
+	}
+
+
+	public void setPossibleTypesOfRide(ArrayList<String> possibleTypesOfRide) {
+		this.possibleTypesOfRide = possibleTypesOfRide;
 	}
 
 
