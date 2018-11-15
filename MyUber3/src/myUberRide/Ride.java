@@ -150,7 +150,7 @@ public abstract class Ride implements Request{
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a "+this.type+" ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					String answer = sc.next();
-					if (answer.equalsIgnoreCase("yes")){
+					if (answer.equals("yes")){
 						this.driver=potentialCar.getCurrentDriver();
 						this.status="confirmed";
 						this.car=potentialCar;
