@@ -21,6 +21,9 @@ public class Customer {
     ArrayList<Message> messageBox = new ArrayList<Message>();
     ArrayList<Car> potentialCarsForActualRide;
     ArrayList<Ride> potentialRideOrder;
+    private double totalTimeSpentOnCar;
+    private double totalAmountOfCashSpent;
+    private int totalNumberOfRides;
     
 	
 	
@@ -31,6 +34,9 @@ public class Customer {
 		this.surname=surname;
 		this.coordinates.setLongitude(0);
 		this.coordinates.setLatitude(0);
+		this.totalAmountOfCashSpent = 0;
+		this.totalNumberOfRides=0;
+		this.totalTimeSpentOnCar=0;
 		
 		
 		Customers.getInstance().addCustomer(this);
@@ -44,6 +50,9 @@ public class Customer {
 		this.creditCardNbr=creditCardNbr;
 		this.coordinates.setLongitude(0);
 		this.coordinates.setLatitude(0);
+		this.totalAmountOfCashSpent = 0;
+		this.totalNumberOfRides=0;
+		this.totalTimeSpentOnCar=0;
 		
 		
 		Customers.getInstance().addCustomer(this);
@@ -81,6 +90,7 @@ public class Customer {
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
 	}
+	
 
 	
 	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
