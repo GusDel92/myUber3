@@ -32,7 +32,7 @@ public class Coordinates {
 		dest.setLatitude(scan.nextInt());
 		System.out.println("Enter the lattitude of the destination: ");
 		dest.setLongitude(scan.nextInt());
-		scan.close();
+		//scan.close();
 		return dest;
 	}
 	/**

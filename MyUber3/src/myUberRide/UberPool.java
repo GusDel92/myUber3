@@ -16,6 +16,14 @@ public class UberPool extends Ride {
 	public UberPool(Coordinates departure, Coordinates destination, Traffic traffic) {
 		super(departure, destination, traffic);
 		// TODO Auto-generated constructor stub
+		this.type="uberpool";
+		this.rateLengthInf5km=2.4;
+		this.rateLength5To10km=3;
+		this.rateLength10To20km=1.3;
+		this.rateLengthSup20km=1.1;
+		this.rateLowTraffic=1;
+		this.rateMediumTraffic=1.1;
+		this.rateHeavyTraffic=1.2;
 	}
 
 	@Override

@@ -19,8 +19,8 @@ public class Customer {
 	private String surname;
 	private Coordinates coordinates;
     ArrayList<Message> messageBox = new ArrayList<Message>();
-    ArrayList<Car> potentialCarsForActualRide;
-    ArrayList<Ride> potentialRideOrder;
+    ArrayList<Car> potentialCarsForActualRide = new ArrayList<Car>();
+    ArrayList<Ride> potentialRideOrder = new ArrayList<Ride>();
     private double totalTimeSpentOnCar;
     private double totalAmountOfCashSpent;
     private int totalNumberOfRides;
@@ -126,7 +126,7 @@ public class Customer {
 			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traf);
 			this.potentialRideOrder.add(ride);
 			ride.computePrice(ride);
-			System.out.println("The price for an"+typeOfRide+"ride is"+ride.getPrice()+"€.");	 
+			System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");	 
 		}	
 	}
 	
@@ -135,8 +135,10 @@ public class Customer {
 		for (Ride potentialRide : this.potentialRideOrder) {
 			if (potentialRide.equals(selectedRide)) {
 				selectedRide.status="unconfirmed";
+				selectedRide.setCustomer(this);
 				potentialRideOrder=null;
 				selectedRide.proposeRideToDrivers();
+				
 				//ajout de la ride à la liste des riderequests. A FAIRE ?
 			} //the ride is waiting to be confirmed by a driver 
 		}

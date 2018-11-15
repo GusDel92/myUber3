@@ -11,11 +11,14 @@ public class ClientApplication {
 	public static void main(String[] args) {
 		RideFactory rideFactory = new RideFactory();
 		CarFactory carFactory = new CarFactory();
-		Driver José = new Driver("José","Josétito");
-		carFactory.createCar("standard", José);
-		Customer Albert = new Customer("Albert","Bébert");
+		Driver josé = new Driver("José","Josétito");
+		Car car1 = carFactory.createCar("standard", josé);
+		josé.connect(car1, "uberX");
+		//System.out.println(CarFactory.getAllCars().get(0).getActualTypeOfRideDesiredByDriver());
+		Customer albert = new Customer("Albert","Bébert");
 		Coordinates destination=Coordinates.destinationChoice();
-		Albert.comparePrices(destination);
+		albert.comparePrices(destination);
+		albert.selectRide(albert.getPotentialRideOrder().get(0));
 	}
 
 	

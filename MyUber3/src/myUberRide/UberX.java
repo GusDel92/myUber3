@@ -23,8 +23,9 @@ public class UberX extends Ride {
 
 	@Override
 	public void visit(StandardCar standardCar) {
-		if (standardCar.getCurrentDriver().getState() == "on-duty" & standardCar.getActualTypeOfRideDesiredByDriver() == "UberStandard"){
+		if (standardCar.getCurrentDriver().getState() == "on-duty" & standardCar.getActualTypeOfRideDesiredByDriver() == "uberX"){
 			this.potentialCars.add(standardCar);}
+		else {}
 	}
 
 	@Override

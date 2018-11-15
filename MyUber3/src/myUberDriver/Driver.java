@@ -23,7 +23,7 @@ public class Driver {
 	public Driver(String name, String surname) {
 		driverCounter++;
 		this.driverID=driverCounter;
-		this.state="Offline";
+		this.state="offline";
 		this.name=name;
 		this.surname=surname;
 		this.rate=0;
@@ -76,7 +76,7 @@ public class Driver {
 
 	public void acceptRide(Ride ride) {
 		ride.driver=this;
-		this.state="On-a-ride";
+		this.state="on-a-ride";
 		ride.status="confirmed";
 		
 	}
@@ -90,6 +90,7 @@ public class Driver {
 			if (car.getCurrentDriver()==null) {
 				if (car.getPossibleTypesOfRide().contains(desiredTypeOfRide)) {
 				car.setCurrentDriver(this);
+				car.setActualTypeOfRideDesiredByDriver(desiredTypeOfRide);
 				this.setActualCar(car);
 				this.setState("on-duty");
 				Drivers.addOnDutyDriver(this);

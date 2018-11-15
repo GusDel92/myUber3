@@ -44,7 +44,7 @@ public abstract class Ride implements Request{
 	public Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
 		this.traffic=traffic;
 		//calculer la longueur
-		computeLength(this);
+		this.length=Math.sqrt(Math.pow(departure.getLatitude()-destination.getLatitude(), 2)+Math.pow(departure.getLongitude()-destination.getLongitude(),2));;
 		//en déduire la durée
 		computeDuration(this);
 	}
@@ -81,13 +81,32 @@ public abstract class Ride implements Request{
 		return destination;
 	}
 
-	private void computeLength(Ride ride) {
-		ride.length=Math.sqrt(Math.pow(ride.departure.getLatitude()-ride.destination.getLatitude(), 2)+Math.pow(ride.departure.getLongitude()-ride.destination.getLongitude(),2));
-		
+	public double getLength() {
+		return length;
+	}
+
+	public void setLength(double length) {
+		this.length = length;
+	}
+
+	private double computeLength(Ride ride) {
+		return Math.sqrt(Math.pow(ride.departure.getLatitude()-ride.destination.getLatitude(), 2)+Math.pow(ride.departure.getLongitude()-ride.destination.getLongitude(),2));
 	}
 
 	public Customer getCustomer() {
 		return this.customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Driver getDriver() {
+		return driver;
+	}
+
+	public void setDriver(Driver driver) {
+		this.driver = driver;
 	}
 
 	//this function returns the duration of the ride in minutes (length must be given in km)
@@ -128,7 +147,7 @@ public abstract class Ride implements Request{
 	public void sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=0;i<=n;i++) {
-			for (int j=0;j<=n-1;i++) {
+			for (int j=1;j<=n-1;i++) {
 				Car car1 = potentialCars.get(j);
 				Car car2 = potentialCars.get(j+1);
 				double distanceFromDeparture1 = car1.getCarPosition().distanceTo(departure);
@@ -143,45 +162,50 @@ public abstract class Ride implements Request{
 	
 	
 	public void proposeRideToDrivers() {
-		recoverPotentialCars();
-		sortPotentialCars();
+		this.recoverPotentialCars();
+		this.sortPotentialCars();
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a "+this.type+" ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
-					String answer = sc.next();
-					if (answer.equals("yes")){
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					//sc.hasNext();
+					Boolean answer = sc.nextBoolean();
+					//sc.close();
+					if (answer==true){
 						this.driver=potentialCar.getCurrentDriver();
 						this.status="confirmed";
 						this.car=potentialCar;
 						this.driver.setState("on-a-ride");
 						this.manageRide();
-					sc.close();
+						potentialCars.removeAll(potentialCars);
+						break;
 					}
-					
+					else {}
 				}
+				else {};
 			}
-			System.out.println("There is no available driver for your ride. Please try again.");
+			//System.out.println("There is no available driver for your ride. Please try again.");
 			//supprimer la ride
 		}	
 	}
 
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Client"+this.customer.getSurname()+"récupéré ?");
-		String answer = sc.next();
-		if (answer=="yes") {
+		System.out.println("Client récupéré ?");
+		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
+		Boolean answer = sc.nextBoolean();
+		if (answer==true) {
 			this.setStatus("ongoing");
 			System.out.println("Course terminée ?");
-			String answer2 = sc.next();
-			if (answer2=="yes") {
+			Boolean answer2 = sc.nextBoolean();
+			if (answer2==true) {
 				this.setStatus("completed");
-				this.customer.setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
-				this.driver.setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
+				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
+				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
 				}
 			}
-		sc.close();
+		//sc.close();
 	}
 	
 }
