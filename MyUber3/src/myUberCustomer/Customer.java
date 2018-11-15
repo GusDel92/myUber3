@@ -90,7 +90,10 @@ public class Customer {
 	public void setCoordinates(Coordinates coordinates) {
 		this.coordinates = coordinates;
 	}
-	
+
+	public ArrayList<Ride> getPotentialRideOrder() {
+		return potentialRideOrder;
+	}	
 	
 	public double getTotalTimeSpentOnCar() {
 		return totalTimeSpentOnCar;
