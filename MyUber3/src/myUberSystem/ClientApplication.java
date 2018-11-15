@@ -18,4 +18,5 @@ public class ClientApplication {
 		Albert.comparePrices(destination);
 	}
 
+	
 }

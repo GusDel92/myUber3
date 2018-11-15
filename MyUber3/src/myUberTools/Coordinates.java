@@ -21,6 +21,7 @@ public class Coordinates {
 		this.latitude = y;
 	}
 	
+	
 	public static Coordinates destinationChoice() {
 		Coordinates dest = new Coordinates();
 		Scanner scan = new Scanner(System.in);

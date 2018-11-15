@@ -30,3 +30,4 @@ public class RideFactory {
 		return null;
 	}
 }
+

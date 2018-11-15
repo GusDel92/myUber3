@@ -98,6 +98,7 @@ public abstract class Ride implements Request{
 		else if (ride.traffic.getActualTraffic()=="heavy-traffic") {ride.duration=ride.length/3*60;}
 	}
 	
+	
 	public void computePrice(Ride ride) {
 		//on détermine le trafficRate
 		if (ride.traffic.getActualTraffic()=="low-traffic") {ride.trafficRate=ride.rateLowTraffic;}
