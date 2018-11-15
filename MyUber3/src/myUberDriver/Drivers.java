@@ -18,7 +18,7 @@ public class Drivers {
 	 * This method adds a driver to the list of created users
 	 * @param driver
 	 */
-	public static void addDriver(Driver driver) {
+	public void addDriver(Driver driver) {
 			driversList.add(driver);		
 	}
 

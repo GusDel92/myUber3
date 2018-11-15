@@ -32,7 +32,7 @@ public class Driver {
 		this.totalOnDutyTime=0;
 		this.totalDrivingCustomersTime=0;
 		this.totalOffDutyTime=0;
-		Drivers.addDriver(this);
+		Drivers.getInstance().addDriver(this);
 	}
 
 	public String getName() {

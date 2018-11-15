@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Customers {
 
-private ArrayList<Customer> customersList = new ArrayList<Customer>();
+	private ArrayList<Customer> customersList = new ArrayList<Customer>();
 	
 	private static Customers instance = new Customers();
 	
