@@ -1,6 +1,8 @@
 package myUberDriver;
 
 import java.util.Scanner;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import myUberCar.Car;
 import myUberRide.Ride;
@@ -15,10 +17,10 @@ public class Driver {
 	private Car actualCar;
 	private double rate;
 	private int totalNumberOfRides;
-	private double totalInCarTime;
-	private double totalOnDutyTime;
-	private double totalDrivingCustomersTime;
-	private double totalOffDutyTime;
+	private Duration totalInCarTime;
+	private Duration totalOnDutyTime;
+	private Duration totalDrivingCustomersTime;
+	private Duration totalOffDutyTime;
 	
 	public Driver(String name, String surname) {
 		driverCounter++;

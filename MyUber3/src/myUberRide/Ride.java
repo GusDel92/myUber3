@@ -1,6 +1,8 @@
 package myUberRide;
 
 import java.util.ArrayList;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import myUberCar.Car;
 import myUberCar.CarFactory;
@@ -18,7 +20,7 @@ public abstract class Ride implements Request{
 	private int nbrOfPassengers;
 	private double length;
 	private Traffic traffic;
-	private double duration;
+	private Duration duration;
 	private double price;
 	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
 	public String status;
@@ -113,6 +115,14 @@ public abstract class Ride implements Request{
 		this.car = car;
 	}
 
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
 	//this function returns the duration of the ride in minutes (length must be given in km)
 	//on peut rajouter un catch error pour le cas où le traffic ou la longueur de la course n'est pas encore entré
 	public void computeDuration(Ride ride) {
@@ -201,10 +211,13 @@ public abstract class Ride implements Request{
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
+			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
 			System.out.println("Course terminée ?");
 			Boolean answer2 = sc.nextBoolean();
 			if (answer2==true) {
+				LocalDateTime dropOffTime = LocalDateTime.now();
+				this.setDuration(Duration.between(departureTime, dropOffTime));
 				this.setStatus("completed");
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);

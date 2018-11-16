@@ -1,5 +1,6 @@
 package myUberCustomer;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,7 +22,7 @@ public class Customer {
     ArrayList<Message> messageBox = new ArrayList<Message>();
     ArrayList<Car> potentialCarsForActualRide = new ArrayList<Car>();
     ArrayList<Ride> potentialRideOrder = new ArrayList<Ride>();
-    private double totalTimeSpentOnCar;
+    private Duration totalTimeSpentOnCar;
     private double totalAmountOfCashSpent;
     private int totalNumberOfRides;
     
@@ -93,11 +94,11 @@ public class Customer {
 		return potentialRideOrder;
 	}	
 	
-	public double getTotalTimeSpentOnCar() {
+	public Duration getTotalTimeSpentOnCar() {
 		return totalTimeSpentOnCar;
 	}
 
-	public void setTotalTimeSpentOnCar(double totalTimeSpentOnCar) {
+	public void setTotalTimeSpentOnCar(Duration totalTimeSpentOnCar) {
 		this.totalTimeSpentOnCar = totalTimeSpentOnCar;
 	}
 
