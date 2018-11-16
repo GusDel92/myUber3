@@ -21,5 +21,4 @@ public class ClientApplication {
 		albert.selectRide(albert.getPotentialRideOrder().get(3));
 	}
 
-	
 }
