@@ -28,6 +28,7 @@ public class UberVan extends Ride {
 	@Override
 	public void visit(BerlineCar berlineCar) {
 	}
+	
 
 	@Override
 	public void visit(VanCar vanCar) {

@@ -144,6 +144,7 @@ public class Customer {
 		}
 	}
 	
+	
 	public void cancelRide(Ride ride) {
 		if (ride.status=="unconfirmed") {
 			ride.status="canceled";

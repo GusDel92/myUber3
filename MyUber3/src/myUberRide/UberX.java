@@ -28,6 +28,7 @@ public class UberX extends Ride {
 		else {}
 	}
 
+	
 	@Override
 	public void visit(BerlineCar berlineCar) {
 		if (berlineCar.getCurrentDriver().getState() == "on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver() == "uberVan"){

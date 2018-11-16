@@ -33,6 +33,7 @@ public class PoolRequest implements Request{
 		return false;
 	}
 	
+	
 	public void recoverPotentialCars(){
 		for (Car car : CarFactory.getAllCars()){
 			car.accept(this);

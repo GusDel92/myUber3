@@ -33,6 +33,7 @@ public class UberBlack extends Ride {
 		else {}
 	}
 
+	
 	@Override
 	public void visit(VanCar vanCar) {		
 	}

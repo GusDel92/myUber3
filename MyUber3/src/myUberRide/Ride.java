@@ -194,6 +194,7 @@ public abstract class Ride implements Request{
 		}	
 	}
 
+	
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Client récupéré ?");

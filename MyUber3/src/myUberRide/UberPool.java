@@ -26,6 +26,7 @@ public class UberPool extends Ride {
 		this.rateHeavyTraffic=1.2;
 	}
 
+	
 	@Override
 	public void proposeRideToDrivers() {
 		PoolRequests.manageNewRide(this);

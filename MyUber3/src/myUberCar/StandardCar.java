@@ -22,3 +22,4 @@ public class StandardCar extends Car {
 	}
 
 }
+
