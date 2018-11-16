@@ -36,20 +36,6 @@ public class UberPool extends Ride {
 			
 	}
 
-	@Override
-	public void manageRide() {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Client récupéré ?");
-		String answer = sc.next();
-		if (answer=="yes") {
-			this.setStatus("ongoing");
-			System.out.println("Course terminée ?");
-			String answer2 = sc.next();
-			if (answer2=="yes") {this.setStatus("completed");}
-			}
-		
-		sc.close();
-	}
 
 	@Override
 	public void visit(StandardCar standardCar) {

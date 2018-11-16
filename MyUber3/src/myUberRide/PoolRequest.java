@@ -23,6 +23,16 @@ public class PoolRequest implements Request{
 	private Coordinates departure;
 	private Coordinates destination;
 	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 	public boolean addRide(Ride ride) {
 		if (this.ridesOfTheRequest.size()<3 & this.totalNbrOfPassengers+ride.getNbrOfPassengers()<=4) {  //On peut mettre 9 si on considère qu'un van peut faire uberPool. Pas hyper utile et ça complique pas mal.
 			ridesOfTheRequest.add(ride);
@@ -105,7 +115,7 @@ public class PoolRequest implements Request{
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a UberPool ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an UberPool ride ?");
 					Boolean answer = sc.nextBoolean();
 					//Thread.sleep(10000);
 					if (answer==true){
@@ -120,13 +130,13 @@ public class PoolRequest implements Request{
 							ride.setDriver(this.car.getCurrentDriver());
 							ride.getDriver().setState("on-a-ride");
 							ride.manageRide();}
-						potentialCars.removeAll(potentialCars);
+						//potentialCars.removeAll(potentialCars);
 						break;
 					}
 					
 				}
 			}
-			System.out.println("There is no available driver for your ride. Please try again.");
+			//System.out.println("There is no available driver for your ride. Please try again.");
 			//supprimer la ride
 		}	
 	}

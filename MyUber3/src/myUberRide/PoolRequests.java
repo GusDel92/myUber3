@@ -17,6 +17,7 @@ public class PoolRequests {
 		currentRequests.add(request);
 		request.ridesOfTheRequest.add(ride);
 		ride.setStatus("unconfirmed");
+		request.setStatus("unconfirmed");
 		return request;
 	}
 	
@@ -38,7 +39,6 @@ public class PoolRequests {
 			}
 		}
 		if (ride.getStatus()!="unconfirmed") {
-			System.out.print(ride.getStatus());
 			PoolRequest nouvelleRequest=createRequest(ride);
 			ride.setRequest(nouvelleRequest);
 			nouvelleRequest.proposeRequestToDrivers();
