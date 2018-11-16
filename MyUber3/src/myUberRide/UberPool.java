@@ -29,8 +29,8 @@ public class UberPool extends Ride {
 	@Override
 	public void proposeRideToDrivers() {
 		PoolRequests.manageNewRide(this);
-		request.proposeRequestToDrivers(request);
-		System.out.println("There is no available driver for your ride. Please try again.");
+		//request.proposeRequestToDrivers(request);
+		//System.out.println("There is no available driver for your ride. Please try again.");
 			//supprimer la ride
 			
 	}
@@ -60,5 +60,9 @@ public class UberPool extends Ride {
 
 	@Override
 	public void visit(VanCar vanCar) {
+	}
+
+	public void setRequest(PoolRequest request) {
+		this.request = request;
 	}
 }

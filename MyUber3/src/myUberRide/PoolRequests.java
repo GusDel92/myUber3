@@ -19,20 +19,30 @@ public class PoolRequests {
 		return request;
 	}
 	
-	public void deleteRequest(PoolRequest request) {
+	public static void deleteRequest(PoolRequest request) {
 		PoolRequests.currentRequests.remove(request);
 	}
 	
-	public static void manageNewRide(Ride ride) {
+	//on essaie de mettre la ride dans une request existante; il peut y avoir un pb de thread si un driver accepte la request au moment où une ride s'y ajoute. Solution: n'envoyer que les Request "complètes" (soit 4 personnes soit 3 Ride dedans). Facile à faire, il suffit de modifier cete méthode.
+	public static void manageNewRide(UberPool ride) {
+		ride.setStatus("not yet unconfirmed");
+		//int n=currentRequests.size();
 		for (PoolRequest existingRequest : currentRequests) {
-			while (ride.getStatus()!="unconfirmed") {if (existingRequest.addRide(ride)==true){
-			existingRequest.proposeRequestToDrivers(existingRequest);}
-			} //on essaie de mettre la ride dans une request existante; il peut y avoir un pb de thread si un driver accepte la request au moment où une ride s'y ajoute. Solution: n'envoyer que les Request "complètes" (soit 4 personnes soit 3 Ride dedans). Facile à faire, il suffit de modifier cete méthode.
+		//for (int i=0;i<=n-1;i++) {
+			//while (ride.getStatus()!="unconfirmed") {
+			//PoolRequest existingRequest = currentRequests.get(i);
+			if (existingRequest.addRide(ride)==true){
+			ride.setRequest(existingRequest);
+			existingRequest.proposeRequestToDrivers();
+			}
+		}
 		if (ride.getStatus()!="unconfirmed") {
+			System.out.print(ride.getStatus());
 			PoolRequest nouvelleRequest=createRequest(ride);
-			nouvelleRequest.proposeRequestToDrivers(nouvelleRequest);
+			ride.setRequest(nouvelleRequest);
+			nouvelleRequest.proposeRequestToDrivers();
 			} //si la ride n'a pas trouvé de place dans les request existantes, on en crée une nouvelle.
 		}
-	}
-	
 }
+	
+

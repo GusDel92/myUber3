@@ -109,6 +109,10 @@ public abstract class Ride implements Request{
 		this.driver = driver;
 	}
 
+	public void setCar(Car car) {
+		this.car = car;
+	}
+
 	//this function returns the duration of the ride in minutes (length must be given in km)
 	//on peut rajouter un catch error pour le cas où le traffic ou la longueur de la course n'est pas encore entré
 	public void computeDuration(Ride ride) {
@@ -168,11 +172,11 @@ public abstract class Ride implements Request{
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
-					//sc.hasNext();
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					Boolean answer = sc.nextBoolean();
 					//sc.close();
 					if (answer==true){
+						PoolRequests.deleteRequest(this.request);
 						this.driver=potentialCar.getCurrentDriver();
 						this.status="confirmed";
 						this.car=potentialCar;

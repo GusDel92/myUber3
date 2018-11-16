@@ -27,10 +27,10 @@ public class UberBlack extends Ride {
 
 	@Override
 	public void visit(BerlineCar berlineCar) {
-		if (berlineCar.getCurrentDriver().getState() == "on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver() == "UberBlack"){
+		if (berlineCar.getCurrentDriver().getState() == "on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver() == "uberBlack"){
 			this.potentialCars.add(berlineCar);			
 		}
-		
+		else {}
 	}
 
 	@Override

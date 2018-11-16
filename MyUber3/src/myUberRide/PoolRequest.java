@@ -97,24 +97,30 @@ public class PoolRequest implements Request{
 		}
 	}
 
-	public void proposeRequestToDrivers(PoolRequest request){
-		recoverPotentialCars();
-		sortPotentialCars();
+	public void proposeRequestToDrivers(){
+		this.recoverPotentialCars();
+		this.sortPotentialCars();
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take a UberPool ride from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
-					String answer = sc.next();
+					Boolean answer = sc.nextBoolean();
 					//Thread.sleep(10000);
-					if (answer.equalsIgnoreCase("yes")){
+					if (answer==true){
+						PoolRequests.deleteRequest(this);
 						this.car=potentialCar;
 						this.status="confirmed";
 						this.driver=this.car.getCurrentDriver();
 						this.driver.setState("on-a-ride");
 						for (Ride ride : ridesOfTheRequest) {
+							ride.setCar(potentialCar);
+							ride.setStatus("confirmed");
+							ride.setDriver(this.car.getCurrentDriver());
+							ride.getDriver().setState("on-a-ride");
 							ride.manageRide();}
-					sc.close();
+						potentialCars.removeAll(potentialCars);
+						break;
 					}
 					
 				}
@@ -129,7 +135,7 @@ public class PoolRequest implements Request{
 		if (standardCar.getCurrentDriver().getState()=="on-duty" & standardCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
 			this.potentialCars.add(standardCar);
 		}
-		
+		else {}
 	}
 
 	@Override
@@ -137,6 +143,7 @@ public class PoolRequest implements Request{
 		if (berlineCar.getCurrentDriver().getState()=="on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
 			this.potentialCars.add(berlineCar);
 		}
+		else {}
 	}
 
 	@Override
@@ -144,7 +151,7 @@ public class PoolRequest implements Request{
 		if (vanCar.getCurrentDriver().getState()=="on-duty" & vanCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
 			this.potentialCars.add(vanCar);
 		}
+		else {}
 	}
-	
 	
 }

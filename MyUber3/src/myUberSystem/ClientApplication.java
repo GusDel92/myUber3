@@ -13,12 +13,12 @@ public class ClientApplication {
 		CarFactory carFactory = new CarFactory();
 		Driver josé = new Driver("José","Josétito");
 		Car car1 = carFactory.createCar("standard", josé);
-		josé.connect(car1, "uberX");
+		josé.connect(car1, "uberPool");
 		//System.out.println(CarFactory.getAllCars().get(0).getActualTypeOfRideDesiredByDriver());
 		Customer albert = new Customer("Albert","Bébert");
 		Coordinates destination=Coordinates.destinationChoice();
 		albert.comparePrices(destination);
-		albert.selectRide(albert.getPotentialRideOrder().get(0));
+		albert.selectRide(albert.getPotentialRideOrder().get(3));
 	}
 
 	
