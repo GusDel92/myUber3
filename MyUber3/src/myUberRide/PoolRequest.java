@@ -78,7 +78,7 @@ public class PoolRequest implements Request{
 				//quand c'est trié, on va au plus près, c'est à dire le premier de la liste
 				Coordinates nextStop = possibleNextStops.get(0);
 				minimalCost+=currentPosition.distanceTo(nextStop);
-				currentPosition=nextStop;
+				currentPosition=nextStop; 
 				if (pickUpPoints.contains(nextStop)){
 					possibleNextStops.add(dropOffPoints.get(pickUpPoints.indexOf(nextStop)));
 				}
@@ -139,6 +139,7 @@ public class PoolRequest implements Request{
 			//System.out.println("There is no available driver for your ride. Please try again.");
 			//supprimer la ride
 		}	
+		sc.close();
 	}
 
 	@Override

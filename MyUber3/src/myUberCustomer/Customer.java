@@ -36,7 +36,7 @@ public class Customer {
 		this.coordinates = new Coordinates();
 		this.totalAmountOfCashSpent = 0;
 		this.totalNumberOfRides=0;
-		this.totalTimeSpentOnCar=0;
+		this.totalTimeSpentOnCar=Duration.ZERO;
 		
 		
 		Customers.getInstance().addCustomer(this);
@@ -51,10 +51,9 @@ public class Customer {
 		this.coordinates = new Coordinates();
 		this.totalAmountOfCashSpent = 0;
 		this.totalNumberOfRides=0;
-		this.totalTimeSpentOnCar=0;
+		this.totalTimeSpentOnCar=Duration.ZERO;
 		
-		
-		Customers.getInstance().addCustomer(this);
+				Customers.getInstance().addCustomer(this);
 	}
 
 	
@@ -147,11 +146,10 @@ public class Customer {
 	
 	
 	public void cancelRide(Ride ride) {
-		if (ride.status=="unconfirmed") {
+		if (ride.status=="unconfirmed" || ride.status=="confirmed") {
 			ride.status="canceled";
-			ride.driver.setState("on-duty");
-			}
-		else {System.out.println("Action impossible.");}
+			ride.driver.setState("on-duty"); // il est déjà On-Duty, mais pour éviter les pb de thread au cas où il annule au moment de monter dans voiture.}
+		else {System.out.println("Sorry, the action is impossible since the ride has already begun.");}
 	}
 
 
