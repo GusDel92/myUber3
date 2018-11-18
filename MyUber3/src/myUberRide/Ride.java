@@ -228,7 +228,7 @@ public abstract class Ride implements Request{
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
 				}
 			}
-		sc.close();
+		//sc.close();
 	}
 	
 }

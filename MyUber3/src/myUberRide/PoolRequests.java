@@ -34,13 +34,17 @@ public class PoolRequests {
 			//PoolRequest existingRequest = currentRequests.get(i);
 			if (existingRequest.addRide(ride)==true){
 			ride.setRequest(existingRequest);
-			existingRequest.proposeRequestToDrivers();
+			//existingRequest.proposeRequestToDrivers();
 			}
+			if (existingRequest.getRidesOfTheRequest().size()==3 || existingRequest.getTotalNbrOfPassengers()==4) {
+				existingRequest.proposeRequestToDrivers();
+				break;
+				}
 		}
 		if (ride.getStatus()!="unconfirmed") {
 			PoolRequest nouvelleRequest=createRequest(ride);
 			ride.setRequest(nouvelleRequest);
-			nouvelleRequest.proposeRequestToDrivers();
+			//nouvelleRequest.proposeRequestToDrivers();
 			} //si la ride n'a pas trouvé de place dans les request existantes, on en crée une nouvelle.
 		}
 }

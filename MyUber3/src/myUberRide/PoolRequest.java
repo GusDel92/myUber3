@@ -33,6 +33,16 @@ public class PoolRequest implements Request{
 	}
 
 
+	public ArrayList<Ride> getRidesOfTheRequest() {
+		return ridesOfTheRequest;
+	}
+
+
+	public int getTotalNbrOfPassengers() {
+		return totalNbrOfPassengers;
+	}
+
+
 	public boolean addRide(Ride ride) {
 		if (this.ridesOfTheRequest.size()<3 & this.totalNbrOfPassengers+ride.getNbrOfPassengers()<=4) {  //On peut mettre 9 si on considère qu'un van peut faire uberPool. Pas hyper utile et ça complique pas mal.
 			ridesOfTheRequest.add(ride);
@@ -109,6 +119,7 @@ public class PoolRequest implements Request{
 	}
 
 	public void proposeRequestToDrivers(){
+		PoolRequests.currentRequests.remove(this);
 		this.recoverPotentialCars();
 		this.sortPotentialCars();
 		while (this.status=="unconfirmed") {	

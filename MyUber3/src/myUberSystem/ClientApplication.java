@@ -23,6 +23,10 @@ public class ClientApplication {
 		rené.comparePrices(destination2);
 		albert.selectRide(albert.getPotentialRideOrder().get(3));
 		rené.selectRide(rené.getPotentialRideOrder().get(3));
+		Customer bernard = new Customer("Bernard","Nanard");
+		Coordinates destination3=Coordinates.destinationChoice();
+		bernard.comparePrices(destination3);
+		bernard.selectRide(bernard.getPotentialRideOrder().get(3));
 	}
 
 }
