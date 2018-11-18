@@ -43,14 +43,16 @@ public abstract class Ride implements Request{
 	public double rateHeavyTraffic;
 	public PoolRequest request;
 	
-	public Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
-		this.traffic=traffic;
-		//calculer la longueur
-		this.length=Math.sqrt(Math.pow(departure.getLatitude()-destination.getLatitude(), 2)+Math.pow(departure.getLongitude()-destination.getLongitude(),2));;
-		//en déduire la durée
-		computeDuration(this);
-	}
 	
+	
+	private Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
+		super();
+		this.departure = departure;
+		this.destination = destination;
+		this.traffic = traffic;
+		this.length = departure.distanceTo(destination);
+	}
+
 	public int getNbrOfPassengers() {
 		return nbrOfPassengers;
 	}
@@ -91,10 +93,6 @@ public abstract class Ride implements Request{
 		this.length = length;
 	}
 
-	private double computeLength(Ride ride) {
-		return Math.sqrt(Math.pow(ride.departure.getLatitude()-ride.destination.getLatitude(), 2)+Math.pow(ride.departure.getLongitude()-ride.destination.getLongitude(),2));
-	}
-
 	public Customer getCustomer() {
 		return this.customer;
 	}
@@ -122,6 +120,10 @@ public abstract class Ride implements Request{
 	public void setDuration(Duration duration) {
 		this.duration = duration;
 	}
+	
+	public double getPrice() {
+		return price;
+	}
 
 	//this function returns the duration of the ride in minutes (length must be given in km)
 	//on peut rajouter un catch error pour le cas où le traffic ou la longueur de la course n'est pas encore entré
@@ -148,9 +150,7 @@ public abstract class Ride implements Request{
 	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
 	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride
 
-	public double getPrice() {
-		return price;
-	}
+	
 	
 	public void recoverPotentialCars(){
 		for (Car car : CarFactory.getAllCars()){
@@ -224,6 +224,7 @@ public abstract class Ride implements Request{
 				this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
 				this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
 				this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
+				this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
 				}

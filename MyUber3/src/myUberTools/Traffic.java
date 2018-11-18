@@ -2,14 +2,14 @@ package myUberTools;
 
 public class Traffic {
 
-	private int hour;
-	private double aleatNbr;
+	private static int hour;
+	private static double aleatNbr;
 	public String actualTraffic;
 	
 	//Voir dans mes favoris internet pour cet algo de probabilité
 
 	//This method determines the traffic according to the hour of the day. The traffic is supposed to be constant during a ride.
-	public String getTraffic() {
+	public static String getTraffic() {
 		hour=Date.getHour();
 		aleatNbr=Math.random();
 		if (hour>=22 & hour<=7) {
