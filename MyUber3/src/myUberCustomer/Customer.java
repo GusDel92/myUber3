@@ -130,7 +130,7 @@ public class Customer {
 		}	
 	}
 	
-	//le for et if nous permettent de vérifier que c'est bien une des rides pour lesquelles le client a demandé le prix
+	//le for et if nous permettent de vérifier que c'est bien une des rides pour lesquelles le client ademandé le prix
 	public void selectRide(Ride selectedRide) {
 		for (Ride potentialRide : this.potentialRideOrder) {
 			if (potentialRide.equals(selectedRide)) {

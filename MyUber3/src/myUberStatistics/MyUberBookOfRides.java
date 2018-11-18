@@ -16,7 +16,8 @@ public class MyUberBookOfRides {
 	
 	public static MyUberBookOfRides getInstance(){
 			
-			return instance;}
+			return instance;
+			}
 	
 	
 	

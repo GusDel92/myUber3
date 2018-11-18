@@ -7,7 +7,6 @@ public class Traffic {
 	public String actualTraffic;
 	
 	//Voir dans mes favoris internet pour cet algo de probabilité
-
 	//This method determines the traffic according to the hour of the day. The traffic is supposed to be constant during a ride.
 	public static String getTraffic() {
 		hour=Date.getHour();

@@ -11,7 +11,6 @@ public class PoolRequests {
 			return instance;
 	}
 	
-	
 	public static PoolRequest createRequest(Ride ride) {
 		PoolRequest request = new PoolRequest();
 		currentRequests.add(request);

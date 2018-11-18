@@ -53,8 +53,6 @@ public class Coordinates {
 		double d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)));
 		return d;}
 		
-	
-	
-	
+		
 	
 }

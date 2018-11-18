@@ -137,7 +137,7 @@ public class PoolRequest implements Request{
 				}
 			}
 			//System.out.println("There is no available driver for your ride. Please try again.");
-			//supprimer la ride
+			//supprimer la ride.
 		}	
 		sc.close();
 	}

@@ -31,7 +31,6 @@ public abstract class Ride implements Request{
 	public Driver driver;
 	public double rate;
 	
-	
 	public double basicRate;
 	public double trafficRate;
 	public double rateLengthInf5km;

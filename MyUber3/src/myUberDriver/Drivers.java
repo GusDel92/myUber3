@@ -50,4 +50,5 @@ public class Drivers {
 	public void removeOnDutyDriver(Driver driver) {
 		Drivers.onDutyDrivers.remove(driver);
 	}
+
 }
