@@ -44,7 +44,7 @@ public abstract class Ride implements Request{
 	
 	
 	
-	private Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
+	public Ride(Coordinates departure, Coordinates destination, Traffic traffic) {
 		super();
 		this.departure = departure;
 		this.destination = destination;

@@ -18,7 +18,11 @@ public class ClientApplication {
 		Customer albert = new Customer("Albert","Bébert");
 		Coordinates destination=Coordinates.destinationChoice();
 		albert.comparePrices(destination);
+		Customer rené = new Customer("René","Renénichou");
+		Coordinates destination2=Coordinates.destinationChoice();
+		rené.comparePrices(destination2);
 		albert.selectRide(albert.getPotentialRideOrder().get(3));
+		rené.selectRide(rené.getPotentialRideOrder().get(3));
 	}
 
 }
