@@ -1,6 +1,8 @@
 package myUberDriver;
 
 import java.util.Scanner;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 import myUberCar.Car;
 import myUberRide.Ride;
@@ -15,10 +17,12 @@ public class Driver {
 	private Car actualCar;
 	private double rate;
 	private int totalNumberOfRides;
-	private double totalInCarTime;
-	private double totalOnDutyTime;
-	private double totalDrivingCustomersTime;
-	private double totalOffDutyTime;
+	private Duration totalInCarTime;
+	private Duration totalOnDutyTime;
+	private Duration totalDrivingCustomersTime;
+	private Duration totalOffDutyTime;
+	private LocalDateTime lastConnexionTime;
+	private LocalDateTime lastOffDutyTime;
 	
 	public Driver(String name, String surname) {
 		driverCounter++;
@@ -28,10 +32,11 @@ public class Driver {
 		this.surname=surname;
 		this.rate=0;
 		this.totalNumberOfRides=0;
-		this.totalInCarTime=0;
-		this.totalOnDutyTime=0;
-		this.totalDrivingCustomersTime=0;
-		this.totalOffDutyTime=0;
+		this.totalInCarTime=Duration.ZERO;
+		this.totalOffDutyTime=Duration.ZERO;
+		this.totalOnDutyTime=Duration.ZERO;
+		this.totalDrivingCustomersTime=Duration.ZERO;
+		
 		Drivers.getInstance().addDriver(this);
 	}
 
@@ -74,6 +79,67 @@ public class Driver {
 	}
 
 
+	public Duration getTotalInCarTime() {
+		return totalInCarTime;
+	}
+
+
+	public void setTotalInCarTime(Duration totalInCarTime) {
+		this.totalInCarTime = totalInCarTime;
+	}
+
+
+	public Duration getTotalOnDutyTime() {
+		return totalOnDutyTime;
+	}
+
+
+	public void setTotalOnDutyTime(Duration totalOnDutyTime) {
+		this.totalOnDutyTime = totalOnDutyTime;
+	}
+
+
+	public Duration getTotalDrivingCustomersTime() {
+		return totalDrivingCustomersTime;
+	}
+
+
+	public void setTotalDrivingCustomersTime(Duration totalDrivingCustomersTime) {
+		this.totalDrivingCustomersTime = totalDrivingCustomersTime;
+	}
+
+
+	public Duration getTotalOffDutyTime() {
+		return totalOffDutyTime;
+	}
+
+
+	public void setTotalOffDutyTime(Duration totalOffDutyTime) {
+		this.totalOffDutyTime = totalOffDutyTime;
+	}
+
+
+	public LocalDateTime getLastConnexionTime() {
+		return lastConnexionTime;
+	}
+
+
+	public void setLastConnexionTime(LocalDateTime lastConnexion) {
+		this.lastConnexionTime = lastConnexion;
+	}
+
+
+	
+	public LocalDateTime getLastOffDutyTime() {
+		return lastOffDutyTime;
+	}
+
+
+	public void setLastOffDutyTime(LocalDateTime lastOffDutyTime) {
+		this.lastOffDutyTime = lastOffDutyTime;
+	}
+
+
 	public void acceptRide(Ride ride) {
 		ride.driver=this;
 		this.state="on-a-ride";
@@ -93,6 +159,7 @@ public class Driver {
 				car.setActualTypeOfRideDesiredByDriver(desiredTypeOfRide);
 				this.setActualCar(car);
 				this.setState("on-duty");
+				this.setLastConnexionTime(LocalDateTime.now());
 				Drivers.addOnDutyDriver(this);
 				}
 				else {System.out.println("Imposible d'effectuer ce type de ride avec votre voiture.");}
@@ -103,16 +170,32 @@ public class Driver {
 	}
 
 	public void disconnect() {
-		this.getActualCar().setActualTypeOfRideDesiredByDriver(null);
-		this.getActualCar().setCurrentDriver(null);
-		this.setActualCar(null);
-		this.setState("offline");	
+		if (this.getState()!="on-a-ride"){
+			
+			this.getActualCar().setActualTypeOfRideDesiredByDriver(null);
+			this.getActualCar().setCurrentDriver(null);
+			this.setActualCar(null);
+			this.setState("offline"); 
+			this.setTotalInCarTime(this.getTotalInCarTime().plus(Duration.between(this.lastConnexionTime, LocalDateTime.now())));
+			this.setTotalOnDutyTime(this.getTotalInCarTime().minus(this.getTotalDrivingCustomersTime().plus(this.getTotalOffDutyTime())));}
+		else {
+			System.out.println("Veuillez finir la course en cours avant de vous déconnecter.");
+		}
 	}
 	
 	public void takeABreak() {
-		if (this.getState()=="on-duty") {this.setState("off-duty");}
+		if (this.getState()!="on-a-ride"){
+			this.setState("off-duty");
+			this.setLastOffDutyTime(LocalDateTime.now());}
+		else {System.out.println("Veuillez finir la course en cours avant de commencer votre pause.");
+		}
 	}
 	public void endOfTheBreak() {
-		if (this.getState()=="off-duty") {this.setState("on-duty");}
+		if (this.getState()=="off-duty") {
+			this.setState("on-duty");
+			this.setTotalOffDutyTime(getTotalOffDutyTime().plus(Duration.between(this.lastConnexionTime, LocalDateTime.now())));
+			}
+		else {System.out.println("Impossible d'effectuer l'action, vous n'étiez pas en pause.");
+		}
 	}
 }

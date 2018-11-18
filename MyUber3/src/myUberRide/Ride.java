@@ -1,6 +1,8 @@
 package myUberRide;
 
 import java.util.ArrayList;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import myUberCar.Car;
 import myUberCar.CarFactory;
@@ -18,7 +20,7 @@ public abstract class Ride implements Request{
 	private int nbrOfPassengers;
 	private double length;
 	private Traffic traffic;
-	private double duration;
+	private Duration duration;
 	private double price;
 	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
 	public String status;
@@ -113,13 +115,21 @@ public abstract class Ride implements Request{
 		this.car = car;
 	}
 
+	public Duration getDuration() {
+		return duration;
+	}
+
+	public void setDuration(Duration duration) {
+		this.duration = duration;
+	}
+
 	//this function returns the duration of the ride in minutes (length must be given in km)
 	//on peut rajouter un catch error pour le cas où le traffic ou la longueur de la course n'est pas encore entré
-	public void computeDuration(Ride ride) {
+	/*public void computeDuration(Ride ride) {
 		if (ride.traffic.getActualTraffic()=="low-traffic") {ride.duration=ride.length/15*60;}
 		else if (ride.traffic.getActualTraffic()=="medium-traffic") {ride.duration=ride.length/7.5*60;}
 		else if (ride.traffic.getActualTraffic()=="heavy-traffic") {ride.duration=ride.length/3*60;}
-	}
+	}*/
 	
 	
 	public void computePrice(Ride ride) {
@@ -174,7 +184,7 @@ public abstract class Ride implements Request{
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					Boolean answer = sc.nextBoolean();
-					//sc.close();
+					sc.close();
 					if (answer==true){
 						PoolRequests.deleteRequest(this.request);
 						this.driver=potentialCar.getCurrentDriver();
@@ -185,14 +195,16 @@ public abstract class Ride implements Request{
 						potentialCars.removeAll(potentialCars);
 						break;
 					}
-					else {}
+					
 				}
-				else {};
+				
 			}
-			//System.out.println("There is no available driver for your ride. Please try again.");
-			//supprimer la ride
-		}	
-	}
+		}
+		System.out.println("There is no available driver for your ride. Please try again.");
+		}
+			
+			
+	
 
 	
 	public void manageRide() {
@@ -201,16 +213,22 @@ public abstract class Ride implements Request{
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
+			this.driver.setState("on-a-ride");
+			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
 			System.out.println("Course terminée ?");
 			Boolean answer2 = sc.nextBoolean();
 			if (answer2==true) {
 				this.setStatus("completed");
+				this.driver.setState("on-duty");
+				this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
+				this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
+				this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
 				}
 			}
-		//sc.close();
+		sc.close();
 	}
 	
 }
