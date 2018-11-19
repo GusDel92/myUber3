@@ -25,11 +25,11 @@ public abstract class Ride implements Request{
 	private Duration duration;
 	private double price;
 	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
-	public String status;
+	private String status;
 	private Car car;
 	private Customer customer;
-	public Driver driver;
-	public double rate;
+	private Driver driver;
+	private int rate;
 	
 	public double basicRate;
 	public double trafficRate;
@@ -155,7 +155,7 @@ public abstract class Ride implements Request{
 	public void sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=0;i<=n;i++) {
-			for (int j=1;j<=n-1;j++) {
+			for (int j=1;j<=n-2;j++) {
 				Car car1 = potentialCars.get(j);
 				Car car2 = potentialCars.get(j+1);
 				double distanceFromDeparture1 = car1.getCarPosition().distanceTo(departure);
@@ -171,6 +171,7 @@ public abstract class Ride implements Request{
 	
 	public void proposeRideToDrivers() {
 		this.recoverPotentialCars();
+		//System.out.print(this.potentialCars.get(0).getCurrentDriver().getDriverID()+this.potentialCars.get(1).getCurrentDriver().getDriverID()+this.potentialCars.get(2).getCurrentDriver().getDriverID());
 		this.sortPotentialCars();
 		while (this.status=="unconfirmed") {	
 			for (Car potentialCar : this.potentialCars) {
@@ -222,10 +223,19 @@ public abstract class Ride implements Request{
 				this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
-				
+				this.rate=this.customer.giveARate(this);
+				this.driver.computeNewRate(this);
 				}
 			}
 		//sc.close();
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 	
 }

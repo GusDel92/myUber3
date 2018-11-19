@@ -173,14 +173,14 @@ public class Driver {
 
 
 	public void acceptRide(Ride ride) {
-		ride.driver=this;
+		ride.setDriver(this);
 		this.state="on-a-ride";
-		ride.status="confirmed";
+		ride.setStatus("confirmed");
 		
 	}
 	
 	public void computeNewRate(Ride ride) {
-		this.rate=(this.rate+ride.rate)/(this.totalNumberOfRides);
+		this.rate=(this.rate+ride.getRate())/(this.totalNumberOfRides);
 	}
 
 	public void connect(Car car, String desiredTypeOfRide) {

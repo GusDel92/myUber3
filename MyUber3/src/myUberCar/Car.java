@@ -23,6 +23,7 @@ public abstract class Car {
 	public Car(String type, Driver owner) {
 		this.type=type;
 		this.ownersList.add(owner);
+		this.carPosition = new Coordinates();
 	}
 	
 	
