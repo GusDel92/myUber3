@@ -168,7 +168,6 @@ public abstract class Ride implements Request{
 		}
 	}
 	
-	
 	public void proposeRideToDrivers() {
 		this.recoverPotentialCars();
 		//System.out.print(this.potentialCars.get(0).getCurrentDriver().getDriverID()+this.potentialCars.get(1).getCurrentDriver().getDriverID()+this.potentialCars.get(2).getCurrentDriver().getDriverID());

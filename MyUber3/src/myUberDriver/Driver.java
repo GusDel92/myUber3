@@ -215,6 +215,7 @@ public class Driver {
 		}
 	}
 	
+	
 	public void takeABreak() {
 		if (this.getState()!="on-a-ride"){
 			this.setState("off-duty");

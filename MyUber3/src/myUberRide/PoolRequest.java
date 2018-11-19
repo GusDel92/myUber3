@@ -119,6 +119,7 @@ public class PoolRequest implements Request{
 		}
 	}
 
+	
 	public void proposeRequestToDrivers(){
 		PoolRequests.currentRequests.remove(this);
 		this.recoverPotentialCars();
