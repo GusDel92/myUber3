@@ -20,6 +20,7 @@ public class UberXTest {
 		albert.comparePrices(destination);
 		albert.selectRide(albert.getPotentialRideOrder().get(0));
 		System.out.println(josé.getRate());
+		
 	}
 
 }
