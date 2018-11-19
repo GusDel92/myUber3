@@ -1,9 +1,14 @@
 package myUberStatistics;
 
 import myUberCustomer.Customer;
+
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import myUberCustomer.Customers;
+import myUberDriver.Driver;
+import myUberDriver.Drivers;
 
 public class CustomerBalance {
 	
@@ -25,9 +30,36 @@ public class CustomerBalance {
 		return(c);
 		};
 	
-	public Customers mostFrequentCustomer(Customers customers){};
+	public ArrayList<Customer> mostChargedCustomer(){
+		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
+		int n = customersList.size();
+		for (int i=0;i<=n;i++) {
+			for (int j=1;j<=n-1;j++) {
+				Customer customer1 = customersList.get(j);
+				Customer customer2 = customersList.get(j+1);
+				if (totalAmountOfCashSpent(customer1)<totalAmountOfCashSpent(customer2)){
+					customersList.remove(j);
+					customersList.add(j+1, customer1);
+			}
+		}
+	}
+	return customersList;
+};
 	
-	public Customers mostChargedCustomer(Customers customers){};
+	public ArrayList<Customer> mostFrequentCustomer(){
+		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
+		int n = customersList.size();
+		for (int i=0;i<=n;i++) {
+			for (int j=1;j<=n-1;j++) {
+				Customer customer1 = customersList.get(j);
+				Customer customer2 = customersList.get(j+1);
+				if (customer1.getTotalNumberOfRides()<customer2.getTotalNumberOfRides()){
+					customersList.remove(j);
+					customersList.add(j+1, customer1);
+			}
+		}
+	}
+	return customersList;};
 	
 	}
 	

@@ -18,7 +18,7 @@ public class ClientApplication {
 		Customer albert = new Customer("Albert","Bébert");
 		Coordinates destination=Coordinates.destinationChoice();
 		albert.comparePrices(destination);
-		Customer rené = new Customer("René","Renénichou");
+		/*Customer rené = new Customer("René","Renénichou");
 		Coordinates destination2=Coordinates.destinationChoice();
 		rené.comparePrices(destination2);
 		albert.selectRide(albert.getPotentialRideOrder().get(3));
@@ -26,7 +26,7 @@ public class ClientApplication {
 		Customer bernard = new Customer("Bernard","Nanard");
 		Coordinates destination3=Coordinates.destinationChoice();
 		bernard.comparePrices(destination3);
-		bernard.selectRide(bernard.getPotentialRideOrder().get(3));
+		bernard.selectRide(bernard.getPotentialRideOrder().get(3)); */
 	}
 
 }

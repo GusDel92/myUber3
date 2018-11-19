@@ -21,6 +21,7 @@ public class Driver {
 	private Duration totalOnDutyTime;
 	private Duration totalDrivingCustomersTime;
 	private Duration totalOffDutyTime;
+	private double totalAmountCashed;
 	private LocalDateTime lastConnexionTime;
 	private LocalDateTime lastOffDutyTime;
 	
@@ -32,6 +33,7 @@ public class Driver {
 		this.surname=surname;
 		this.rate=0;
 		this.totalNumberOfRides=0;
+		this.totalAmountCashed=0;
 		this.totalInCarTime=Duration.ZERO;
 		this.totalOffDutyTime=Duration.ZERO;
 		this.totalOnDutyTime=Duration.ZERO;
@@ -41,6 +43,26 @@ public class Driver {
 	}
 
 	
+	public double getTotalAmountCashed() {
+		return totalAmountCashed;
+	}
+
+
+	public double getRate() {
+		return rate;
+	}
+
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+
+	public void setTotalAmountCashed(double totalAmountCashed) {
+		this.totalAmountCashed = totalAmountCashed;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -137,6 +159,16 @@ public class Driver {
 
 	public void setLastOffDutyTime(LocalDateTime lastOffDutyTime) {
 		this.lastOffDutyTime = lastOffDutyTime;
+	}
+
+
+	public int getDriverID() {
+		return driverID;
+	}
+
+
+	public void setDriverID(int driverID) {
+		this.driverID = driverID;
 	}
 
 
