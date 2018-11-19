@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Scanner;
+
 import myUberCar.Car;
 import myUberCar.CarFactory;
 import myUberCustomer.Customer;
 import myUberDriver.Driver;
 import myUberDriver.Drivers;
+import myUberStatistics.MyUberBookOfRides;
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
 
@@ -24,8 +26,6 @@ public abstract class Ride implements Request{
 	private double price;
 	protected ArrayList<Car> potentialCars = new ArrayList<Car>();
 	public String status;
-	//private Date startDate;
-	//private Date endDate;
 	private Car car;
 	private Customer customer;
 	public Driver driver;
@@ -122,17 +122,12 @@ public abstract class Ride implements Request{
 	
 	public double getPrice() {
 		return price;
+	}	
+	
+	public Car getCar() {
+		return car;
 	}
 
-	//this function returns the duration of the ride in minutes (length must be given in km)
-	//on peut rajouter un catch error pour le cas où le traffic ou la longueur de la course n'est pas encore entré
-	/*public void computeDuration(Ride ride) {
-		if (ride.traffic.getActualTraffic()=="low-traffic") {ride.duration=ride.length/15*60;}
-		else if (ride.traffic.getActualTraffic()=="medium-traffic") {ride.duration=ride.length/7.5*60;}
-		else if (ride.traffic.getActualTraffic()=="heavy-traffic") {ride.duration=ride.length/3*60;}
-	}*/
-	
-	
 	public void computePrice(Ride ride) {
 		//on détermine le trafficRate
 		if (ride.traffic.getActualTraffic()=="low-traffic") {ride.trafficRate=ride.rateLowTraffic;}
@@ -208,14 +203,15 @@ public abstract class Ride implements Request{
 	
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Client récupéré ?");
+		System.out.println("Client " + this.getCustomer().getName()+" picked up ?");
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
+			MyUberBookOfRides.addRideToTheBook(this);
 			this.driver.setState("on-a-ride");
 			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
-			System.out.println("Course terminée ?");
+			System.out.println("Client " + this.getCustomer().getName()+" dropped off ?");
 			Boolean answer2 = sc.nextBoolean();
 			if (answer2==true) {
 				this.setStatus("completed");
@@ -226,6 +222,7 @@ public abstract class Ride implements Request{
 				this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
+				
 				}
 			}
 		//sc.close();
