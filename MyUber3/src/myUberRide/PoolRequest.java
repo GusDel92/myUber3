@@ -105,7 +105,7 @@ public class PoolRequest implements Request{
 	public void sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=1;i<=n;i++) {
-			for (int j=1;j<=n-1;i++) {
+			for (int j=1;j<=n-1;j++) {
 				Car car1 = potentialCars.get(j);
 				Car car2 = potentialCars.get(j+1);
 				double minimalCost1 = minimalCost(car1);
