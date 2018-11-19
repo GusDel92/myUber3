@@ -1,5 +1,7 @@
 package myUberTest;
 
+import java.io.File;
+
 import myUberCar.Car;
 import myUberCar.CarFactory;
 import myUberCustomer.Customer;
@@ -10,7 +12,7 @@ import myUberTools.Coordinates;
 public class UberXTest {
 
 	public static void main(String[] args) {
-		RideFactory rideFactory = new RideFactory();
+		File myUberBookOfRides = new File("myUberBookOfRides.txt");
 		CarFactory carFactory = new CarFactory();
 		Driver josé = new Driver("José","Josétito");
 		Car car1 = carFactory.createCar("standard", josé);

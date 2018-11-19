@@ -1,8 +1,6 @@
 package myUberStatistics;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+
 import java.util.ArrayList;
 
 import myUberDriver.Driver;
@@ -11,25 +9,22 @@ import myUberRide.Ride;
 
 public class MyUberBookOfRides {
         
-	private static File myUberBookOfRides = new File("myUberBookOfRides");
-	
-	private static MyUberBookOfRides instance = new MyUberBookOfRides();
+	private ArrayList<ArrayList<String>> myUberBookOfRides = new ArrayList<ArrayList<String>>();
+ 
+	static MyUberBookOfRides instance = new MyUberBookOfRides();
 	
 	public static MyUberBookOfRides getInstance(){
 			
 			return instance;
 			}
 	
-	
-	
-	public static void addRideToTheBook(Ride ride){
-		FileWriter writer;
-		try {
-		writer = new FileWriter("myUberBookOfRides");
-		writer.write("Customer ID : "+ride.getCustomer().getCustomerID()+"\n"+"Driver ID : "+ride.getDriver().getDriverID()+"\n" + "Trajectory - pick up point : " + ride.getDeparture()+ "drop off point : "+ride.getDestination()+ "\n"+"Length : "+ride.getLength()+ " km"+"\n"+"Duration : "+ride.getDuration().getSeconds()/60+"minutes \n"+"\n");
-        writer.close();}
-		catch (IOException e) { 
-			// TODO Auto-generated catch block
-			e.printStackTrace();}
+	public void addRideToTheBook(Ride ride){
+		ArrayList<String> data = new ArrayList<String>();
+		data.add("Customer " + Integer.toString(ride.getCustomer().getCustomerID())+ " ; Driver : "+Integer.toString(ride.getDriver().getDriverID())+ " ; Car : " + Integer.toString(ride.getCar().getCarID())+ " ; Departure : ("+Double.toString(ride.getDeparture().getLatitude())+", "+Double.toString(ride.getDeparture().getLongitude())+ ") ; Destination : ("+Double.toString(ride.getDestination().getLatitude())+", "+Double.toString(ride.getDestination().getLongitude())+") ; Length : "+ Double.toString(ride.getLength())+" ; Duration : " +Double.toString(ride.getDuration().toMinutes()));
+		myUberBookOfRides.add(data);
+		
 	}
+	
+	
+
 }
