@@ -100,6 +100,13 @@ public class Customer {
 	public void setTotalTimeSpentOnCar(Duration totalTimeSpentOnCar) {
 		this.totalTimeSpentOnCar = totalTimeSpentOnCar;
 	}
+	
+	public int giveARate(Ride ride) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Please give a rate to your driver (int from 1 to 5)");
+		int rate = sc.nextInt();
+		return rate;
+	}
 
 	public double getTotalAmountOfCashSpent() {
 		return totalAmountOfCashSpent;
@@ -134,7 +141,7 @@ public class Customer {
 	public void selectRide(Ride selectedRide) {
 		for (Ride potentialRide : this.potentialRideOrder) {
 			if (potentialRide.equals(selectedRide)) {
-				selectedRide.status="unconfirmed";
+				selectedRide.setStatus("unconfirmed");
 				selectedRide.setCustomer(this);
 				potentialRideOrder=null;
 				selectedRide.proposeRideToDrivers();
@@ -146,9 +153,9 @@ public class Customer {
 	
 	
 	public void cancelRide(Ride ride) {
-		if (ride.status=="unconfirmed" || ride.status=="confirmed") {
-			ride.status="canceled";
-			ride.driver.setState("on-duty");} // il est déjà On-Duty, mais pour éviter les pb de thread au cas où il annule au moment de monter dans voiture.}
+		if (ride.getStatus()=="unconfirmed" || ride.getStatus()=="confirmed") {
+			ride.setStatus("canceled");
+			ride.getDriver().setState("on-duty");} // il est déjà On-Duty, mais pour éviter les pb de thread au cas où il annule au moment de monter dans voiture.}
 		else {System.out.println("Sorry, the action is impossible since the ride has already begun.");}
 	}
 

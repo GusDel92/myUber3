@@ -47,7 +47,7 @@ public class PoolRequest implements Request{
 		if (this.ridesOfTheRequest.size()<3 & this.totalNbrOfPassengers+ride.getNbrOfPassengers()<=4) {  //On peut mettre 9 si on considère qu'un van peut faire uberPool. Pas hyper utile et ça complique pas mal.
 			ridesOfTheRequest.add(ride);
 			this.totalNbrOfPassengers=this.totalNbrOfPassengers+ride.getNbrOfPassengers();
-			ride.status="unconfirmed";
+			ride.setStatus("unconfirmed");
 			return true;
 		}
 		return false;
@@ -106,7 +106,7 @@ public class PoolRequest implements Request{
 	public void sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=1;i<=n;i++) {
-			for (int j=1;j<=n-1;j++) {
+			for (int j=1;j<=n-2;j++) {
 				Car car1 = potentialCars.get(j);
 				Car car2 = potentialCars.get(j+1);
 				double minimalCost1 = minimalCost(car1);
