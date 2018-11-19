@@ -30,7 +30,7 @@ public class MyUberBookOfRides {
 
 
 	public static void addRideToTheBook(Ride ride){
-		myUberBookOfRides.add("Customer " + Integer.toString(ride.getCustomer().getCustomerID())+ " ; Driver : "+Integer.toString(ride.getDriver().getDriverID())+ " ; Car : " + Integer.toString(ride.getCar().getCarID())+ " ; Departure : ("+Double.toString(ride.getDeparture().getLatitude())+", "+Double.toString(ride.getDeparture().getLongitude())+ ") ; Destination : ("+Double.toString(ride.getDestination().getLatitude())+", "+Double.toString(ride.getDestination().getLongitude())+") ; Length : "+ Double.toString(ride.getLength())+" ; Duration : " +Double.toString(ride.getDuration().toMinutes()));
+		myUberBookOfRides.add("Customer " + Integer.toString(ride.getCustomer().getCustomerID())+ " ; Driver : "+Integer.toString(ride.getDriver().getDriverID())+ " ; Car : " + Integer.toString(ride.getCar().getCarID())+ " ; Departure : ("+Double.toString(ride.getDeparture().getLatitude())+", "+Double.toString(ride.getDeparture().getLongitude())+ ") ; Destination : ("+Double.toString(ride.getDestination().getLatitude())+", "+Double.toString(ride.getDestination().getLongitude())+") ; Length : "+ Double.toString(ride.getLength())+" ; Duration : " +ride.getDuration());
 			
 	}
 	

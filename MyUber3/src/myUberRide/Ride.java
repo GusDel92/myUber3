@@ -128,18 +128,18 @@ public abstract class Ride implements Request{
 		return car;
 	}
 
-	public void computePrice(Ride ride) {
+	public void computePrice() {
 		//on détermine le trafficRate
-		if (ride.traffic.getActualTraffic()=="low-traffic") {ride.trafficRate=ride.rateLowTraffic;}
-		else if (ride.traffic.getActualTraffic()=="medium-traffic") {ride.trafficRate=ride.rateMediumTraffic;}
-		else if (ride.traffic.getActualTraffic()=="heavy-traffic") {ride.trafficRate=ride.rateHeavyTraffic;}
+		if (this.traffic.getActualTraffic()=="low-traffic") {this.trafficRate=this.rateLowTraffic;}
+		else if (this.traffic.getActualTraffic()=="medium-traffic") {this.trafficRate=this.rateMediumTraffic;}
+		else if (this.traffic.getActualTraffic()=="heavy-traffic") {this.trafficRate=this.rateHeavyTraffic;}
 		//on détermine le basicRate
-		if (ride.length<=5) {ride.basicRate=ride.rateLengthInf5km;}
-		else if (ride.length>5 & ride.length<=10) {ride.basicRate=ride.rateLength5To10km;}
-		else if (ride.length>10 & ride.length<=20) {ride.basicRate=ride.rateLength10To20km;}
-		else if (ride.length>20) {ride.basicRate=ride.rateLengthSup20km;}
+		if (this.length<=5) {this.basicRate=this.rateLengthInf5km;}
+		else if (this.length>5 & this.length<=10) {this.basicRate=this.rateLength5To10km;}
+		else if (this.length>10 & this.length<=20) {this.basicRate=this.rateLength10To20km;}
+		else if (this.length>20) {this.basicRate=this.rateLengthSup20km;}
 		//on donne le prix
-		ride.price=ride.basicRate*ride.length*ride.trafficRate;
+		this.price=this.basicRate*this.length*this.trafficRate;
 	}
 	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
 	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride

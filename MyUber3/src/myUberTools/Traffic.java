@@ -1,13 +1,22 @@
 package myUberTools;
 
+/**
+ * Traffic class determines the traffic at a given time. It is based on a probabilistic approach.
+ * @author Cuignet & Thiébaud
+ *
+ */
 public class Traffic {
 
 	private static int hour;
 	private static double aleatNbr;
 	public String actualTraffic;
 	
-	//Voir dans mes favoris internet pour cet algo de probabilité
-	//This method determines the traffic according to the hour of the day. The traffic is supposed to be constant during a ride.
+	
+	/**
+	 * This method determines the traffic according to the hour of the day. The traffic is supposed to be constant during a ride.
+	 * @return
+	 * @author Cuignet & Thiébaud
+	 */
 	public static String getTraffic() {
 		hour=Date.getHour();
 		aleatNbr=Math.random();

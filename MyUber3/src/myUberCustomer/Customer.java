@@ -11,6 +11,11 @@ import myUberTools.Coordinates;
 import myUberTools.Message;
 import myUberTools.Traffic;
 
+/**
+ * This class describes a MyUber Customer.
+ * @author Cuignet & Thiébaud
+ *
+ */
 public class Customer {
 
 	private static int counter = 0;
@@ -101,6 +106,12 @@ public class Customer {
 		this.totalTimeSpentOnCar = totalTimeSpentOnCar;
 	}
 	
+	/**
+	 * This methods permit a customer to rate a driver. It is used at the end of the managing ride process.
+	 * @param ride
+	 * @return void
+	 * @author Cuignet & Thiébaud
+	 */
 	public int giveARate(Ride ride) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please give a rate to your driver (int from 1 to 5)");
@@ -124,39 +135,51 @@ public class Customer {
 		this.totalNumberOfRides = totalNumberOfRides;
 	}
 
-	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
-	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride
+	
+	/**
+	 * This method allows a customer to compare prices of different type of rides for a given trajectory.
+	 * @param destination
+	 * @author Cuignet & Thiébaud
+	 */
 	public void comparePrices(Coordinates destination) {
 		Traffic traf = new Traffic();
 		Coordinates departure = this.getCoordinates();
 		for (String typeOfRide : RideFactory.getTypeOfRides()) {
 			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traf);
 			this.potentialRideOrder.add(ride);
-			ride.computePrice(ride);
+			ride.computePrice();
 			System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");	 
 		}	
 	}
 	
-	//le for et if nous permettent de vérifier que c'est bien une des rides pour lesquelles le client ademandé le prix
+	
+	/**
+	 * This method permits to a customer to select the ride he wishes to accomplish. It then erase the other kind of ride which were instantiated during the computing costs process. At the end of this method, the ride is waiting to be confirm by a driver... 
+	 * @param selectedRide
+	 * @author Cuignet & Thiébaud
+	 */
 	public void selectRide(Ride selectedRide) {
 		for (Ride potentialRide : this.potentialRideOrder) {
 			if (potentialRide.equals(selectedRide)) {
 				selectedRide.setStatus("unconfirmed");
 				selectedRide.setCustomer(this);
-				potentialRideOrder=null;
+				//potentialRideOrder=null;
 				selectedRide.proposeRideToDrivers();
-				
-				//ajout de la ride à la liste des riderequests. A FAIRE ?
-			} //the ride is waiting to be confirmed by a driver 
+			} 
 		}
 	}
 	
 	
 	
+	/**
+	 * Allows a customer to cancel his ride under the condition that it has not been confirmed yet by a driver. 
+	 * @author Cuignet & Thiébaud
+	 * @param ride
+	 */
 	public void cancelRide(Ride ride) {
 		if (ride.getStatus()=="unconfirmed" || ride.getStatus()=="confirmed") {
 			ride.setStatus("canceled");
-			ride.getDriver().setState("on-duty");} // il est déjà On-Duty, mais pour éviter les pb de thread au cas où il annule au moment de monter dans voiture.}
+			} 
 		else {System.out.println("Sorry, the action is impossible since the ride has already begun.");}
 	}
 

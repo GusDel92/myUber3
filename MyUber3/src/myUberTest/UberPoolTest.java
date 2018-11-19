@@ -1,6 +1,9 @@
 package myUberTest;
 
+import java.util.ArrayList;
+
 import myUberRide.*;
+import myUberStatistics.MyUberBookOfRides;
 import myUberTools.*;
 import myUberCar.*;
 import myUberCustomer.*;
@@ -9,6 +12,8 @@ import myUberDriver.*;
 public class UberPoolTest {
 
 	public static void main(String[] args) {
+		ArrayList<String> l = new ArrayList<String>();
+		MyUberBookOfRides myUberBookOfRides = new MyUberBookOfRides(l);
 		RideFactory rideFactory = new RideFactory();
 		CarFactory carFactory = new CarFactory();
 		Driver josé = new Driver("José","Josétito");

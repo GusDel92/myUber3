@@ -10,27 +10,31 @@ import myUberCustomer.Customers;
 import myUberDriver.Driver;
 import myUberDriver.Drivers;
 
+/**
+ * Customer balance is a class that provides a set of computing relevant statistic methods on customers. 
+ *@author Cuignet & Thiébaud
+ */
 public class CustomerBalance {
 	
-	public int totalNumberOfRide (Customer customer){
+	public static int totalNumberOfRides (Customer customer){
 		int n = customer.getTotalNumberOfRides();
 		System.out.println("The customer "+ customer.getName()+" "+customer.getSurname()+" whoes ID is "+customer.getCustomerID()+" has done "+n+" ride.");
 		return(n);
 	};
 	
-	public Duration totalTimeSpentOnCar (Customer customer){
+	public static Duration totalTimeSpentOnCar (Customer customer){
 		Duration t = customer.getTotalTimeSpentOnCar();
 		System.out.println("The customer "+ customer.getName()+" "+customer.getSurname()+" whoes ID is "+customer.getCustomerID()+" has spent "+ t+" time on car.");
 		return(t);
 	};
 	
-	public double totalAmountOfCashSpent(Customer customer){
+	public static double totalAmountOfCashSpent(Customer customer){
 		double c = customer.getTotalAmountOfCashSpent();
-		System.out.println("The customer "+ customer.getName()+" "+customer.getSurname()+" whoes ID is "+customer.getCustomerID()+" has spent "+ n+" euros in Uber.");
+		System.out.println("The customer "+ customer.getName()+" "+customer.getSurname()+" whoes ID is "+customer.getCustomerID()+" has spent "+ c+" euros in Uber.");
 		return(c);
 		};
 	
-	public ArrayList<Customer> mostChargedCustomer(){
+	public static ArrayList<Customer> mostChargedCustomer(){
 		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
 		int n = customersList.size();
 		for (int i=0;i<=n;i++) {
@@ -46,7 +50,7 @@ public class CustomerBalance {
 	return customersList;
 };
 	
-	public ArrayList<Customer> mostFrequentCustomer(){
+	public static ArrayList<Customer> mostFrequentCustomer(){
 		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
 		int n = customersList.size();
 		for (int i=0;i<=n;i++) {

@@ -3,6 +3,11 @@ package myUberTools;
 
 import myUberCustomer.Customer;
 
+/**
+ * This class provide a message box service for the user. Each message is characterized by a unique ID obtained through a singleton pattern. 
+ * @author Cuignet & Thiébaud
+ *
+ */
 public class Message {
 	
 	private int messageID;

@@ -3,6 +3,11 @@ package myUberTools;
 import java.util.Scanner;
 
 
+/**
+ * Coordinates is a tool that permits to manage GPS positions of different objects : car, driver and customer
+ * @ author Cuignet & Thiébaud
+ *
+ */
 public class Coordinates {
 
 	private double longitude;
@@ -25,6 +30,10 @@ public class Coordinates {
 		this.latitude=0;
 		this.longitude=0;
 	}
+	/**
+	 * A tool that permit the customer to enter the GPS localization of the wished destination.
+	 * @author Cuignet & Thiébaud
+	 */
 	public static Coordinates destinationChoice() {
 		Coordinates dest = new Coordinates();
 		Scanner scan = new Scanner(System.in);
@@ -40,6 +49,7 @@ public class Coordinates {
 	 * This method gives the distance (in meters) from a position(given with its GPS coordinates) to the position of the object from which this method is being executed
 	 * @param position
 	 * @return
+	 * @author Cuignet & Thiébaud
 	 */
 	public double distanceTo(Coordinates position) {
 		

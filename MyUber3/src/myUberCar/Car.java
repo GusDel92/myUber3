@@ -7,6 +7,11 @@ import myUberTools.Coordinates;
 import myUberDriver.Driver;
 import myUberRide.Request;
 
+/**
+ *This class describes a Car
+ * @author Cuignet & Thiébaud
+ *
+ */
 public abstract class Car {
 	
 	private int carID;
