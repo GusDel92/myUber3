@@ -155,7 +155,7 @@ public abstract class Ride implements Request{
 	public void sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=0;i<=n;i++) {
-			for (int j=1;j<=n-1;i++) {
+			for (int j=1;j<=n-1;j++) {
 				Car car1 = potentialCars.get(j);
 				Car car2 = potentialCars.get(j+1);
 				double distanceFromDeparture1 = car1.getCarPosition().distanceTo(departure);
@@ -178,7 +178,7 @@ public abstract class Ride implements Request{
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					Boolean answer = sc.nextBoolean();
-					sc.close();
+					//sc.close();
 					if (answer==true){
 						PoolRequests.deleteRequest(this.request);
 						this.driver=potentialCar.getCurrentDriver();
@@ -194,7 +194,7 @@ public abstract class Ride implements Request{
 				
 			}
 		}
-		System.out.println("There is no available driver for your ride. Please try again.");
+		//System.out.println("There is no available driver for your ride. Please try again.");
 		}
 			
 			
@@ -207,7 +207,7 @@ public abstract class Ride implements Request{
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
-			MyUberBookOfRides.addRideToTheBook(this);
+			//MyUberBookOfRides.addRideToTheBook(this);
 			this.driver.setState("on-a-ride");
 			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
