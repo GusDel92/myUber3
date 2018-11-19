@@ -200,7 +200,6 @@ public abstract class Ride implements Request{
 			
 			
 	
-
 	
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
@@ -208,7 +207,7 @@ public abstract class Ride implements Request{
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
-			//MyUberBookOfRides.addRideToTheBook(this);
+			
 			this.driver.setState("on-a-ride");
 			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
@@ -225,6 +224,7 @@ public abstract class Ride implements Request{
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
 				this.rate=this.customer.giveARate(this);
 				this.driver.computeNewRate(this);
+				MyUberBookOfRides.addRideToTheBook(this);
 				}
 			}
 		//sc.close();

@@ -43,7 +43,7 @@ public class Coordinates {
 	 */
 	public double distanceTo(Coordinates position) {
 		
-		int R = 6378000; //Rayon de la terre en metre
+		return Math.sqrt(Math.pow((this.getLatitude()-position.getLatitude()),2)+Math.pow((this.getLongitude()-position.getLongitude()),2 ));/*int R = 6378000; //Rayon de la terre en metre
 		 
 		double lat_a = Math.toRadians(this.latitude);
 		double lon_a = Math.toRadians(this.longitude);
@@ -51,7 +51,7 @@ public class Coordinates {
 		double lon_b = Math.toRadians(position.getLongitude());
 				     
 		double d = R * (Math.PI/2 - Math.asin( Math.sin(lat_b) * Math.sin(lat_a) + Math.cos(lon_b - lon_a) * Math.cos(lat_b) * Math.cos(lat_a)));
-		return d;}
+		return d;}*/}
 		
 		
 	

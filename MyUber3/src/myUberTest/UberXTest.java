@@ -1,18 +1,23 @@
 package myUberTest;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import myUberCar.Car;
 import myUberCar.CarFactory;
 import myUberCustomer.Customer;
 import myUberDriver.Driver;
 import myUberRide.RideFactory;
+import myUberStatistics.MyUberBookOfRides;
 import myUberTools.Coordinates;
 
 public class UberXTest {
 
 	public static void main(String[] args) {
-		File myUberBookOfRides = new File("myUberBookOfRides.txt");
+		
+		ArrayList<String> l = new ArrayList<String>();
+		MyUberBookOfRides myUberBookOfRides = new MyUberBookOfRides(l);
+		RideFactory rideFactory = new RideFactory();
 		CarFactory carFactory = new CarFactory();
 		Driver josé = new Driver("José","Josétito");
 		Car car1 = carFactory.createCar("standard", josé);
@@ -21,7 +26,7 @@ public class UberXTest {
 		Coordinates destination=Coordinates.destinationChoice();
 		albert.comparePrices(destination);
 		albert.selectRide(albert.getPotentialRideOrder().get(0));
-		System.out.println(josé.getRate());
+		System.out.println(MyUberBookOfRides.myUberBookOfRides);
 	}
 
 }

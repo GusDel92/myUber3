@@ -9,20 +9,29 @@ import myUberRide.Ride;
 
 public class MyUberBookOfRides {
         
-	private ArrayList<ArrayList<String>> myUberBookOfRides = new ArrayList<ArrayList<String>>();
- 
-	static MyUberBookOfRides instance = new MyUberBookOfRides();
+	public static ArrayList<String> myUberBookOfRides;
 	
-	public static MyUberBookOfRides getInstance(){
+	public MyUberBookOfRides(ArrayList<String> myUberBookOfRides) {
+		this.myUberBookOfRides = myUberBookOfRides;
+	}
+
+
+
+	public ArrayList<String> getMyUberBookOfRides() {
+		return myUberBookOfRides;
+	}
+
+
+
+	public void setMyUberBookOfRides(ArrayList<String> myUberBookOfRides) {
+		this.myUberBookOfRides = myUberBookOfRides;
+	}
+
+
+
+	public static void addRideToTheBook(Ride ride){
+		myUberBookOfRides.add("Customer " + Integer.toString(ride.getCustomer().getCustomerID())+ " ; Driver : "+Integer.toString(ride.getDriver().getDriverID())+ " ; Car : " + Integer.toString(ride.getCar().getCarID())+ " ; Departure : ("+Double.toString(ride.getDeparture().getLatitude())+", "+Double.toString(ride.getDeparture().getLongitude())+ ") ; Destination : ("+Double.toString(ride.getDestination().getLatitude())+", "+Double.toString(ride.getDestination().getLongitude())+") ; Length : "+ Double.toString(ride.getLength())+" ; Duration : " +Double.toString(ride.getDuration().toMinutes()));
 			
-			return instance;
-			}
-	
-	public void addRideToTheBook(Ride ride){
-		ArrayList<String> data = new ArrayList<String>();
-		data.add("Customer " + Integer.toString(ride.getCustomer().getCustomerID())+ " ; Driver : "+Integer.toString(ride.getDriver().getDriverID())+ " ; Car : " + Integer.toString(ride.getCar().getCarID())+ " ; Departure : ("+Double.toString(ride.getDeparture().getLatitude())+", "+Double.toString(ride.getDeparture().getLongitude())+ ") ; Destination : ("+Double.toString(ride.getDestination().getLatitude())+", "+Double.toString(ride.getDestination().getLongitude())+") ; Length : "+ Double.toString(ride.getLength())+" ; Duration : " +Double.toString(ride.getDuration().toMinutes()));
-		myUberBookOfRides.add(data);
-		
 	}
 	
 	
