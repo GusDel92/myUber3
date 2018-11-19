@@ -21,19 +21,27 @@ public class MultiDriversTest {
 		Car car1 = carFactory.createCar("standard", josé);
 		josé.connect(car1, "uberX");
 		Driver pedro = new Driver("Pedro","Pedrotito");
-		Car car2 = carFactory.createCar("standard", pedro);
-		pedro.connect(car2, "uberX");
+		Car car2 = carFactory.createCar("van", pedro);
+		pedro.connect(car2, "uberVan");
 		Driver carlo = new Driver("Carlo","Carlito");
-		Car car3 = carFactory.createCar("standard", carlo);
-		carlo.connect(car3, "uberX");
+		Car car3 = carFactory.createCar("berline", carlo);
+		carlo.connect(car3, "uberBlack");
 		Customer albert = new Customer("Albert","Bébert");
+		Customer marc = new Customer("Marco","Thiebaud");
+		Customer augustin = new Customer("Augustin","Cuignet");
+		Customer marie = new Customer("Marie","Lacoq");
 		Coordinates destination=Coordinates.destinationChoice();
 		albert.comparePrices(destination);
 		albert.selectRide(albert.getPotentialRideOrder().get(0));
 		Coordinates destination1=Coordinates.destinationChoice();
-		albert.comparePrices(destination1);
+		marie.comparePrices(destination1);
+		marie.selectRide(marie.getPotentialRideOrder().get(1));
+		Coordinates destination2=Coordinates.destinationChoice();
+		marc.comparePrices(destination2);
+		marc.selectRide(marc.getPotentialRideOrder().get(2));
+		Coordinates destination3=Coordinates.destinationChoice();
+		albert.comparePrices(destination3);
 		albert.selectRide(albert.getPotentialRideOrder().get(0));
-		System.out.println(MyUberBookOfRides.myUberBookOfRides);
 
 
 	}

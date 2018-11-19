@@ -37,9 +37,9 @@ public class Coordinates {
 	public static Coordinates destinationChoice() {
 		Coordinates dest = new Coordinates();
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Enter the lattitude of the destination: ");
+		System.out.println("Enter the lattitude of the destination: (relative integer)");
 		dest.setLatitude(scan.nextInt());
-		System.out.println("Enter the longitude of the destination: ");
+		System.out.println("Enter the longitude of the destination: (relative integer)");
 		dest.setLongitude(scan.nextInt());
 		//scan.close();
 		return dest;

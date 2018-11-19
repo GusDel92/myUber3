@@ -176,7 +176,7 @@ public abstract class Ride implements Request{
 			for (Car potentialCar : this.potentialCars) {
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ?"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ? (true or false)"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
 					Boolean answer = sc.nextBoolean();
 					//sc.close();
 					if (answer==true){
@@ -202,7 +202,7 @@ public abstract class Ride implements Request{
 	
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Client " + this.getCustomer().getName()+" picked up ?");
+		System.out.println("Client " + this.getCustomer().getName()+" picked up ? (answer true when it is done)");
 		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
 		Boolean answer = sc.nextBoolean();
 		if (answer==true) {
@@ -210,7 +210,7 @@ public abstract class Ride implements Request{
 			this.driver.setState("on-a-ride");
 			LocalDateTime departureTime = LocalDateTime.now();
 			this.setStatus("ongoing");
-			System.out.println("Client " + this.getCustomer().getName()+" dropped off ?");
+			System.out.println("Client " + this.getCustomer().getName()+" dropped off ? (answer true when it is done)");
 			Boolean answer2 = sc.nextBoolean();
 			if (answer2==true) {
 				this.setStatus("completed");
