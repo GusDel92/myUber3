@@ -152,6 +152,7 @@ public class Customer {
 	}
 	
 	
+	
 	public void cancelRide(Ride ride) {
 		if (ride.getStatus()=="unconfirmed" || ride.getStatus()=="confirmed") {
 			ride.setStatus("canceled");

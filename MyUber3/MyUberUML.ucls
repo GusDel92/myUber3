@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="myUberTools.Message" project="MyUber3" 
     file="/MyUber3/src/myUberTools/Message.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="160" width="146" x="2061" y="1413"/>    
+    <position height="-1" width="-1" x="2345" y="3053"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="myUberRide.UberBlack" project="MyUber3" 
     file="/MyUber3/src/myUberRide/UberBlack.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3319" y="2734"/>    
+    <position height="-1" width="-1" x="3257" y="2604"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="myUberDriver.Driver" project="MyUber3" 
     file="/MyUber3/src/myUberDriver/Driver.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3222" y="971"/>    
+    <position height="-1" width="-1" x="2434" y="1287"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -44,132 +44,123 @@
   </package>  
   <class id="6" language="java" name="myUberRide.UberVan" project="MyUber3" file="/MyUber3/src/myUberRide/UberVan.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3627" y="2734"/>    
+    <position height="-1" width="-1" x="3557" y="2604"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="myUberSystem.ClientApplication" project="MyUber3" 
-    file="/MyUber3/src/myUberSystem/ClientApplication.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="144" x="334" y="-48"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <interface id="8" language="java" name="myUberRide.Request" project="MyUber3" 
+  <interface id="7" language="java" name="myUberRide.Request" project="MyUber3" 
     file="/MyUber3/src/myUberRide/Request.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3391" y="1609"/>    
+    <position height="-1" width="-1" x="4047" y="1773"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="9" language="java" name="myUberTools.Traffic" project="MyUber3" 
+  <class id="8" language="java" name="myUberTools.Traffic" project="MyUber3" 
     file="/MyUber3/src/myUberTools/Traffic.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3879" y="2752"/>    
+    <position height="-1" width="-1" x="3046" y="3060"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="myUberCustomer.Customers" project="MyUber3" 
+  <class id="9" language="java" name="myUberCustomer.Customers" project="MyUber3" 
     file="/MyUber3/src/myUberCustomer/Customers.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2422" y="555"/>    
+    <position height="-1" width="-1" x="1564" y="494"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="myUberStatistics.DriverBalance" project="MyUber3" 
+  <class id="10" language="java" name="myUberStatistics.DriverBalance" project="MyUber3" 
     file="/MyUber3/src/myUberStatistics/DriverBalance.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="250" width="372" x="518" y="-48"/>    
+    <position height="-1" width="-1" x="3492" y="602"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="myUberTools.Coordinates" project="MyUber3" 
+  <class id="11" language="java" name="myUberTools.Coordinates" project="MyUber3" 
     file="/MyUber3/src/myUberTools/Coordinates.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1181" y="2907"/>    
+    <position height="-1" width="-1" x="2585" y="3085"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="13" language="java" name="myUberCustomer" project="MyUber3" file="/MyUber3/src/myUberCustomer" 
+  <package id="12" language="java" name="myUberCustomer" project="MyUber3" file="/MyUber3/src/myUberCustomer" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="55" width="147" x="930" y="-48"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="14" language="java" name="myUberStatistics.CustomerBalance" project="MyUber3" 
+  <class id="13" language="java" name="myUberStatistics.CustomerBalance" project="MyUber3" 
     file="/MyUber3/src/myUberStatistics/CustomerBalance.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="668" y="327"/>    
+    <position height="-1" width="-1" x="3087" y="568"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="myUberTools.Date" project="MyUber3" file="/MyUber3/src/myUberTools/Date.java" 
+  <class id="14" language="java" name="myUberTools.Date" project="MyUber3" file="/MyUber3/src/myUberTools/Date.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="178" width="190" x="1455" y="-48"/>    
+    <position height="-1" width="-1" x="2835" y="3060"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="myUberRide.Ride" project="MyUber3" file="/MyUber3/src/myUberRide/Ride.java" 
+  <class id="15" language="java" name="myUberRide.Ride" project="MyUber3" file="/MyUber3/src/myUberRide/Ride.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3710" y="2091"/>    
+    <position height="-1" width="-1" x="3474" y="1959"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="myUberRide.UberPool" project="MyUber3" 
+  <class id="16" language="java" name="myUberRide.UberPool" project="MyUber3" 
     file="/MyUber3/src/myUberRide/UberPool.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2999" y="2320"/>    
+    <position height="-1" width="-1" x="4119" y="2620"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="myUberDriver.Drivers" project="MyUber3" 
+  <class id="17" language="java" name="myUberDriver.Drivers" project="MyUber3" 
     file="/MyUber3/src/myUberDriver/Drivers.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2898" y="614"/>    
+    <position height="-1" width="-1" x="2091" y="883"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="19" language="java" name="myUberTools" project="MyUber3" file="/MyUber3/src/myUberTools" binary="false" 
+  <package id="18" language="java" name="myUberTools" project="MyUber3" file="/MyUber3/src/myUberTools" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="55" width="122" x="1685" y="-48"/>    
+    <position height="-1" width="-1" x="450" y="-5"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="20" language="java" name="myUberCar.VanCar" project="MyUber3" file="/MyUber3/src/myUberCar/VanCar.java" 
+  <class id="19" language="java" name="myUberCar.VanCar" project="MyUber3" file="/MyUber3/src/myUberCar/VanCar.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1663" y="2676"/>    
+    <position height="-1" width="-1" x="1629" y="2738"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="myUberCar.Car" project="MyUber3" file="/MyUber3/src/myUberCar/Car.java" 
+  <class id="20" language="java" name="myUberCar.Car" project="MyUber3" file="/MyUber3/src/myUberCar/Car.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1881" y="2282"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -178,388 +169,298 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="22" language="java" name="myUberCar" project="MyUber3" file="/MyUber3/src/myUberCar" binary="false" 
+  <package id="21" language="java" name="myUberCar" project="MyUber3" file="/MyUber3/src/myUberCar" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="55" width="122" x="1847" y="-48"/>    
+    <position height="-1" width="-1" x="612" y="-5"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <package id="23" language="java" name="myUberSystem" project="MyUber3" file="/MyUber3/src/myUberSystem" binary="false" 
+  <package id="22" language="java" name="myUberSystem" project="MyUber3" file="/MyUber3/src/myUberSystem" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="55" width="129" x="2009" y="-48"/>    
+    <position height="-1" width="-1" x="777" y="-5"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="24" language="java" name="myUberRide.RideFactory" project="MyUber3" 
+  <class id="23" language="java" name="myUberRide.RideFactory" project="MyUber3" 
     file="/MyUber3/src/myUberRide/RideFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="344" x="2178" y="-48"/>    
+    <position height="-1" width="-1" x="3471" y="1323"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="myUberRide.UberX" project="MyUber3" file="/MyUber3/src/myUberRide/UberX.java" 
+  <class id="24" language="java" name="myUberRide.UberX" project="MyUber3" file="/MyUber3/src/myUberRide/UberX.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4135" y="2738"/>    
+    <position height="-1" width="-1" x="3835" y="2606"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="myUberStatistics.MyUberBookOfRides" project="MyUber3" 
+  <class id="25" language="java" name="myUberStatistics.MyUberBookOfRides" project="MyUber3" 
     file="/MyUber3/src/myUberStatistics/MyUberBookOfRides.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="142" width="226" x="2562" y="-48"/>    
+    <position height="-1" width="-1" x="3859" y="547"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="myUberCar.StandardCar" project="MyUber3" 
+  <class id="26" language="java" name="myUberCar.StandardCar" project="MyUber3" 
     file="/MyUber3/src/myUberCar/StandardCar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1865" y="2676"/>    
+    <position height="-1" width="-1" x="1831" y="2733"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="myUberCustomer.Customer" project="MyUber3" 
+  <class id="27" language="java" name="myUberCustomer.Customer" project="MyUber3" 
     file="/MyUber3/src/myUberCustomer/Customer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2045" y="824"/>    
+    <position height="-1" width="-1" x="1561" y="964"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="myUberRide.PoolRequest" project="MyUber3" 
+  <class id="28" language="java" name="myUberRide.PoolRequest" project="MyUber3" 
     file="/MyUber3/src/myUberRide/PoolRequest.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="3029" y="1925"/>    
+    <position height="-1" width="-1" x="4501" y="2241"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="30" language="java" name="myUberStatistics" project="MyUber3" file="/MyUber3/src/myUberStatistics" 
+  <package id="29" language="java" name="myUberStatistics" project="MyUber3" file="/MyUber3/src/myUberStatistics" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="55" width="143" x="2838" y="-48"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="31" language="java" name="myUberRide.PoolRequests" project="MyUber3" 
+  <class id="30" language="java" name="myUberRide.PoolRequests" project="MyUber3" 
     file="/MyUber3/src/myUberRide/PoolRequests.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2725" y="1695"/>    
+    <position height="-1" width="-1" x="4498" y="1777"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="32" language="java" name="myUberCar.BerlineCar" project="MyUber3" 
+  <class id="31" language="java" name="myUberCar.BerlineCar" project="MyUber3" 
     file="/MyUber3/src/myUberCar/BerlineCar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2075" y="2676"/>    
+    <position height="-1" width="-1" x="2040" y="2733"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <package id="33" language="java" name="myUberDriver" project="MyUber3" file="/MyUber3/src/myUberDriver" binary="false" 
+  <package id="32" language="java" name="myUberDriver" project="MyUber3" file="/MyUber3/src/myUberDriver" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="55" width="123" x="3021" y="-48"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <association id="34">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="35" name="ownersList"/>      
-      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="37">    
+  <generalization id="33">    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <association id="38">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="39" name="coordinates"/>      
-      <multiplicity id="40" minimum="0" maximum="1"/>    
+  <association id="34">    
+    <bendpoint x="1280" y="1852"/>    
+    <bendpoint x="1280" y="3200"/>    
+    <bendpoint x="2320" y="3224"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="35" name="coordinates"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="42" name="request"/>      
-      <multiplicity id="43" minimum="0" maximum="1"/>    
+  <association id="37">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="38" name="car"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="40">    
+    <bendpoint x="2177" y="2643"/>    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="41" name="carPosition"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
   <association id="44">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="45" name="car"/>      
-      <multiplicity id="46" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="47">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="48" name="destination"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="50">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="51" name="potentialCars"/>      
-      <multiplicity id="52" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="53">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="54" name="carPosition"/>      
-      <multiplicity id="55" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="56">    
-    <end type="SOURCE" refId="17"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <association id="57">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="58" name="onDutyDrivers"/>      
-      <multiplicity id="59" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="45" name="onDutyDrivers"/>      
+      <multiplicity id="46" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="60">    
+  <generalization id="47">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="TARGET" refId="15"/>  
   </generalization>  
+  <association id="48">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="49" name="currentDriver"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <bendpoint x="2784" y="656"/>    
+    <bendpoint x="1888" y="656"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="52" name="customer"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="1912" y="704"/>    
+    <bendpoint x="2740" y="704"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="55" name="potentialRideOrder"/>      
+      <multiplicity id="56" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <bendpoint x="3996" y="3300"/>    
+    <bendpoint x="2776" y="3300"/>    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="58" name="departure"/>      
+      <multiplicity id="59" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="60">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="7"/>  
+  </realization>  
   <association id="61">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="62" name="driversList"/>      
-      <multiplicity id="63" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="64">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="65" name="currentDriver"/>      
-      <multiplicity id="66" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="67">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="68" name="customer"/>      
-      <multiplicity id="69" minimum="0" maximum="1"/>    
+      <attribute id="62" name="request"/>      
+      <multiplicity id="63" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="71" name="potentialRideOrder"/>      
-      <multiplicity id="72" minimum="0" maximum="2147483647"/>    
+  <association id="64">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="65" name="instance"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="74" name="departure"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
+  <association id="67">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="68" name="currentRequests"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="76">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="8"/>  
+  <realization id="70">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="7"/>  
   </realization>  
-  <association id="77">    
+  <association id="71">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="78" name="request"/>      
-      <multiplicity id="79" minimum="0" maximum="1"/>    
+      <attribute id="72" name="instance"/>      
+      <multiplicity id="73" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
+    <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="80">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="81" name="instance"/>      
-      <multiplicity id="82" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="83">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="84" name="currentRequests"/>      
-      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="86">    
-    <end type="SOURCE" refId="29"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <association id="87">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="88" name="ridesOfTheRequest"/>      
-      <multiplicity id="89" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="90">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="91" name="instance"/>      
-      <multiplicity id="92" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="94" name="car"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="96">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="97" name="messageBox"/>      
-      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
+  <association id="74">    
+    <bendpoint x="1324" y="1856"/>    
+    <bendpoint x="1324" y="3056"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="75" name="messageBox"/>      
+      <multiplicity id="76" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="99">    
-    <end type="SOURCE" refId="25"/>    
-    <end type="TARGET" refId="16"/>  
+  <generalization id="77">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <generalization id="100">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="21"/>  
+  <generalization id="78">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="20"/>  
   </generalization>  
-  <generalization id="101">    
-    <end type="SOURCE" refId="27"/>    
-    <end type="TARGET" refId="21"/>  
+  <generalization id="79">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="20"/>  
   </generalization>  
-  <association id="102">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="103" name="traffic"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
+  <association id="80">    
+    <bendpoint x="3048" y="2528"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="81" name="traffic"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="84" name="instance"/>      
+      <multiplicity id="85" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="105">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="106" name="departure"/>      
-      <multiplicity id="107" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="109" name="instance"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="111">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="112" name="potentialCars"/>      
-      <multiplicity id="113" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="114">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="115" name="potentialCarsForActualRide"/>      
-      <multiplicity id="116" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="117">    
+  <association id="86">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="118" name="allCars"/>      
-      <multiplicity id="119" minimum="0" maximum="2147483647"/>    
+      <attribute id="87" name="allCars"/>      
+      <multiplicity id="88" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="120">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="121" name="instance"/>      
-      <multiplicity id="122" minimum="0" maximum="1"/>    
+  <association id="89">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="90" name="instance"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="31" navigable="true"/>    
+    <end type="TARGET" refId="30" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="123">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="124" name="driver"/>      
-      <multiplicity id="125" minimum="0" maximum="1"/>    
+  <association id="92">    
+    <bendpoint x="2905" y="1287"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="93" name="driver"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="126">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="21"/>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="20"/>  
   </generalization>  
-  <association id="127">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="128" name="customersList"/>      
-      <multiplicity id="129" minimum="0" maximum="2147483647"/>    
+  <association id="96">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="97" name="customersList"/>      
+      <multiplicity id="98" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="130">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="131" name="actualCar"/>      
-      <multiplicity id="132" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="133">    
-    <end type="SOURCE" refId="29" navigable="false">      
-      <attribute id="134" name="driver"/>      
-      <multiplicity id="135" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="136">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="137" name="destination"/>      
-      <multiplicity id="138" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
