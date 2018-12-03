@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 public class MenuCommand {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Create a new myUber universe (Press 1) \nDo nothing (Press 2)");
+		System.out.println("Exit (Press 0)\nCreate a new myUber universe (Press 1)\nAdd a new customer (Press 2)");
 		int command = scan.nextInt();
 		
-		if (command==1) {
+		if (command==0) {System.out.println("Bye");}
+		
+		else if (command==1) {
 			System.out.println("Number of standard cars : ");
 			String a = scan.next();
 			System.out.println("Number of berline cars : ");
@@ -23,9 +25,6 @@ public class MenuCommand {
 			SetUpCommand.main(newArgs);
 		}
 		else if (command==2) {
-			MenuCommand.main(args);
-		}
-		else if (command==3) {
 			System.out.println("Name of the new customer : ");
 			String a = scan.next();
 			System.out.println("Surname of the new customer : ");
@@ -33,7 +32,11 @@ public class MenuCommand {
 			String newArgs[]={a,b};
 			AddCustomerCommand.main(newArgs);
 		}
-		else {System.out.println("There is an error.");}
+		else {
+			System.out.println("There is an error");
+			Thread.sleep(1000);
+			MenuCommand.main(args);
+		}
 	}
 
 }
