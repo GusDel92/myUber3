@@ -10,9 +10,9 @@ public class AddDriverCommand {
 		
 		//il faut encore associer la voiture dont l'identifiant est args[2] au driver ! => Liste pour chaque driver des voitures dont il est proprio ?
 		
+		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
 		for (Driver driver : Drivers.getInstance().getDriversList()) {
-			System.out.println("DriverID, Name, Surname, Number of Rides, Total Amount Cashed");
-			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed() + "\n");
+			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed());
 		}
 		
 		MenuCommand.main(args);

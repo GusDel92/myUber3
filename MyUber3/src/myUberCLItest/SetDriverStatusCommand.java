@@ -20,7 +20,7 @@ public class SetDriverStatusCommand {
 		if (done==false){
 			System.out.print("Error: there is no driver with such ID.");
 		}
-		
+		MenuCommand.main(args);
 	}
 
 }

@@ -13,14 +13,14 @@ public class AddCarDriverCommand {
 		Driver newDriver = new Driver(args[0], args[1]);
 		SetUpCommand.carFactory.createCar(args[2], newDriver);
 		
+		System.out.println("\nCarID, Owners");
 		for (Car car : CarFactory.getAllCars()) {
-			System.out.println("CarID, Owners");
-			System.out.println(car.getCarID()+", "+car.getOwnersList()+"\n");
+			System.out.println(car.getCarID()+", "+car.getOwnersList().toString());
 		}
 		
+		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
 		for (Driver driver : Drivers.getInstance().getDriversList()) {
-			System.out.println("DriverID, Name, Surname, Number of Rides, Total Amount Cashed");
-			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed() + "\n");
+			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed());
 		}
 		
 		MenuCommand.main(args);
