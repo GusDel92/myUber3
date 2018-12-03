@@ -11,7 +11,7 @@ import myUberCustomer.Customers;
  *
  */
 public class AddCustomerCommand {
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		Customer newCustomer = new Customer(args[0], args[1]);
 		for (Customer customer : Customers.getInstance().getCustomersList()) {
 			System.out.println("CustomerID, Name, Surname, Number of Rides, Total Cash Spent");

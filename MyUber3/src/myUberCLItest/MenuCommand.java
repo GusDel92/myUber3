@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MenuCommand {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Exit (Press 0)\nCreate a new myUber universe (Press 1)\nAdd a new customer (Press 2)");
@@ -33,8 +33,7 @@ public class MenuCommand {
 			AddCustomerCommand.main(newArgs);
 		}
 		else {
-			System.out.println("There is an error");
-			Thread.sleep(1000);
+			System.out.println("\nPlease enter a valid number.\n");
 			MenuCommand.main(args);
 		}
 	}

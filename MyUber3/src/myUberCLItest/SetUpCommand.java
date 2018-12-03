@@ -12,7 +12,7 @@ import myUberTools.Coordinates;
 
 public class SetUpCommand {
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) {
 		CarFactory carFactory = new CarFactory();
 		Random rn = new Random();
 		
