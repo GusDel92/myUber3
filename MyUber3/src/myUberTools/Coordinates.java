@@ -30,6 +30,10 @@ public class Coordinates {
 		this.latitude=0;
 		this.longitude=0;
 	}
+	public Coordinates(int x, int y) {
+		this.latitude=x;
+		this.longitude=y;
+	}
 	/**
 	 * A tool that permit the customer to enter the GPS localization of the wished destination.
 	 * @author Cuignet & Thiébaud
