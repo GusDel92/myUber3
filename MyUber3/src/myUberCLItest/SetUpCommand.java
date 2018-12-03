@@ -64,7 +64,9 @@ public class SetUpCommand {
 			customers[i].setCoordinates(new Coordinates(rn.nextInt(101),rn.nextInt(101)));
 		}
 		
-		System.out.println(customers[2].getCoordinates().getLatitude());
+		System.out.println(customers[10].getCoordinates().getLatitude());
+		
+		MenuCommand.main(args);
 	}
 
 }
