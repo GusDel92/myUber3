@@ -10,7 +10,7 @@ public class StandardCar extends Car {
 	public StandardCar(String type, Driver owner) {
 		super(type, owner);
 		standardID++;
-		this.setCarID(standardID);
+		this.setCarID("standard"+standardID);
 		setTotalSeats(4);
 		this.possibleTypesOfRide.add("uberX");
 		this.possibleTypesOfRide.add("uberPool");

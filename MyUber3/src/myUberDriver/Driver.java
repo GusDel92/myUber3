@@ -80,6 +80,7 @@ public class Driver {
 	}
 
 	public void setState(String state) {
+		if (this.state==state) {System.out.println("Error: You are already "+ this.state);}
 		this.state = state;
 	}
 	

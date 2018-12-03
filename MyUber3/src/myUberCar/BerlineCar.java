@@ -10,7 +10,7 @@ public class BerlineCar extends Car {
 	public BerlineCar(String type, Driver owner) {
 		super(type, owner);	
 		berlineID++;
-		this.setCarID(berlineID);
+		this.setCarID("berline"+berlineID);
 		setTotalSeats(4);
 		this.possibleTypesOfRide.add("uberX");
 		this.possibleTypesOfRide.add("uberBlack");

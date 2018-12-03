@@ -14,7 +14,7 @@ import myUberRide.Request;
  */
 public abstract class Car {
 	
-	private int carID;
+	private String carID;
 	private int totalSeats;
 	private ArrayList<Driver> ownersList = new ArrayList<Driver>();
 	private Coordinates carPosition;
@@ -53,12 +53,12 @@ public abstract class Car {
 	}
 	
 	
-	public int getCarID() {
+	public String getCarID() {
 		return carID;
 	}
 
 
-	public void setCarID(int carID) {
+	public void setCarID(String carID) {
 		this.carID = carID;
 	}
 
@@ -136,7 +136,7 @@ public abstract class Car {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + carID;
+		result = prime * result + carID.hashCode();
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
