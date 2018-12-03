@@ -1,6 +1,7 @@
 package myUberCLItest;
 
 import myUberCustomer.Customer;
+import myUberCustomer.Customers;
 
 
 /**
@@ -9,10 +10,12 @@ import myUberCustomer.Customer;
  *
  *
  */
-public class AddCustomer {
+public class AddCustomerCommand {
 	public static void main(String[] args) {
 		Customer customer = new Customer(args[0], args[1]);
-		MenuCommand.main();
+		for ()
+		System.out.println(Customers.getInstance().getCustomersList().get(0).getName());
+		MenuCommand.main(args);
 	}
 
 }
