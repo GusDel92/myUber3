@@ -20,5 +20,4 @@ public class AddCustomerCommand {
 		
 		MenuCommand.main(args);
 	}
-
 }

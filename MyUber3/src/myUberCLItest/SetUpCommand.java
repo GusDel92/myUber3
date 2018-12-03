@@ -67,5 +67,4 @@ public class SetUpCommand {
 		
 		MenuCommand.main(args);
 	}
-
 }

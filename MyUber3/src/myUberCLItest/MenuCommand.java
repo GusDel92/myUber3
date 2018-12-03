@@ -37,5 +37,4 @@ public class MenuCommand {
 			MenuCommand.main(args);
 		}
 	}
-
 }
