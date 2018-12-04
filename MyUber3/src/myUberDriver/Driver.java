@@ -236,6 +236,9 @@ public class Driver {
 		}
 	}
 	
+	/**
+	 * A comparator used in the driver balance sorting methods.
+	 */
 	public static Comparator<Driver> OccupationComparator = new Comparator<Driver>() {
 
         @Override
@@ -246,6 +249,10 @@ public class Driver {
             else {return (int)1;}
 		    };
 	};
+	
+	/**
+	 * A comparator used in the driver balance sorting methods.
+	 */
 	
 	public static Comparator<Driver> AppreciationComparator = new Comparator<Driver>() {
 

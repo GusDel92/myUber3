@@ -23,6 +23,9 @@ public class DriverBalance {
 	
 	public static double occupationRate(Driver driver){return driver.getTotalOnDutyTime().getSeconds()/driver.getTotalDrivingCustomersTime().plus(driver.getTotalOnDutyTime()).getSeconds(); };
 	
+	/**
+	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 */
 	public static void leastOccupiedDriver(){
 		Collections.sort(Drivers.getInstance().getDriversList(), Driver.OccupationComparator);
 		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
@@ -32,6 +35,9 @@ public class DriverBalance {
 		}
 	
 		
+	/**
+	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 */
 	public static void mostAppreciatedDriver(){
 		Collections.sort(Drivers.getInstance().getDriversList(), Driver.AppreciationComparator);
 		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
