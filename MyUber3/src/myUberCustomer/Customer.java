@@ -205,9 +205,7 @@ public class Customer {
             else if (x==0){return (int)0;}
             else {return (int)1;}
 		    };
-            };      
-          
-            
-            
+            };
+
         
 }

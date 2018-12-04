@@ -1,14 +1,10 @@
 package myUberStatistics;
 
 import myUberCustomer.Customer;
-
 import java.time.Duration;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
+import java.util.Collections;
 import myUberCustomer.Customers;
-import myUberDriver.Driver;
-import myUberDriver.Drivers;
+
 
 /**
  * Customer balance is a class that provides a set of computing relevant statistic methods on customers. 
@@ -34,38 +30,29 @@ public class CustomerBalance {
 		return(c);
 		};
 	
-	public static ArrayList<Customer> mostChargedCustomer(){
-		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
-		int n = customersList.size();
-		for (int i=0;i<=n;i++) {
-			for (int j=1;j<=n-1;j++) {
-				Customer customer1 = customersList.get(j);
-				Customer customer2 = customersList.get(j+1);
-				if (totalAmountOfCashSpent(customer1)<totalAmountOfCashSpent(customer2)){
-					customersList.remove(j);
-					customersList.add(j+1, customer1);
-			}
-		}
-	}
-	return customersList;
-};
 	
-	public static ArrayList<Customer> mostFrequentCustomer(){
-		ArrayList <Customer> customersList = Customers.getInstance().getCustomersList();
-		int n = customersList.size();
-		for (int i=0;i<=n;i++) {
-			for (int j=1;j<=n-1;j++) {
-				Customer customer1 = customersList.get(j);
-				Customer customer2 = customersList.get(j+1);
-				if (customer1.getTotalNumberOfRides()<customer2.getTotalNumberOfRides()){
-					customersList.remove(j);
-					customersList.add(j+1, customer1);
-			}
-		}
+
+	public static void mostChargedCustomer(){
+		Collections.sort(Customers.getInstance().getCustomersList(), Customer.TotalAmountOfCashComparator);
+		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
+		for (Customer customer : Customers.getInstance().getCustomersList()) {
+					System.out.println(customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent());
 	}
-	return customersList;};
+
+}
+
+
+
+	public static void mostFrequentCustomer(){
+		Collections.sort(Customers.getInstance().getCustomersList(), Customer.TotalNumberOfRidesComparator);
+		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
+		for (Customer customer : Customers.getInstance().getCustomersList()) {
+			System.out.println(customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent());
+		}
 	
 	}
+	
+}
 	
 	
 
