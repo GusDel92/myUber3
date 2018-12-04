@@ -17,8 +17,8 @@ public class Traffic {
 	 * @return
 	 * @author Cuignet & Thiébaud
 	 */
-	public static String getTraffic() {
-		hour=Date.getHour();
+	public static String getTraffic(int hour) {
+
 		aleatNbr=Math.random();
 		if (hour>=22 & hour<=7) {
 			if (aleatNbr<=0.95) {return "low-traffic";}
@@ -48,6 +48,9 @@ public class Traffic {
 	}
 
 	public Traffic() {
-		this.actualTraffic = getTraffic();
+		this.actualTraffic = getTraffic(Date.getHour());
+	}
+	public Traffic(int hour) {
+		this.actualTraffic = getTraffic(hour);
 	}
 }

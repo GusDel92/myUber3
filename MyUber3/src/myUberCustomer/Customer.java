@@ -142,17 +142,21 @@ public class Customer {
 	 * @param destination
 	 * @author Cuignet & Thiébaud
 	 */
-	public void comparePrices(Coordinates destination) {
-		Traffic traf = new Traffic();
-		Coordinates departure = this.getCoordinates();
-		for (String typeOfRide : RideFactory.getTypeOfRides()) {
-			Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traf);
-			this.potentialRideOrder.add(ride);
-			ride.computePrice();
-			System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");	 
-		}	
+	public void comparePrices(Coordinates destination, int time) {
+		if (time>23) {System.out.println("The time is wrong.");}
+		else {
+			Traffic traffic = null;
+			if (time<0) {traffic = new Traffic();}
+			else if (time>=0 & time<=23) {traffic = new Traffic(time);}
+			Coordinates departure = this.getCoordinates();
+			for (String typeOfRide : RideFactory.getTypeOfRides()) {
+				Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
+				this.potentialRideOrder.add(ride);
+				ride.computePrice();
+				System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");	 
+			}	
+		}
 	}
-	
 	
 	
 	/**
@@ -160,14 +164,24 @@ public class Customer {
 	 * @param selectedRide
 	 * @author Cuignet & Thiébaud
 	 */
-	public void selectRide(Ride selectedRide) {
-		for (Ride potentialRide : this.potentialRideOrder) {
-			if (potentialRide.equals(selectedRide)) {
-				selectedRide.setStatus("unconfirmed");
-				selectedRide.setCustomer(this);
-				//potentialRideOrder=null;
-				selectedRide.proposeRideToDrivers();
+	public void selectRide(String type) {
+		if (type!="uberX"&type!="uberBlack"&type!="uberPool"&type!="uberVan") {System.out.println("The type of ride you ordered doesn't exist.");}
+		else {
+			int k=0;
+			if (type=="uberVan") {k=1;}
+			if (type=="uberBlack") {k=2;}
+			if (type=="uberPool") {k=3;}
+			Ride selectedRide=this.potentialRideOrder.get(k);
+			for (Ride potentialRide : this.potentialRideOrder) {
+				if (potentialRide.equals(selectedRide)) {
+					selectedRide.setStatus("unconfirmed");
+					selectedRide.setCustomer(this);
+					//potentialRideOrder=null;
+					selectedRide.proposeRideToDrivers();
 			} 
+		}
+		
+		
 		}
 	}
 	
