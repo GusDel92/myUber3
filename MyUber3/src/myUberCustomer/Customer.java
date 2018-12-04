@@ -2,6 +2,7 @@ package myUberCustomer;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import myUberCar.Car;
@@ -184,4 +185,29 @@ public class Customer {
 	}
 
 
+	/**
+	 * This method is a comparator we use in customer statistic computing, to sort the customers.
+	 */
+	public static Comparator<Customer> TotalNumberOfRidesComparator = new Comparator<Customer>() {
+
+        @Override
+        public int compare(Customer e1, Customer e2) {
+            return e2.getTotalNumberOfRides() - e1.getTotalNumberOfRides();
+        }
+    };
+    
+    public static Comparator<Customer> TotalAmountOfCashComparator = new Comparator<Customer>() {
+
+        @Override
+        public int compare(Customer e1, Customer e2) {
+            double x = e2.getTotalAmountOfCashSpent() - e1.getTotalAmountOfCashSpent();
+            if (x<0){return (int)-1;}
+            else if (x==0){return (int)0;}
+            else {return (int)1;}
+		    };
+            };      
+          
+            
+            
+        
 }
