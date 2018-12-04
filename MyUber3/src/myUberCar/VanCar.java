@@ -10,7 +10,7 @@ public class VanCar extends Car {
 	public VanCar(String type, Driver owner) {
 		super(type, owner);
 		vanCarCounter++;
-		this.setCarID(vanCarCounter);
+		this.setCarID("van"+vanCarCounter);
 		setTotalSeats(6);
 		this.possibleTypesOfRide.add("uberVan");
 		this.possibleTypesOfRide.add("uberPool");

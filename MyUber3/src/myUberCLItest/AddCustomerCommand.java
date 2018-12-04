@@ -12,10 +12,13 @@ import myUberCustomer.Customers;
  */
 public class AddCustomerCommand {
 	public static void main(String[] args) {
-		Customer customer = new Customer(args[0], args[1]);
-		for ()
-		System.out.println(Customers.getInstance().getCustomersList().get(0).getName());
+		Customer newCustomer = new Customer(args[0], args[1]);
+		
+		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
+		for (Customer customer : Customers.getInstance().getCustomersList()) {
+			System.out.println(customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent());
+		}
+		
 		MenuCommand.main(args);
 	}
-
 }

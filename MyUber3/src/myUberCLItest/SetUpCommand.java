@@ -11,9 +11,11 @@ import myUberDriver.Driver;
 import myUberTools.Coordinates;
 
 public class SetUpCommand {
-
+	//CarFactory à mettre dans init je pense; utilisé ici et dans AddCarDriverCommand
+	static CarFactory carFactory = new CarFactory();
+ 
+	
 	public static void main(String[] args) {
-		CarFactory carFactory = new CarFactory();
 		Random rn = new Random();
 		
 		int nbrOfStandardCars = Integer.parseInt(args[0]);
@@ -67,5 +69,4 @@ public class SetUpCommand {
 		
 		MenuCommand.main(args);
 	}
-
 }
