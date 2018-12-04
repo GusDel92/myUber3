@@ -154,6 +154,7 @@ public class Customer {
 	}
 	
 	
+	
 	/**
 	 * This method permits to a customer to select the ride he wishes to accomplish. It then erase the other kind of ride which were instantiated during the computing costs process. At the end of this method, the ride is waiting to be confirm by a driver... 
 	 * @param selectedRide

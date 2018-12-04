@@ -6,6 +6,7 @@ import java.util.Collections;
 import myUberCustomer.Customers;
 
 
+
 /**
  * Customer balance is a class that provides a set of computing relevant statistic methods on customers. 
  *@author Cuignet & Thiébaud
