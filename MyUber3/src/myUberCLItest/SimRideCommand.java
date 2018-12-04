@@ -11,8 +11,8 @@ public class SimRideCommand {
 		int customerID=Integer.parseInt(args[0]);
 		Customer customerOfTheRide = null;
 		
-		String[] destination=args[1].split(",");
-
+		String[] destination=args[1].split(";");
+		
 		Coordinates dest = new Coordinates(Integer.parseInt(destination[0]),Integer.parseInt(destination[1]));
 		
 		int time=Integer.parseInt(args[2]);
@@ -40,6 +40,7 @@ public class SimRideCommand {
 			System.out.print("Error: there is no customer with such ID.");
 		}
 		
+		MenuCommand.main(args);
 		
 		
 	}

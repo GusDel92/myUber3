@@ -60,7 +60,7 @@ public class MenuCommand {
 			String newArgs[]={a,b};
 			SetDriverStatusCommand.main(newArgs);
 		}
-		/*
+		
 		else if (command==6) {
 			System.out.println("ID of the car: ");
 			String a = scan.next();
@@ -81,9 +81,14 @@ public class MenuCommand {
 			String newArgs[]={a,b};
 			MoveCarCommand.main(newArgs);
 		}
-		*/
+		
 		else if (command==8) {
 			DisplayStateCommand.main(args);
+		}
+		
+		else if (command==9) {
+			String[] newArgs = {"1","1;3","25","uberX","3"};
+			SimRideCommand.main(newArgs);
 		}
 		else {
 			System.out.println("\nPlease enter a valid number.\n");
