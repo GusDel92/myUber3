@@ -1,11 +1,14 @@
 package myUberDriver;
 
+import java.util.Comparator;
 import java.util.Scanner;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 import myUberCar.Car;
+import myUberCustomer.Customer;
 import myUberRide.Ride;
+import myUberStatistics.DriverBalance;
 
 public class Driver {
 	
@@ -232,4 +235,29 @@ public class Driver {
 		else {System.out.println("Impossible d'effectuer l'action, vous n'étiez pas en pause.");
 		}
 	}
+	
+	public static Comparator<Driver> OccupationComparator = new Comparator<Driver>() {
+
+        @Override
+        public int compare(Driver e1, Driver e2) {
+            double x = DriverBalance.occupationRate(e2) - DriverBalance.occupationRate(e1);
+            if (x<0){return (int)-1;}
+            else if (x==0){return (int)0;}
+            else {return (int)1;}
+		    };
+	};
+	
+	public static Comparator<Driver> AppreciationComparator = new Comparator<Driver>() {
+
+        @Override
+        public int compare(Driver e1, Driver e2) {
+            double x = e2.getRate() - e1.getRate();
+            if (x<0){return (int)-1;}
+            else if (x==0){return (int)0;}
+            else {return (int)1;}
+		    };
+            };
+            
+
+        
 }
