@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
+import myUberCLItest.MenuCommand;
 import myUberCar.Car;
 import myUberRide.Ride;
 import myUberRide.RideFactory;
@@ -165,8 +166,8 @@ public class Customer {
 	 * @author Cuignet & Thiébaud
 	 */
 	public void selectRide(String type) {
-		if (type!="uberX"&type!="uberBlack"&type!="uberPool"&type!="uberVan") {System.out.println("The type of ride you ordered doesn't exist.");}
-		else {
+		
+		try {
 			int k=0;
 			if (type=="uberVan") {k=1;}
 			if (type=="uberBlack") {k=2;}
@@ -178,10 +179,13 @@ public class Customer {
 					selectedRide.setCustomer(this);
 					//potentialRideOrder=null;
 					selectedRide.proposeRideToDrivers();
-			} 
-		}
-		
-		
+				} 
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("There has been an error when selecting the ride.");
+			String[] args = null;
+			MenuCommand.main(args);
 		}
 	}
 	

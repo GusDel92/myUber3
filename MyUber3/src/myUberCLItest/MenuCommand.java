@@ -10,7 +10,7 @@ public class MenuCommand {
 		System.out.println("\nMENU\n\nExit (Press 0)\nCreate a new myUber universe (Press 1)\nAdd a new customer (Press 2)\nAdd a new car and associate it with a new driver (Press 3)\nAdd a new driver (Press 4)\nSet the status of a driver (Press 5)\nMove a car (Press 6)\nMove a customer (Press 7)\nDisplay the information of the system (Press 8)\nAsk for the price of a ride (Press 9)\nSimulate totally a ride (Press 10)\nSimulate a ride interactively (Press 11)\nDisplay drivers information (Press 12)\nDisplay customers information (Press 13)");
 		int command = scan.nextInt();
 		
-		if (command==0) {System.out.println("Bye");}
+		if (command==0) {System.out.println("Bye");System.exit(0);}
 		
 		else if (command==1) {
 			System.out.println("Number of standard cars : ");

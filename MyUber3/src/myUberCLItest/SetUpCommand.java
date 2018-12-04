@@ -18,10 +18,19 @@ public class SetUpCommand {
 	public static void main(String[] args) {
 		Random rn = new Random();
 		
-		int nbrOfStandardCars = Integer.parseInt(args[0]);
-		int nbrOfBerlineCars = Integer.parseInt(args[1]);
-		int nbrOfVanCars = Integer.parseInt(args[2]);
-		int nbrOfCustomers=Integer.parseInt(args[3]);
+		int nbrOfStandardCars = 0;
+		int nbrOfBerlineCars = 0;
+		int nbrOfVanCars = 0;
+		int nbrOfCustomers = 0;
+		try {
+			nbrOfStandardCars = Integer.parseInt(args[0]);
+			nbrOfBerlineCars = Integer.parseInt(args[1]);
+			nbrOfVanCars = Integer.parseInt(args[2]);
+			nbrOfCustomers = Integer.parseInt(args[3]);
+		} catch (NumberFormatException e) {
+			System.out.println("ERROR: Wrong format. Please enter integers.");
+			MenuCommand.main(args);
+		}
 		
 		Driver drivers[] = new Driver[nbrOfStandardCars+nbrOfBerlineCars+nbrOfVanCars];
 		StandardCar standardCars[] = new StandardCar[nbrOfStandardCars];

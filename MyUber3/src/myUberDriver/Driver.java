@@ -83,8 +83,11 @@ public class Driver {
 	}
 
 	public void setState(String state) {
-		if (this.state==state) {System.out.println("Error: You are already "+ this.state);}
-		this.state = state;
+		if (Drivers.possibleStates.contains(state)) {
+			if (this.state.equals(state)) {System.out.println("Error: You are already "+ this.state);}
+			else {this.state = state;}
+		}
+		else {System.out.println("The state "+state+" does not exist.");}
 	}
 	
 	public Car getActualCar() {

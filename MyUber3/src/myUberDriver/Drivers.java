@@ -1,6 +1,8 @@
 package myUberDriver;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * This class' only instance stores all the created drivers. Whenever one wants to create a new driver, one must create it with this Drivers object as attribute, and this automatically adds this new driver to the driversList of this Drivers object. To make sure this class is only instantiated once, the singleton pattern is used here.
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 	
 	private static ArrayList<Driver> driversList = new ArrayList<Driver>();
 	private static ArrayList<Driver> onDutyDrivers = new ArrayList<Driver>();
+	final static List<String> possibleStates = Arrays.asList("on-duty","off-duty","on-a-ride","offline");
 	
 	private static Drivers instance = new Drivers();
 	
