@@ -12,6 +12,7 @@ public class SimRideCommand {
 		Customer customerOfTheRide = null;
 		
 		String[] destination=args[1].split(",");
+
 		Coordinates dest = new Coordinates(Integer.parseInt(destination[0]),Integer.parseInt(destination[1]));
 		
 		int time=Integer.parseInt(args[2]);
