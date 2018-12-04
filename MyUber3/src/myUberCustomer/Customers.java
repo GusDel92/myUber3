@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Customers {
 
-	private ArrayList<Customer> customersList = new ArrayList<Customer>();
+	private static ArrayList<Customer> customersList = new ArrayList<Customer>();
 	
 	private static Customers instance = new Customers();
 	
@@ -25,16 +25,16 @@ public class Customers {
 	 */
 	public void addCustomer(Customer customer) {
 			
-			this.customersList.add(customer);
+			Customers.customersList.add(customer);
 			
 	}
 
-	public ArrayList<Customer> getCustomersList() {
+	public static ArrayList<Customer> getCustomersList() {
 		return customersList;
 	}
 
 	public void setUsersList(ArrayList<Customer> customersList) {
-		this.customersList = customersList;
+		Customers.customersList = customersList;
 	}
 
 	public static void setInstance(Customers instance) {
