@@ -32,6 +32,7 @@ public class MenuCommand {
 			String newArgs[]={a,b};
 			AddCustomerCommand.main(newArgs);
 		}
+		
 		else if (command==3) {
 			System.out.println("Name of the new driver: ");
 			String a = scan.next();
