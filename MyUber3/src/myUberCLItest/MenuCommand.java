@@ -25,6 +25,14 @@ public class MenuCommand {
 		else if (command==2) {
 			MenuCommand.main(args);
 		}
+		else if (command==3) {
+			System.out.println("Name of the new customer : ");
+			String a = scan.next();
+			System.out.println("Surname of the new customer : ");
+			String b = scan.next();
+			String newArgs[]={a,b};
+			AddCustomerCommand.main(newArgs);
+		}
 		else {System.out.println("There is an error.");}
 	}
 
