@@ -449,7 +449,6 @@ public class CLUI {
 					
 					r = nextcommand(command1);
 					answers.add(r);
-						
 				}
 				
 				if (!file.equalsIgnoreCase("my_uber.ini")) {	
