@@ -53,7 +53,6 @@ public class PoolRequest implements Request{
 		return false;
 	}
 	
-	
 	public void recoverPotentialCars(){
 		for (Car car : CarFactory.getInstance().getAllCars()){
 			car.accept(this);
