@@ -3,10 +3,18 @@ package myUberCar;
 import java.util.ArrayList;
 
 import myUberDriver.Driver;
+import myUberDriver.Drivers;
 
 public class CarFactory {
 
-	private static ArrayList<Car> allCars = new ArrayList<Car>();
+	private ArrayList<Car> allCars = new ArrayList<Car>();
+	
+	private static CarFactory instance = new CarFactory();
+	
+	public static CarFactory getInstance(){
+			
+			return instance;
+	}
 	
 	public CarFactory() {
 	}
@@ -31,7 +39,7 @@ public class CarFactory {
 		return null;
 	}
 	
-	public static ArrayList<Car> getAllCars() {
+	public ArrayList<Car> getAllCars() {
 		return allCars;
 	}	
 }
