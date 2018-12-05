@@ -1,14 +1,20 @@
 package myUberRide;
 
 import java.util.ArrayList;
+
 import myUberTools.Coordinates;
 import myUberTools.Traffic;
 
 public class RideFactory {
 	
-	static ArrayList<String> typeOfRides = new ArrayList<String>();
+	ArrayList<String> typeOfRides = new ArrayList<String>();
 	
-	//Constructeur de la RideFactory; à lancer dans le main au tout début.
+	private static RideFactory instance = new RideFactory();
+	
+	public static RideFactory getInstance(){
+			
+			return instance;
+	}
 	public RideFactory() {
 		typeOfRides.add("uberX");
 		typeOfRides.add("uberVan");
@@ -17,7 +23,7 @@ public class RideFactory {
 	}
 
 	
-	public static ArrayList<String> getTypeOfRides() {
+	public ArrayList<String> getTypeOfRides() {
 		return typeOfRides;
 	}
 

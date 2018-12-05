@@ -142,7 +142,7 @@ public class Customer {
 	 * @param destination
 	 * @author Cuignet & Thiébaud
 	 */
-	public String comparePrices(Coordinates destination, int time) {
+	public synchronized String comparePrices(Coordinates destination, int time) {
 		if (time>23) {System.out.println("The time is wrong.");}
 		else {
 			Traffic traffic = null;
@@ -150,7 +150,7 @@ public class Customer {
 			else if (time>=0 & time<=23) {traffic = new Traffic(time);}
 			String prices = "";
 			Coordinates departure = this.getCoordinates();
-			for (String typeOfRide : RideFactory.getTypeOfRides()) {
+			for (String typeOfRide : RideFactory.getInstance().getTypeOfRides()) {
 				Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
 				this.potentialRideOrder.add(ride);
 				ride.computePrice();
@@ -180,7 +180,6 @@ public class Customer {
 				if (potentialRide.equals(selectedRide)) {
 					selectedRide.setStatus("unconfirmed");
 					selectedRide.setCustomer(this);
-					//potentialRideOrder=null;
 					selectedRide.proposeRideToDrivers();
 					return selectedRide;
 				} 
@@ -188,6 +187,7 @@ public class Customer {
 		} 
 		catch (Exception e) {
 			System.out.println("There has been an error when selecting the ride.");
+			e.printStackTrace();
 		}
 		return null;
 	}

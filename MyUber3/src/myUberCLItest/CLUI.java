@@ -35,8 +35,8 @@ public class CLUI {
 		Scanner sc = new Scanner(System.in);
 		
 		String[] command = new String[2];
-		command[0] = "runtest";
-		command[1] = "my_uber.ini";
+		command[0] = "init";
+		command[1] = "my_uber.txt";
 		nextcommand(command);
 		
 		do {
@@ -65,7 +65,7 @@ public class CLUI {
 	public static String nextcommand(String[] command) throws IOException {
 		Random rn = new Random();
 		
-		try {	
+		try {
 			if(command[0].equalsIgnoreCase("setup")) {
 				int nbrOfStandardCars = 0;
 				int nbrOfBerlineCars = 0;
@@ -129,7 +129,7 @@ public class CLUI {
 				String name = command[1];
 				String surname = command[2];
 				Customer newCustomer = new Customer(command[1], command[2]);
-				System.out.println(name +" "+ surname +" has been added.");
+				System.out.println(name +" "+ surname +" has been added to the customers.");
 				
 				System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
 				for (Customer customer : Customers.getInstance().getCustomersList()) {
@@ -142,7 +142,7 @@ public class CLUI {
 				String name = command[1]; String surname = command[2]; String type = command[3];
 				if (!CarFactory.getInstance().getPossibleCarTypes().contains(type)) {
 					System.out.println("The type of car "+type+" doesn't exist.\nExisting types are: ");
-					for (String existingType : CarFactory.getInstance().getPossibleCarTypes()) {System.out.print(type+", ");};
+					for (String existingType : CarFactory.getInstance().getPossibleCarTypes()) {System.out.print(existingType+", ");};
 					return("The type of car "+type+" doesn't exist.\nExisting types are: ");
 				}
 				else{
@@ -152,7 +152,7 @@ public class CLUI {
 					
 					System.out.println("\nCarID, Owners");
 					for (Car car : CarFactory.getInstance().getAllCars()) {
-						System.out.println(car.getCarID()+", "+car.getOwnersList().toString());
+						System.out.println(car.getCarID()+", "+car.getOwnersList().get(0).getName());
 					}
 					
 					System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
@@ -283,10 +283,12 @@ public class CLUI {
 				//Cars Information
 				System.out.println("\nCarID, Owners");
 				for (Car car : CarFactory.getInstance().getAllCars()) {
-					System.out.println(car.getCarID()+", ");
+					String owners= "";
 					for(Driver owner : car.getOwnersList()) {
-						System.out.print(owner.getName()+ " " + owner.getSurname());
+						owners.concat(", ").concat(owner.getName()).concat(" ").concat(owner.getSurname());
+						System.out.println(owners);
 					}	
+					System.out.println(car.getCarID()+owners);	
 				}
 				return("The information of the system has been printed.");
 			}
@@ -426,65 +428,67 @@ public class CLUI {
 	    		
 	    	}
 	    	
-	    	else if (command[0].equalsIgnoreCase("runtest")) { 
-	    	
-	    		String file = command[1];
-	    		ArrayList<String[]> commands = new ArrayList<String[]>();
-	    		ArrayList<String> answers = new ArrayList<String>();
-	    		InputStream fis = new FileInputStream("eval/"+file);
-	    		@SuppressWarnings("resource")
-				Scanner sc = new Scanner(fis);
-	    		String s = sc.nextLine();
-	    		String r;
-	    		String[] commandline;
-	    		while(!s.equals("")){
-	    			
-	    			commandline = s.split(" ");
-	    			commands.add(commandline);
-	    			s = sc.nextLine();
-	    			
-	    			}
-	
-				for (String[] command1 : commands) {
-					
-					r = nextcommand(command1);
-					answers.add(r);
-				}
-				
-				if (!file.equalsIgnoreCase("my_uber.ini")) {	
-					char[] fichier = file.toCharArray();
-					
-					//VOIR COMMENT SONT NOMM2S SES FICHIERS
-					char num = fichier[12];
-					PrintWriter writer = new PrintWriter("eval/" + "testScenario" + num + "output.txt", "UTF-8");
-					
-					for (String answer : answers) {
+	    	else if (command[0].equalsIgnoreCase("init")) { 
+	    		try {
+					String file = command[1];
+					System.out.println("BLI");
+					ArrayList<String[]> commands = new ArrayList<String[]>();
+					ArrayList<String> answers = new ArrayList<String>();
+					InputStream fis = new FileInputStream("eval/"+file);
+					System.out.println("BLOU");
+					@SuppressWarnings("resource")
+					Scanner sc = new Scanner(fis);
+					String s = sc.nextLine();
+					String r;
+					String[] commandline;
+					while(!s.equals("") & sc.hasNextLine()){
 						
-						writer.println(answer);
+						commandline = s.split(" ");
+						commands.add(commandline);
+						s = sc.nextLine();
 						
+						}
+
+					for (String[] command1 : commands) {
+						
+						r = nextcommand(command1);
+						answers.add(r);
 					}
 					
-					writer.close();
-					}	
-				
-				System.out.println("Test completed");
-				return("Test completed");
+					if (!file.equalsIgnoreCase("my_uber.txt")) {	
+						PrintWriter writer = new PrintWriter("eval/" + file + "output.txt", "UTF-8");
+						
+						for (String answer : answers) {
+							
+							writer.println(answer);
+							
+						}
+						
+						writer.close();
+						}	
+					
+					System.out.println("Completed");
+					return("Completed");
+				} catch (FileNotFoundException e) {
+					System.out.print("The init file has not been found.");
+				}
 	    		
 	    		
 	    	}
 	    	
 	    	else {
 	    		
-	    		System.out.println("Error in the last command's name, try again");
-	    		return("Error in the last command's name, try again");
+	    		System.out.println("Error in the last command, please try again.");
+	    		return("Error in the last command, please try again.");
 	    		
 	    	}
     	
 		}	//fin du try
 		
 	    catch( Exception e ) {
-		    System.out.println( "Error in your command's parameters" );
-		    return( "Error in your command's parameters" );
+		    System.out.println( "Unknown error in your command's parameters." );
+		    e.printStackTrace();
+		    return( "Unknown error in your command's parameters." );
 		}
 		return null;
 	}
