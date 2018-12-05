@@ -55,7 +55,7 @@ public class PoolRequest implements Request{
 	
 	
 	public void recoverPotentialCars(){
-		for (Car car : CarFactory.getAllCars()){
+		for (Car car : CarFactory.getInstance().getAllCars()){
 			car.accept(this);
 		}
 	}
