@@ -12,7 +12,7 @@ import java.util.List;
 	
 	private static ArrayList<Driver> driversList = new ArrayList<Driver>();
 	private static ArrayList<Driver> onDutyDrivers = new ArrayList<Driver>();
-	final static List<String> possibleStates = Arrays.asList("on-duty","off-duty","on-a-ride","offline");
+	private final List<String> possibleStates = Arrays.asList("on-duty","off-duty","on-a-ride","offline");
 	
 	private static Drivers instance = new Drivers();
 	
@@ -26,7 +26,7 @@ import java.util.List;
 	 * @param driver
 	 * @author Cuignet & Thiébaud
 	 */
-	public static void addDriver(Driver driver) {
+	public void addDriver(Driver driver) {
 			driversList.add(driver);		
 	}
 	
@@ -41,6 +41,10 @@ import java.util.List;
 
 	public static void setInstance(Drivers instance) {
 		Drivers.instance = instance;
+	}
+
+	public List<String> getPossibleStates() {
+		return possibleStates;
 	}
 
 	public static ArrayList<Driver> getOnDutyDrivers() {

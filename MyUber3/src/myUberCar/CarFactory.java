@@ -1,12 +1,14 @@
 package myUberCar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import myUberDriver.Driver;
 import myUberDriver.Drivers;
 
 public class CarFactory {
-
+	private final List<String> possibleCarTypes = Arrays.asList("van","berline","standard");
 	private ArrayList<Car> allCars = new ArrayList<Car>();
 	
 	private static CarFactory instance = new CarFactory();
@@ -25,12 +27,12 @@ public class CarFactory {
 			allCars.add(newCar);
 			return newCar;
 		}
-		if (type.equalsIgnoreCase("berline")){
+		else if (type.equalsIgnoreCase("berline")){
 			BerlineCar newCar = new BerlineCar(type, owner);
 			allCars.add(newCar);
 			return newCar;
 		}
-		if (type.equalsIgnoreCase("standard")){
+		else if (type.equalsIgnoreCase("standard")){
 			StandardCar newCar = new StandardCar(type, owner);
 			allCars.add(newCar);
 			return newCar;
@@ -41,5 +43,9 @@ public class CarFactory {
 	
 	public ArrayList<Car> getAllCars() {
 		return allCars;
+	}
+
+	public List<String> getPossibleCarTypes() {
+		return possibleCarTypes;
 	}	
 }

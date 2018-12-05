@@ -14,7 +14,7 @@ public class MoveCarCommand {
 	
 	public static void main(String[] args){
 		Boolean done=false;
-		for (Car car : CarFactory.getAllCars()) {
+		for (Car car : CarFactory.getInstance().getAllCars()) {
 			synchronized(car){
 				if (car.getCarID()==args[0]) {
 				car.getCarPosition().setLongitude(Double.parseDouble(args[1]));
@@ -24,7 +24,7 @@ public class MoveCarCommand {
 			}
 		}
 		if (done == true){
-			for (Car car : CarFactory.getAllCars()) {
+			for (Car car : CarFactory.getInstance().getAllCars()) {
 				synchronized(car){
 					System.out.println("carID : "+car.getCarID()+" --> (Longitude : "+Double.toString(car.getCarPosition().getLongitude())+", Latitude : "+Double.toString(car.getCarPosition().getLongitude())+")");
 					}

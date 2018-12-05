@@ -27,11 +27,11 @@ public class SimRideCommand {
 				if (customer.getCustomerID()==customerID) {	
 					customerOfTheRide=customer;
 					customerOfTheRide.comparePrices(dest,time);
-					done=true;
 					//Selecting the ride
 					customerOfTheRide.selectRide(typeOfTheRide);
 					//Giving the mark
 					
+					done=true;
 				}
 			}
 		}

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import myUberCLItest.MenuCommand;
 import myUberCar.Car;
 import myUberRide.Ride;
 import myUberRide.RideFactory;
@@ -143,20 +142,24 @@ public class Customer {
 	 * @param destination
 	 * @author Cuignet & Thiébaud
 	 */
-	public void comparePrices(Coordinates destination, int time) {
+	public String comparePrices(Coordinates destination, int time) {
 		if (time>23) {System.out.println("The time is wrong.");}
 		else {
 			Traffic traffic = null;
 			if (time<0) {traffic = new Traffic();}
 			else if (time>=0 & time<=23) {traffic = new Traffic(time);}
+			String prices = "";
 			Coordinates departure = this.getCoordinates();
 			for (String typeOfRide : RideFactory.getTypeOfRides()) {
 				Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
 				this.potentialRideOrder.add(ride);
 				ride.computePrice();
-				System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");	 
-			}	
+				System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");
+				prices.concat("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.\n");
+			}
+			return prices;
 		}
+		return null;
 	}
 	
 	
@@ -165,7 +168,7 @@ public class Customer {
 	 * @param selectedRide
 	 * @author Cuignet & Thiébaud
 	 */
-	public void selectRide(String type) {
+	public Ride selectRide(String type) {
 		
 		try {
 			int k=0;
@@ -179,14 +182,14 @@ public class Customer {
 					selectedRide.setCustomer(this);
 					//potentialRideOrder=null;
 					selectedRide.proposeRideToDrivers();
+					return selectedRide;
 				} 
 			}
 		} 
 		catch (Exception e) {
 			System.out.println("There has been an error when selecting the ride.");
-			String[] args = null;
-			MenuCommand.main(args);
 		}
+		return null;
 	}
 	
 	

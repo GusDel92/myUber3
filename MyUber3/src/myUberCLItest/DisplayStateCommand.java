@@ -11,7 +11,7 @@ public class DisplayStateCommand {
 
 	public static void main(String[] args) {
 		//General Information
-		System.out.println("\nInfo of the system:\nNumber of Customers: "+Customers.getInstance().getCustomersList().size()+"\nNumber of Drivers: "+Drivers.getInstance().getDriversList().size()+"\nNumber of Cars: "+CarFactory.getAllCars().size());
+		System.out.println("\nInfo of the system:\nNumber of Customers: "+Customers.getInstance().getCustomersList().size()+"\nNumber of Drivers: "+Drivers.getInstance().getDriversList().size()+"\nNumber of Cars: "+CarFactory.getInstance().getAllCars().size());
 		//Customers Information
 		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
 		for (Customer customer : Customers.getInstance().getCustomersList()) {
@@ -24,7 +24,7 @@ public class DisplayStateCommand {
 		}
 		//Cars Information
 		System.out.println("\nCarID, Owners");
-		for (Car car : CarFactory.getAllCars()) {
+		for (Car car : CarFactory.getInstance().getAllCars()) {
 			System.out.println(car.getCarID()+", "+car.getOwnersList().toString());
 		}
 		MenuCommand.main(args);

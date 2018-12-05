@@ -11,10 +11,10 @@ public class AddCarDriverCommand {
 
 	public static void main(String[] args) {
 		Driver newDriver = new Driver(args[0], args[1]);
-		SetUpCommand.carFactory.createCar(args[2], newDriver);
+		CarFactory.getInstance().createCar(args[2], newDriver);
 		
 		System.out.println("\nCarID, Owners");
-		for (Car car : CarFactory.getAllCars()) {
+		for (Car car : CarFactory.getInstance().getAllCars()) {
 			System.out.println(car.getCarID()+", "+car.getOwnersList().toString());
 		}
 		

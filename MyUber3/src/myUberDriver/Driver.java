@@ -83,7 +83,7 @@ public class Driver {
 	}
 
 	public void setState(String state) {
-		if (Drivers.possibleStates.contains(state)) {
+		if (Drivers.getInstance().getPossibleStates().contains(state)) {
 			if (this.state.equals(state)) {System.out.println("Error: You are already "+ this.state);}
 			else {this.state = state;}
 		}

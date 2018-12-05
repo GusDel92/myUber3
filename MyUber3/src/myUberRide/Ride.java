@@ -147,7 +147,7 @@ public abstract class Ride implements Request{
 	
 	
 	public void recoverPotentialCars(){
-		for (Car car : CarFactory.getAllCars()){
+		for (Car car : CarFactory.getInstance().getAllCars()){
 			car.accept(this);
 		}
 	}
@@ -221,8 +221,8 @@ public abstract class Ride implements Request{
 				this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
 				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
 				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
-				this.rate=this.customer.giveARate(this);
-				this.driver.computeNewRate(this);
+				//this.rate=this.customer.giveARate(this);
+				//this.driver.computeNewRate(this);
 				MyUberBookOfRides.addRideToTheBook(this);
 				}
 			}
