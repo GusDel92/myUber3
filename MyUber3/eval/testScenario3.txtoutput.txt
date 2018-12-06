@@ -1,4 +1,4 @@
 Vin Diesel has been added and associated to the new berline car.
-Christobal Colom has been added.
+Cristobal Colom has been added.
 Vin Diesel is riding the car berline6 with rides of type uberBlack.
 The ride has been run.

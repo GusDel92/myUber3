@@ -1,7 +1,8 @@
 setup 10 5 5 5
 addCustomer Alan Turing
-addDriver James Hunt 3
+addDriver James Hunt van3
 addCarDriver Michel Turbo berline
+setDriverStatus 4 on-duty
 moveCar 2 25 35
 moveCustomer 1 20 30
 setActualDriverOfACar 1 standard1 uberX
@@ -13,4 +14,4 @@ simRide_i 3 61;4 -1
 displayState
 displayDrivers mostappreciated
 displayDrivers mostoccupied
-end
+//This test shows the general behaviour of the CLUI, as neraly all the commands are prompted.
