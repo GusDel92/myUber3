@@ -1,4 +1,3 @@
-Setup done with 10 standard cars, 5 berlines, 5 vans, 5 customers.
 Alan Turing has been added.
 James Hunt has been added and associated to car van3.
 Michel Turbo has been added and associated to the new berline car.
@@ -9,14 +8,14 @@ The customer 1 has been moved to 20, 30
 driverName1 driverSurname1 is riding the car standard1 with rides of type uberX.
 The driver 21 does not own the car berline6.
 
-There is no available driver for your ride.
-There is no available driver for your ride.
+The ride has been run.
+The ride has been run.
 There is no available driver for your ride.
 The information of the system has been printed.
 
 Drivers sorted by appreciation:
 DriverID, Name, Surname, Number of Rides, Total Amount Cashed
-1, driverName1, driverSurname1, 0, 0.0
+1, driverName1, driverSurname1, 2, 0.0
 2, driverName2, driverSurname2, 0, 0.0
 3, driverName3, driverSurname3, 0, 0.0
 4, driverName4, driverSurname4, 0, 0.0
@@ -36,32 +35,12 @@ DriverID, Name, Surname, Number of Rides, Total Amount Cashed
 18, driverName18, driverSurname18, 0, 0.0
 19, driverName19, driverSurname19, 0, 0.0
 20, driverName20, driverSurname20, 0, 0.0
-21, driverName1, driverSurname1, 0, 0.0
-22, driverName2, driverSurname2, 0, 0.0
-23, driverName3, driverSurname3, 0, 0.0
-24, driverName4, driverSurname4, 0, 0.0
-25, driverName5, driverSurname5, 0, 0.0
-26, driverName6, driverSurname6, 0, 0.0
-27, driverName7, driverSurname7, 0, 0.0
-28, driverName8, driverSurname8, 0, 0.0
-29, driverName9, driverSurname9, 0, 0.0
-30, driverName10, driverSurname10, 0, 0.0
-31, driverName11, driverSurname11, 0, 0.0
-32, driverName12, driverSurname12, 0, 0.0
-33, driverName13, driverSurname13, 0, 0.0
-34, driverName14, driverSurname14, 0, 0.0
-35, driverName15, driverSurname15, 0, 0.0
-36, driverName16, driverSurname16, 0, 0.0
-37, driverName17, driverSurname17, 0, 0.0
-38, driverName18, driverSurname18, 0, 0.0
-39, driverName19, driverSurname19, 0, 0.0
-40, driverName20, driverSurname20, 0, 0.0
-41, James, Hunt, 0, 0.0
-42, Michel, Turbo, 0, 0.0
+21, James, Hunt, 0, 0.0
+22, Michel, Turbo, 0, 0.0
 
 Drivers sorted by occupation:
 DriverID, Name, Surname, Number of Rides, Total Amount Cashed
-1, driverName1, driverSurname1, 0, 0.0
+1, driverName1, driverSurname1, 2, 0.0
 2, driverName2, driverSurname2, 0, 0.0
 3, driverName3, driverSurname3, 0, 0.0
 4, driverName4, driverSurname4, 0, 0.0
@@ -81,25 +60,5 @@ DriverID, Name, Surname, Number of Rides, Total Amount Cashed
 18, driverName18, driverSurname18, 0, 0.0
 19, driverName19, driverSurname19, 0, 0.0
 20, driverName20, driverSurname20, 0, 0.0
-21, driverName1, driverSurname1, 0, 0.0
-22, driverName2, driverSurname2, 0, 0.0
-23, driverName3, driverSurname3, 0, 0.0
-24, driverName4, driverSurname4, 0, 0.0
-25, driverName5, driverSurname5, 0, 0.0
-26, driverName6, driverSurname6, 0, 0.0
-27, driverName7, driverSurname7, 0, 0.0
-28, driverName8, driverSurname8, 0, 0.0
-29, driverName9, driverSurname9, 0, 0.0
-30, driverName10, driverSurname10, 0, 0.0
-31, driverName11, driverSurname11, 0, 0.0
-32, driverName12, driverSurname12, 0, 0.0
-33, driverName13, driverSurname13, 0, 0.0
-34, driverName14, driverSurname14, 0, 0.0
-35, driverName15, driverSurname15, 0, 0.0
-36, driverName16, driverSurname16, 0, 0.0
-37, driverName17, driverSurname17, 0, 0.0
-38, driverName18, driverSurname18, 0, 0.0
-39, driverName19, driverSurname19, 0, 0.0
-40, driverName20, driverSurname20, 0, 0.0
-41, James, Hunt, 0, 0.0
-42, Michel, Turbo, 0, 0.0
+21, James, Hunt, 0, 0.0
+22, Michel, Turbo, 0, 0.0
