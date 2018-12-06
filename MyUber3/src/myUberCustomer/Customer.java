@@ -45,7 +45,8 @@ public class Customer {
 		this.totalTimeSpentOnCar=Duration.ZERO;
 		
 		
-		Customers.getInstance().addCustomer(this);
+		Customers.getInstance();
+		Customers.addCustomer(this);
 	}
 
 	public Customer(String name, String surname, int creditCardNbr) {
@@ -59,7 +60,8 @@ public class Customer {
 		this.totalNumberOfRides=0;
 		this.totalTimeSpentOnCar=Duration.ZERO;
 		
-				Customers.getInstance().addCustomer(this);
+				Customers.getInstance();
+				Customers.addCustomer(this);
 	}
 
 	

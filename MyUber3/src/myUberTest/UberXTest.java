@@ -1,6 +1,6 @@
 package myUberTest;
 
-import java.io.File;
+
 import java.util.ArrayList;
 
 import myUberCar.Car;
@@ -17,7 +17,7 @@ public class UberXTest {
 	public static void main(String[] args) {
 		
 		ArrayList<String> l = new ArrayList<String>();
-		MyUberBookOfRides myUberBookOfRides = new MyUberBookOfRides(l);
+		MyUberBookOfRides myUberBookOfRides = MyUberBookOfRides.getInstance();
 		RideFactory rideFactory = new RideFactory();
 		CarFactory carFactory = new CarFactory();
 		
@@ -35,14 +35,13 @@ public class UberXTest {
 		
 		//asking the coordinates of the destination
 		Coordinates destination=Coordinates.destinationChoice();
-		albert.comparePrices(destination);
+		albert.comparePrices(destination, 6);
 		
 		//albert chooses an uberX ride among the potential ones
-		Ride selectedRide = albert.getPotentialRideOrder().get(0);
-		albert.selectRide(selectedRide);
+		albert.selectRide("uberX");
 		
 		//good beahviour of the  book  of rides
-		System.out.println(MyUberBookOfRides.myUberBookOfRides);
+		System.out.println(MyUberBookOfRides.getInstance().myUberBookOfRides);
 	}
 
 }

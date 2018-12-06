@@ -14,7 +14,7 @@ public class MultiDriversTest {
 
 	public static void main(String[] args) {
 		ArrayList<String> l = new ArrayList<String>();
-		MyUberBookOfRides myUberBookOfRides = new MyUberBookOfRides(l);
+		MyUberBookOfRides myUberBookOfRides = MyUberBookOfRides.getInstance();
 		RideFactory rideFactory = new RideFactory();
 		CarFactory carFactory = new CarFactory();
 		Driver josé = new Driver("José","Josétito");
@@ -28,20 +28,19 @@ public class MultiDriversTest {
 		carlo.connect(car3, "uberBlack");
 		Customer albert = new Customer("Albert","Bébert");
 		Customer marc = new Customer("Marco","Thiebaud");
-		Customer augustin = new Customer("Augustin","Cuignet");
 		Customer marie = new Customer("Marie","Lacoq");
 		Coordinates destination=Coordinates.destinationChoice();
-		albert.comparePrices(destination);
-		albert.selectRide(albert.getPotentialRideOrder().get(0));
+		albert.comparePrices(destination, 12);
+		albert.selectRide("uberBlack");
 		Coordinates destination1=Coordinates.destinationChoice();
-		marie.comparePrices(destination1);
-		marie.selectRide(marie.getPotentialRideOrder().get(1));
+		marie.comparePrices(destination1, 21);
+		marie.selectRide("uberX");
 		Coordinates destination2=Coordinates.destinationChoice();
-		marc.comparePrices(destination2);
-		marc.selectRide(marc.getPotentialRideOrder().get(2));
+		marc.comparePrices(destination2, 21);
+		marc.selectRide("uberVan");
 		Coordinates destination3=Coordinates.destinationChoice();
-		albert.comparePrices(destination3);
-		albert.selectRide(albert.getPotentialRideOrder().get(0));
+		albert.comparePrices(destination3, 21);
+		albert.selectRide("UberPool");
 
 
 	}

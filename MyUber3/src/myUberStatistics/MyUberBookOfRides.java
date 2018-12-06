@@ -13,10 +13,6 @@ private static MyUberBookOfRides instance = new MyUberBookOfRides();
 	public static MyUberBookOfRides getInstance(){
 			
 			return instance;}
-	
-	public MyUberBookOfRides() {
-		this.myUberBookOfRides = new ArrayList<String>() ;
-	}
 
 
 

@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Customers {
 
-	private ArrayList<Customer> customersList = new ArrayList<Customer>();
+	private static ArrayList<Customer> customersList = new ArrayList<Customer>();
 	
 	private static Customers instance = new Customers();
 	
@@ -23,13 +23,14 @@ public class Customers {
 	 * @param customer
 	 * @author Cuignet & Thiébaud
 	 */
-	public void addCustomer(Customer customer) {
+	public static void addCustomer(Customer customer) {
 			
-			Customers.getInstance().customersList.add(customer);
+			Customers.getInstance();
+			Customers.customersList.add(customer);
 			
 	}
 
-	public ArrayList<Customer> getCustomersList() {
+	public static ArrayList<Customer> getCustomersList() {
 		return customersList;
 	}
 

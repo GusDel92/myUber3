@@ -26,7 +26,7 @@ import java.util.List;
 	 * @param driver
 	 * @author Cuignet & Thiébaud
 	 */
-	public void addDriver(Driver driver) {
+	public static void addDriver(Driver driver) {
 			driversList.add(driver);		
 	}
 	
