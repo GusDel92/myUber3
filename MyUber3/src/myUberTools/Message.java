@@ -17,7 +17,7 @@ public class Message {
 	public String text;
 	
 	public Message(String text) {
-		this.messageID=messageCounter;
+		this.setMessageID(messageCounter);
 		messageCounter++;
 		this.text = text;
 	}
@@ -26,16 +26,21 @@ public class Message {
 		return text;
 	}
 	
-	//j'hésite entre ces deux versions
+	public void sendMessage(Customer customer, String text) {
+		Message message = new Message(text);
+		customer.getMessageBox().add(message);
+	}
+
+	public int getMessageID() {
+		return messageID;
+	}
+
+	public void setMessageID(int messageID) {
+		this.messageID = messageID;
+	}
 	
-	//public void sendMessage(Customer customer) {
-		//customer.getMessageBox().add(this);		
-	//}
 	
-//	public void sendMessage(Customer customer, String text) {
-	//	Message message = new Message(text);
-		//customer.getMessageBox().add(message);
-	//}
+
 	
 	
 }

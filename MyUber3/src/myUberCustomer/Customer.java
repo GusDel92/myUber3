@@ -137,8 +137,12 @@ public class Customer {
 	public void setTotalNumberOfRides(int totalNumberOfRides) {
 		this.totalNumberOfRides = totalNumberOfRides;
 	}
-
 	
+	public ArrayList<Message> getMessageBox() {
+		return messageBox;
+	}
+
+
 	/**
 	 * This method allows a customer to compare prices of different type of rides for a given trajectory.
 	 * @param destination

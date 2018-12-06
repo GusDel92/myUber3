@@ -6,7 +6,7 @@ import myUberDriver.Driver;
 
 import org.junit.Test;
 
-public class carTest {
+public class CarTest {
 	
 	@Test
 	public void carAndFactoryTest(){
