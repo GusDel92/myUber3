@@ -29,6 +29,8 @@ public abstract class Car {
 		this.type=type;
 		this.ownersList.add(owner);
 		this.carPosition = new Coordinates();
+		this.currentDriver=null;
+		this.actualTypeOfRideDesiredByDriver=null;
 	}
 	
 	
@@ -88,8 +90,13 @@ public abstract class Car {
 	}
 
 
-	public void setCurrentDriver(Driver currentDriver) {
-		this.currentDriver = currentDriver;
+	public boolean setCurrentDriver(Driver currentDriver) {
+		if(this.ownersList.contains(currentDriver) & this.currentDriver==null) {
+			this.currentDriver = currentDriver;
+			currentDriver.setState("on-duty");
+			return(true);
+		}
+		else {return(false);}
 	}
 
 
@@ -127,8 +134,12 @@ public abstract class Car {
 	}
 
 
-	public void setActualTypeOfRideDesiredByDriver(String actualTypeOfRideDesiredByDriver) {
-		this.actualTypeOfRideDesiredByDriver = actualTypeOfRideDesiredByDriver;
+	public boolean setActualTypeOfRideDesiredByDriver(String actualTypeOfRideDesiredByDriver) {
+		if(this.possibleTypesOfRide.contains(actualTypeOfRideDesiredByDriver)) {
+			this.actualTypeOfRideDesiredByDriver = actualTypeOfRideDesiredByDriver;
+			return(true);
+		}
+		else {return(false);}
 	}
 
 

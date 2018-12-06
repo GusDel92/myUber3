@@ -7,9 +7,10 @@ package myUberTools;
  */
 public class Traffic {
 
-	private static int hour;
+	private int hour;
 	private static double aleatNbr;
 	public String actualTraffic;
+	public double averageSpeed;
 	
 	
 	/**
@@ -17,10 +18,10 @@ public class Traffic {
 	 * @return
 	 * @author Cuignet & Thiébaud
 	 */
-	public static String getTraffic(int hour) {
+	public String getTraffic(int hour) {
 
 		aleatNbr=Math.random();
-		if (hour>=22 & hour<=7) {
+		if (hour>=22 | hour<=7) {
 			if (aleatNbr<=0.95) {return "low-traffic";}
 			else if (aleatNbr<=0.99) {return "medium-traffic";}
 			else {return "heavy-traffic";}
@@ -47,8 +48,15 @@ public class Traffic {
 		return actualTraffic;
 	}
 
+	public double getAverageSpeed() {
+		return averageSpeed;
+	}
+
 	public Traffic() {
 		this.actualTraffic = getTraffic(Date.getHour());
+		if(this.actualTraffic.equals("low-traffic")) {this.averageSpeed=15;}
+		else if(this.actualTraffic.equals("medium-traffic")) {this.averageSpeed=7.5;}
+		else if(this.actualTraffic.equals("heavy-traffic")) {this.averageSpeed=3;}
 	}
 	public Traffic(int hour) {
 		this.actualTraffic = getTraffic(hour);

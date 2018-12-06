@@ -22,13 +22,13 @@ public class ToolsTest {
 		System.out.println(Date.getMinute());}
 		
 	public void trafficTest(){
-		System.out.println(Traffic.getTraffic(5));
-		System.out.println(Traffic.getTraffic(6));
-		System.out.println(Traffic.getTraffic(10));
-		System.out.println(Traffic.getTraffic(15));
-		System.out.println(Traffic.getTraffic(17));
-		System.out.println(Traffic.getTraffic(19));
-		System.out.println(Traffic.getTraffic(22));}
+		System.out.println(new Traffic(5).getActualTraffic());
+		System.out.println(new Traffic(6).getActualTraffic());
+		System.out.println(new Traffic(9).getActualTraffic());
+		System.out.println(new Traffic(12).getActualTraffic());
+		System.out.println(new Traffic(17).getActualTraffic());
+		System.out.println(new Traffic(19).getActualTraffic());
+		System.out.println(new Traffic(22).getActualTraffic());}
 	
 	public void messageText(){
 		Message msg1 = new Message("bonjour myUber");

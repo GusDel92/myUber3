@@ -10,9 +10,9 @@ public class CustomerTest {
 	@Test
 	public void customerTest(){
 		Customer jean = new Customer("Jean", "Dujardin");
-		Customers.addCustomer(jean);
+		Customers.getInstance().addCustomer(jean);
 		System.out.println("Liste des customers : ");
-		System.out.println(Customers.getCustomersList());
+		System.out.println(Customers.getInstance().getCustomersList());
 		System.out.println("ID : " + jean.getCustomerID());
 		System.out.println("tot number of rides : " + jean.getTotalNumberOfRides());
 		

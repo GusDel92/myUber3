@@ -36,7 +36,7 @@ public class CLUI {
 		
 		String[] command = new String[2];
 		command[0] = "init";
-		command[1] = "my_uber.txt";
+		command[1] = "my_uber.ini";
 		nextcommand(command);
 		
 		do {
@@ -123,6 +123,7 @@ public class CLUI {
 				}
 				
 				System.out.println("setup done");
+				return("Setup done with "+nbrOfStandardCars+" standard cars, "+nbrOfBerlineCars+" berlines, "+nbrOfVanCars+" vans, "+nbrOfCustomers+" customers.");
 			}
 			
 			else if(command[0].equalsIgnoreCase( "addCustomer" ) ) {
@@ -166,13 +167,10 @@ public class CLUI {
 			
 			else if(command[0].equalsIgnoreCase( "addDriver" ) ) {
 				String name = command[1]; String surname = command[2]; String carID = command[3];
-				Car car=null;
-				
 				for (Car existingCar : CarFactory.getInstance().getAllCars()) {
-					if (existingCar.getCarID()==carID) {
-						car=existingCar;
+					if (existingCar.getCarID().equals(carID)) {
 						Driver newDriver = new Driver(name, surname);
-						car.addOwner(newDriver);
+						existingCar.addOwner(newDriver);
 						System.out.println(name+" "+surname+" has been added and associated to car "+carID+".");
 						System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
 						for (Driver driver : Drivers.getInstance().getDriversList()) {
@@ -186,22 +184,20 @@ public class CLUI {
 				
 			else if(command[0].equalsIgnoreCase( "setDriverStatus" ) ) {
 				try {
-					boolean done=false;
+
 					int driverID = Integer.parseInt(command[1]); String newState = command[2];
 					for (Driver driver : Drivers.getInstance().getDriversList()) {
 						synchronized(driver.getState()){
 							if (driver.getDriverID()==driverID) {
-								driver.setState(newState);
-								done=true;
-								System.out.println(driver.getName()+" "+driver.getSurname()+" is "+driver.getState()+".");
-								return(driver.getName()+" "+driver.getSurname()+" is "+driver.getState()+".");
+								if(driver.setState(newState)) {
+									System.out.println(driver.getName()+" "+driver.getSurname()+" is "+driver.getState()+".");
+									return(driver.getName()+" "+driver.getSurname()+" is "+driver.getState()+".");
+								}
 							}
 						}
 					}
-					if (done==false){
-						System.out.print("Error: there is no driver with such ID.");
-						return("Error: there is no driver with such ID.");
-					}
+					System.out.print("Error: there is no driver with such ID.");
+					return("Error: there is no driver with such ID.");
 				} 
 				catch (NumberFormatException e) {
 					System.out.println("ERROR: Wrong format of the driverID. Please enter integers.");
@@ -251,7 +247,7 @@ public class CLUI {
 							done=true;
 							}
 						}
-						System.out.println("customerID : "+customer.getCustomerID()+" --> (Longitude : "+customer.getCoordinates().getLongitude()+", Latitude : "+customer.getCoordinates().getLongitude()+")");			
+						System.out.print("\ncustomerID : "+customer.getCustomerID()+" --> (Longitude : "+customer.getCoordinates().getLongitude()+", Latitude : "+customer.getCoordinates().getLatitude()+")");			
 					}
 						
 					
@@ -259,8 +255,8 @@ public class CLUI {
 						System.out.print("Error: there is no customer with such ID.");
 						return("Error: there is no customer with such ID.");
 					}
-					else {System.out.println("The customer "+customerID+" has been moved to "+newX+", "+newY);
-						return("The customer "+customerID+" has been moved to "+newX+", "+newY);}
+					else {System.out.println("\nThe customer "+customerID+" has been moved to "+newX+", "+newY);
+						return("\nThe customer "+customerID+" has been moved to "+newX+", "+newY);}
 				} catch (NumberFormatException e) {
 					System.out.println("ERROR: Wrong format of a parameter. Please enter integers.");
 					return("ERROR: Wrong format of a parameter. Please enter integers.");
@@ -283,12 +279,11 @@ public class CLUI {
 				//Cars Information
 				System.out.println("\nCarID, Owners");
 				for (Car car : CarFactory.getInstance().getAllCars()) {
-					String owners= "";
+					String owners = "";
 					for(Driver owner : car.getOwnersList()) {
-						owners.concat(", ").concat(owner.getName()).concat(" ").concat(owner.getSurname());
-						System.out.println(owners);
+						owners=owners+owner.getName()+" "+owner.getSurname()+". ";
 					}	
-					System.out.println(car.getCarID()+owners);	
+					System.out.println(car.getCarID()+": "+owners);	
 				}
 				return("The information of the system has been printed.");
 			}
@@ -338,15 +333,19 @@ public class CLUI {
 								customer.comparePrices(dest,time);
 								//Selecting the ride
 								Ride selectedRide = customer.selectRide(typeOfTheRide);
-								//Giving the mark
-								selectedRide.setRate(mark);
-								selectedRide.getDriver().computeNewRate(selectedRide);
-								done=true;
-								return("The ride has been run.");
+								if(selectedRide.getStatus()=="confirmed") {
+									//Giving the mark
+									selectedRide.setRate(mark);
+									selectedRide.getDriver().computeNewRate(selectedRide);
+									done=true;
+									System.out.println("The ride has been run.");
+									return("The ride has been run.");
+								}
+							System.out.println("There is no available driver for your ride. Please try again.");
+							return("There is no available driver for your ride.");
 							}
 						}
 					}
-					
 					if (done==false){
 						System.out.print("Error: there is no customer with such ID.");
 						return("Error: there is no customer with such ID.");
@@ -397,10 +396,12 @@ public class CLUI {
 			else if (command[0].equalsIgnoreCase("displayDrivers")) {
 				try {
 					String sortPolicy = command[1];
-					if (sortPolicy == "mostappreciated"){
-						DriverBalance.mostAppreciatedDriver();}
-					else if (sortPolicy == "mostoccupied"){
-						DriverBalance.leastOccupiedDriver();}
+					if (sortPolicy.equals("mostappreciated")){
+						System.out.println(DriverBalance.mostAppreciatedDriver());
+						return(DriverBalance.mostAppreciatedDriver());}
+					else if (sortPolicy.equals("mostoccupied")){
+						System.out.println(DriverBalance.leastOccupiedDriver());
+						return(DriverBalance.leastOccupiedDriver());}
 					else {System.out.println("Wrong parameter. Try 'mostappreciated' or 'mostoccupied'");}} 
 				catch (Exception e) {
 					System.out.println("Failed to display driver command.");
@@ -411,14 +412,37 @@ public class CLUI {
 				try {
 					String sortPolicy = command[1];
 					if (sortPolicy == "mostfrequent"){
-						CustomerBalance.mostFrequentCustomer();}
+						System.out.println(CustomerBalance.mostFrequentCustomer());
+						return(CustomerBalance.mostFrequentCustomer());}
 					else if (sortPolicy == "mostcharged"){
-						CustomerBalance.mostChargedCustomer();}
+						System.out.println(CustomerBalance.mostChargedCustomer());
+						return(CustomerBalance.mostChargedCustomer());}
 					else {System.out.println("Wrong parameter. Try 'mostfrequent' or 'mostchargeded'");}
 				} catch (Exception e) {
 					System.out.println("There has been a problem. Please try again.");
 				}
-			} 
+			}
+			
+			else if (command[0].equalsIgnoreCase("setActualDriver")) {
+				int driverID = Integer.parseInt(command[1]); String carID = command[2] ; String desiredTypeOfRide = command[3];
+				for(Car existingCar : CarFactory.getInstance().getAllCars()) {
+					if(existingCar.getCarID().equals(carID)) {
+						for(Driver owner : existingCar.getOwnersList()) {
+							if(owner.getDriverID()==driverID) {
+								if (existingCar.setCurrentDriver(owner) & existingCar.setActualTypeOfRideDesiredByDriver(desiredTypeOfRide)) {
+									System.out.println(owner.getName()+" "+owner.getSurname()+" is "+owner.getState()+", riding the car "+existingCar.getCarID()+" with rides of type "+existingCar.getActualTypeOfRideDesiredByDriver()+".");
+									return(owner.getName()+" "+owner.getSurname()+" is riding the car "+existingCar.getCarID()+" with rides of type "+existingCar.getActualTypeOfRideDesiredByDriver()+".");
+								}
+								else {System.out.println("That car cannot perform "+desiredTypeOfRide+ " rides."); return("That car cannot perform "+desiredTypeOfRide+ " rides.");} 
+							}
+						}
+						System.out.println("The driver "+driverID+" does not own the car "+carID+", or the car is already being driven.");
+						return("The driver "+driverID+" does not own the car "+carID+".");
+					}
+				}
+				System.out.print("ERROR: There is no car with ID "+carID+".");
+				return("ERROR: There is no car with ID "+carID+".");
+			}
 			
 	    	else if (command[0].equalsIgnoreCase("exit")){
 	    		
@@ -431,11 +455,9 @@ public class CLUI {
 	    	else if (command[0].equalsIgnoreCase("init")) { 
 	    		try {
 					String file = command[1];
-					System.out.println("BLI");
 					ArrayList<String[]> commands = new ArrayList<String[]>();
 					ArrayList<String> answers = new ArrayList<String>();
 					InputStream fis = new FileInputStream("eval/"+file);
-					System.out.println("BLOU");
 					@SuppressWarnings("resource")
 					Scanner sc = new Scanner(fis);
 					String s = sc.nextLine();
@@ -455,7 +477,7 @@ public class CLUI {
 						answers.add(r);
 					}
 					
-					if (!file.equalsIgnoreCase("my_uber.txt")) {	
+					if (!file.equalsIgnoreCase("my_uber.ini")) {	
 						PrintWriter writer = new PrintWriter("eval/" + file + "output.txt", "UTF-8");
 						
 						for (String answer : answers) {

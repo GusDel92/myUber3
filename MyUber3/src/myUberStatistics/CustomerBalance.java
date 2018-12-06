@@ -4,6 +4,8 @@ import myUberCustomer.Customer;
 import java.time.Duration;
 import java.util.Collections;
 import myUberCustomer.Customers;
+import myUberDriver.Driver;
+import myUberDriver.Drivers;
 
 
 
@@ -35,28 +37,31 @@ public class CustomerBalance {
 
 	/**
 	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 * @return 
 	 */
-	public static void mostChargedCustomer(){
+	public static String mostChargedCustomer(){
 		Collections.sort(Customers.getInstance().getCustomersList(), Customer.TotalAmountOfCashComparator);
-		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
+		String sort = "\nCustomers sorted by charges:";
+		sort=sort+"\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent";
 		for (Customer customer : Customers.getInstance().getCustomersList()) {
-					System.out.println(customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent());
-	}
+			sort=sort+"\n"+customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent();
+			}
+		return(sort);
 
 }
 
-
-
 	/**
 	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 * @return 
 	 */
-	public static void mostFrequentCustomer(){
+	public static String mostFrequentCustomer(){
 		Collections.sort(Customers.getInstance().getCustomersList(), Customer.TotalNumberOfRidesComparator);
-		System.out.println("\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent");
+		String sort = "\nCustomers sorted by frequency:";
+		sort=sort+"\nCustomerID, Name, Surname, Number of Rides, Total Cash Spent";
 		for (Customer customer : Customers.getInstance().getCustomersList()) {
-			System.out.println(customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent());
-		}
-	
+			sort=sort+"\n"+customer.getCustomerID() + ", "+customer.getName()+", "+customer.getSurname()+", "+customer.getTotalNumberOfRides()+", "+customer.getTotalAmountOfCashSpent();
+			}
+		return(sort);
 	}
 	
 }

@@ -82,12 +82,15 @@ public class Driver {
 		return state;
 	}
 
-	public void setState(String state) {
+	public boolean setState(String state) {
 		if (Drivers.getInstance().getPossibleStates().contains(state)) {
-			if (this.state.equals(state)) {System.out.println("Error: You are already "+ this.state);}
-			else {this.state = state;}
+			if (this.state.equals(state)) {System.out.println("Error: You are already "+ this.state);return(false);}
+			else {
+				if(state.equals("offline")){this.actualCar.setCurrentDriver(null);}
+				this.state = state;
+				return(true);}
 		}
-		else {System.out.println("The state "+state+" does not exist.");}
+		else {System.out.println("The state "+state+" does not exist.");return(false);}
 	}
 	
 	public Car getActualCar() {

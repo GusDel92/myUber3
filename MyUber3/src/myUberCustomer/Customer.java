@@ -46,7 +46,7 @@ public class Customer {
 		
 		
 		Customers.getInstance();
-		Customers.addCustomer(this);
+		Customers.getInstance().addCustomer(this);
 	}
 
 	public Customer(String name, String surname, int creditCardNbr) {
@@ -61,7 +61,7 @@ public class Customer {
 		this.totalTimeSpentOnCar=Duration.ZERO;
 		
 				Customers.getInstance();
-				Customers.addCustomer(this);
+				Customers.getInstance().addCustomer(this);
 	}
 
 	
@@ -158,6 +158,7 @@ public class Customer {
 			Coordinates departure = this.getCoordinates();
 			for (String typeOfRide : RideFactory.getInstance().getTypeOfRides()) {
 				Ride ride = RideFactory.createRide(typeOfRide, departure, destination, traffic);
+				ride.setCustomer(this);
 				this.potentialRideOrder.add(ride);
 				ride.computePrice();
 				System.out.println("The price for an "+typeOfRide+" ride is "+ride.getPrice()+"€.");

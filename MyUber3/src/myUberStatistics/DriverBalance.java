@@ -25,25 +25,31 @@ public class DriverBalance {
 	
 	/**
 	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 * @return 
 	 */
-	public static void leastOccupiedDriver(){
+	public static String leastOccupiedDriver(){
 		Collections.sort(Drivers.getInstance().getDriversList(), Driver.OccupationComparator);
-		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
+		String sort = "\nDrivers sorted by occupation:";
+		sort=sort+"\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed";
 		for (Driver driver : Drivers.getInstance().getDriversList()) {
-			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed());
+			sort=sort+"\n"+driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed();
 			}
+		return(sort);
 		}
 	
 		
 	/**
 	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.
+	 * @return 
 	 */
-	public static void mostAppreciatedDriver(){
+	public static String mostAppreciatedDriver(){
 		Collections.sort(Drivers.getInstance().getDriversList(), Driver.AppreciationComparator);
-		System.out.println("\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed");
+		String sort = "\nDrivers sorted by appreciation:";
+		sort=sort+"\nDriverID, Name, Surname, Number of Rides, Total Amount Cashed";
 		for (Driver driver : Drivers.getInstance().getDriversList()) {
-			System.out.println(driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed());
-		}
+			sort=sort+"\n"+driver.getDriverID() + ", "+driver.getName()+", "+driver.getSurname()+", "+driver.getTotalNumberOfRides()+", "+driver.getTotalAmountCashed();
+			}
+		return(sort);
 	}
 		
 	public static void totalAmountOfMoneyCashedByAllTheDrivers(Drivers drivers){

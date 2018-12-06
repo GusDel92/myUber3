@@ -23,24 +23,27 @@ public class UberX extends Ride {
 
 	@Override
 	public void visit(StandardCar standardCar) {
-		if (standardCar.getCurrentDriver().getState() == "on-duty" & standardCar.getActualTypeOfRideDesiredByDriver() == "uberX"){
-			this.potentialCars.add(standardCar);}
-		else {}
+		if(standardCar.getCurrentDriver()!=null & standardCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (standardCar.getCurrentDriver().getState().equalsIgnoreCase("on-duty") & standardCar.getActualTypeOfRideDesiredByDriver().equals("uberX")){
+				this.potentialCars.add(standardCar);}
+		}
 	}
 
 	
 	@Override
 	public void visit(BerlineCar berlineCar) {
-		if (berlineCar.getCurrentDriver().getState() == "on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver() == "uberVan"){
-			this.potentialCars.add(berlineCar);}
-		else {}
+		if(berlineCar.getCurrentDriver()!=null & berlineCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (berlineCar.getCurrentDriver().getState() == "on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver() == "uberVan"){
+				this.potentialCars.add(berlineCar);}
+		}
 	}
 
 	@Override
 	public void visit(VanCar vanCar) {
-		if (vanCar.getCurrentDriver().getState() == "on-duty" & vanCar.getActualTypeOfRideDesiredByDriver() == "uberStandard"){
-			this.potentialCars.add(vanCar);}
-		else {}
+		if(vanCar.getCurrentDriver()!=null & vanCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (vanCar.getCurrentDriver().getState() == "on-duty" & vanCar.getActualTypeOfRideDesiredByDriver() == "uberStandard"){
+				this.potentialCars.add(vanCar);}
+		}
 	}
 
 }

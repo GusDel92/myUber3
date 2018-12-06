@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import myUberCar.Car;
 import myUberCar.CarFactory;
@@ -40,6 +41,7 @@ public abstract class Ride implements Request{
 	public double rateLowTraffic;
 	public double rateMediumTraffic;
 	public double rateHeavyTraffic;
+	public double speed;
 	public PoolRequest request;
 	
 	
@@ -50,6 +52,8 @@ public abstract class Ride implements Request{
 		this.destination = destination;
 		this.traffic = traffic;
 		this.length = departure.distanceTo(destination);
+		this.speed=traffic.getAverageSpeed();
+		this.duration=Duration.ofSeconds((long) (this.length/this.speed * TimeUnit.DAYS.toSeconds(1))); 
 	}
 
 	public int getNbrOfPassengers() {
@@ -141,10 +145,6 @@ public abstract class Ride implements Request{
 		//on donne le prix
 		this.price=this.basicRate*this.length*this.trafficRate;
 	}
-	//ajouter dans le main une liste des string de classes concrètes de rides dispos, créer une instance de chaque ride avec juste les coordonnées de départ et d'arrivée et le même traffic; cela est possible seulement si on calcule le traffic avant d'instancier les différentes rides.
-	//en améliorant la factory (abstract factory?) on peut faire en sorte que cette liste grandisse toute seule quand on crée une nouvelle sous classe de Ride
-
-	
 	
 	public void recoverPotentialCars(){
 		for (Car car : CarFactory.getInstance().getAllCars()){
@@ -170,32 +170,34 @@ public abstract class Ride implements Request{
 	
 	public void proposeRideToDrivers() {
 		this.recoverPotentialCars();
-		//System.out.print(this.potentialCars.get(0).getCurrentDriver().getDriverID()+this.potentialCars.get(1).getCurrentDriver().getDriverID()+this.potentialCars.get(2).getCurrentDriver().getDriverID());
 		this.sortPotentialCars();
-		while (this.status=="unconfirmed") {	
-			for (Car potentialCar : this.potentialCars) {
+		//if(this.potentialCars.isEmpty()) {System.out.println("There is no available driver for your ride. Please try again.");return;}
+		//else{
+			while (this.status=="unconfirmed" & !potentialCars.isEmpty()) {
+				Car potentialCar = this.potentialCars.get(0);
 				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
 					Scanner sc = new Scanner(System.in);
 					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ? (true or false)"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
-					Boolean answer = sc.nextBoolean();
-					//sc.close();
-					if (answer==true){
-						PoolRequests.deleteRequest(this.request);
-						this.driver=potentialCar.getCurrentDriver();
-						this.status="confirmed";
-						this.car=potentialCar;
-						this.driver.setState("on-a-ride");
-						this.manageRide();
-						potentialCars.removeAll(potentialCars);
-						break;
+					if(sc.hasNextBoolean()) {
+						Boolean answer = sc.nextBoolean();					
+						//sc.close();
+						if (answer==true){
+							this.driver=potentialCar.getCurrentDriver();
+							this.status="confirmed";
+							this.car=potentialCar;
+							this.driver.setState("on-a-ride");
+							this.manageRide();
+							potentialCars.removeAll(potentialCars);
+							return;
+						}
+						else if (answer==false) {
+							potentialCars.remove(potentialCar);
+						}
 					}
-					
+					else {System.out.println("ERROR: Please enter true or false.");}
 				}
-				
 			}
-		}
-		//System.out.println("There is no available driver for your ride. Please try again.");
-		}
+	}
 			
 			
 	
@@ -203,29 +205,30 @@ public abstract class Ride implements Request{
 	public void manageRide() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Client " + this.getCustomer().getName()+" picked up ? (answer true when it is done)");
-		//System.out.println("Client "+this.getCustomer().getSurname()+" récupéré ?");
-		Boolean answer = sc.nextBoolean();
-		if (answer==true) {
-			
-			this.driver.setState("on-a-ride");
-			LocalDateTime departureTime = LocalDateTime.now();
-			this.setStatus("ongoing");
-			System.out.println("Client " + this.getCustomer().getName()+" dropped off ? (answer true when it is done)");
-			Boolean answer2 = sc.nextBoolean();
-			if (answer2==true) {
-				this.setStatus("completed");
-				this.driver.setState("on-duty");
-				this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
-				this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
-				this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
-				this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
-				this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
-				this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
-				//this.rate=this.customer.giveARate(this);
-				//this.driver.computeNewRate(this);
-				MyUberBookOfRides.addRideToTheBook(this);
+		if(sc.hasNextBoolean()) {
+			Boolean answer = sc.nextBoolean();
+			if (answer==true) {
+				LocalDateTime departureTime = LocalDateTime.now();
+				this.setStatus("ongoing");
+				System.out.println("Client " + this.getCustomer().getName()+" dropped off ? (answer true when it is done)");
+				if(sc.hasNextBoolean()) {
+					Boolean answer2 = sc.nextBoolean();
+					if (answer2==true) {
+						this.setStatus("completed");
+						this.driver.setState("on-duty");
+						this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
+						this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
+						this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
+						this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
+						this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
+						this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
+						//this.rate=this.customer.giveARate(this);
+						//this.driver.computeNewRate(this);
+						MyUberBookOfRides.addRideToTheBook(this);
+					}
 				}
 			}
+		}
 		//sc.close();
 	}
 

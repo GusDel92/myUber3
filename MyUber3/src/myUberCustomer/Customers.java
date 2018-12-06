@@ -23,14 +23,14 @@ public class Customers {
 	 * @param customer
 	 * @author Cuignet & Thiébaud
 	 */
-	public static void addCustomer(Customer customer) {
+	public void addCustomer(Customer customer) {
 			
 			Customers.getInstance();
 			Customers.customersList.add(customer);
 			
 	}
 
-	public static ArrayList<Customer> getCustomersList() {
+	public ArrayList<Customer> getCustomersList() {
 		return customersList;
 	}
 
@@ -38,7 +38,5 @@ public class Customers {
 		Customers.getInstance().customersList = customersList;
 	}
 
-	public static void setInstance(Customers instance) {
-		Customers.instance = instance;
-	}
+
 }

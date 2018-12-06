@@ -1,1 +1,2 @@
 setup 2 3 2 6
+setup 3 4 2 4
