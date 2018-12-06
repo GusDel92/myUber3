@@ -91,7 +91,7 @@ public abstract class Car {
 
 
 	public boolean setCurrentDriver(Driver currentDriver) {
-		if(this.ownersList.contains(currentDriver) & this.currentDriver==null) {
+		if(this.ownersList.contains(currentDriver) & (this.currentDriver==null|this.currentDriver==currentDriver)) {
 			this.currentDriver = currentDriver;
 			currentDriver.setState("on-duty");
 			return(true);

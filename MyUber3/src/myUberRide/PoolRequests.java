@@ -3,7 +3,7 @@ package myUberRide;
 import java.util.ArrayList;
 
 public class PoolRequests {
-	static ArrayList<PoolRequest> currentRequests = new ArrayList<PoolRequest>();
+	private ArrayList<PoolRequest> currentRequests = new ArrayList<PoolRequest>();
 	private static PoolRequests instance = new PoolRequests();
 	
 	public static PoolRequests getInstance(){
@@ -11,7 +11,7 @@ public class PoolRequests {
 			return instance;
 	}
 	
-	public static PoolRequest createRequest(Ride ride) {
+	public PoolRequest createRequest(Ride ride) {
 		PoolRequest request = new PoolRequest();
 		currentRequests.add(request);
 		request.ridesOfTheRequest.add(ride);
@@ -20,21 +20,16 @@ public class PoolRequests {
 		return request;
 	}
 	
-	public static void deleteRequest(PoolRequest request) {
-		PoolRequests.currentRequests.remove(request);
+	public void deleteRequest(PoolRequest request) {
+		PoolRequests.getInstance().currentRequests.remove(request);
 	}
 	
-	//on essaie de mettre la ride dans une request existante; il peut y avoir un pb de thread si un driver accepte la request au moment où une ride s'y ajoute. Solution: n'envoyer que les Request "complètes" (soit 4 personnes soit 3 Ride dedans). Facile à faire, il suffit de modifier cete méthode.
-	public static void manageNewRide(UberPool ride) {
+	//on essaie de mettre la ride dans une request existante
+	public void manageNewRide(UberPool ride) {
 		ride.setStatus("not yet unconfirmed");
-		//int n=currentRequests.size();
-		for (PoolRequest existingRequest : currentRequests) {
-		//for (int i=0;i<=n-1;i++) {
-			//while (ride.getStatus()!="unconfirmed") {
-			//PoolRequest existingRequest = currentRequests.get(i);
+		for (PoolRequest existingRequest : PoolRequests.getInstance().currentRequests) {
 			if (existingRequest.addRide(ride)==true){
 			ride.setRequest(existingRequest);
-			//existingRequest.proposeRequestToDrivers();
 			}
 			if (existingRequest.getRidesOfTheRequest().size()==3 || existingRequest.getTotalNbrOfPassengers()==4) {
 				existingRequest.proposeRequestToDrivers();
@@ -42,9 +37,8 @@ public class PoolRequests {
 				}
 		}
 		if (ride.getStatus()!="unconfirmed") {
-			PoolRequest nouvelleRequest=createRequest(ride);
+			PoolRequest nouvelleRequest=PoolRequests.getInstance().createRequest(ride);
 			ride.setRequest(nouvelleRequest);
-			//nouvelleRequest.proposeRequestToDrivers();
 			} //si la ride n'a pas trouvé de place dans les request existantes, on en crée une nouvelle.
 		}
 }

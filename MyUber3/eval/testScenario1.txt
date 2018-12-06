@@ -1,2 +1,16 @@
-setup 2 3 2 6
-setup 3 4 2 4
+setup 10 5 5 5
+addCustomer Alan Turing
+addDriver James Hunt 3
+addCarDriver Michel Turbo berline
+moveCar 2 25 35
+moveCustomer 1 20 30
+setActualDriverOfACar 1 standard1 uberX
+setActualDriverOfACar 21 berline6 uberBlack
+ask4price 1 45;82 12
+simRide 1 45;82 2 uberX 5
+simRide 2 22;33 -1 uberX 3
+simRide_i 3 61;4 -1
+displayState
+displayDrivers mostappreciated
+displayDrivers mostoccupied
+end

@@ -21,7 +21,10 @@ public class DriverBalance {
 	
 	public static double rateOfActivity(Driver driver){return 1 - driver.getTotalOffDutyTime().getSeconds()/driver.getTotalInCarTime().getSeconds();};
 	
-	public static double occupationRate(Driver driver){return driver.getTotalOnDutyTime().getSeconds()/driver.getTotalDrivingCustomersTime().plus(driver.getTotalOnDutyTime()).getSeconds(); };
+	public static double occupationRate(Driver driver){
+		if(driver.getTotalDrivingCustomersTime().plus(driver.getTotalOnDutyTime()).getSeconds()==0) {return(0);}
+		else {return driver.getTotalOnDutyTime().getSeconds()/driver.getTotalDrivingCustomersTime().plus(driver.getTotalOnDutyTime()).getSeconds();}
+		}
 	
 	/**
 	 * This sorting method uses the Collections class, and the comparators instantiated in the driver class.

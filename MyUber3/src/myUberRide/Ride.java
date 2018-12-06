@@ -152,7 +152,7 @@ public abstract class Ride implements Request{
 		}
 	}
 	
-	public void sortPotentialCars() {
+	public ArrayList<Car> sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=0;i<=n;i++) {
 			for (int j=1;j<=n-2;j++) {
@@ -166,72 +166,84 @@ public abstract class Ride implements Request{
 				}
 			}
 		}
+		return potentialCars;
 	}
 	
 	public void proposeRideToDrivers() {
 		this.recoverPotentialCars();
-		this.sortPotentialCars();
-		//if(this.potentialCars.isEmpty()) {System.out.println("There is no available driver for your ride. Please try again.");return;}
-		//else{
-			while (this.status=="unconfirmed" & !potentialCars.isEmpty()) {
-				Car potentialCar = this.potentialCars.get(0);
-				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
-					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ? (true or false)"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
-					if(sc.hasNextBoolean()) {
-						Boolean answer = sc.nextBoolean();					
-						//sc.close();
-						if (answer==true){
-							this.driver=potentialCar.getCurrentDriver();
-							this.status="confirmed";
-							this.car=potentialCar;
-							this.driver.setState("on-a-ride");
-							this.manageRide();
-							potentialCars.removeAll(potentialCars);
-							return;
-						}
-						else if (answer==false) {
-							potentialCars.remove(potentialCar);
-						}
+		potentialCars=this.sortPotentialCars();
+		while (this.status=="unconfirmed" & !potentialCars.isEmpty()) {
+			Car potentialCar = this.potentialCars.get(0);
+			if (potentialCar.getCurrentDriver().getState()=="on-duty") {
+				Scanner sc = new Scanner(System.in);
+				System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an "+this.type+" ride ? (true or false)"); //from"+this.departure.getLatitude()+", "+this.departure.getLongitude()+" to "+this.destination.getLatitude()+", "+this.destination.getLongitude()+" ?");
+				if(sc.hasNextBoolean()) {
+					Boolean answer = sc.nextBoolean();					
+					if (answer==true){
+						this.driver=potentialCar.getCurrentDriver();
+						this.status="confirmed";
+						this.car=potentialCar;
+						this.driver.setState("on-a-ride");
+						potentialCars.removeAll(potentialCars);
+						if(this.manageRide()) {this.driver.setState("on-duty");}
+						else {System.out.println("ERROR: Could not manage the ride.");}
+						return;
 					}
-					else {System.out.println("ERROR: Please enter true or false.");}
+					else if (answer==false) {
+						potentialCars.remove(potentialCar);
+					}
 				}
+				else {System.out.println("ERROR: Please enter true or false.");}
 			}
+		}
 	}
 			
 			
 	
 	
-	public void manageRide() {
+	public boolean manageRide() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Client " + this.getCustomer().getName()+" picked up ? (answer true when it is done)");
 		if(sc.hasNextBoolean()) {
 			Boolean answer = sc.nextBoolean();
 			if (answer==true) {
-				LocalDateTime departureTime = LocalDateTime.now();
-				this.setStatus("ongoing");
-				System.out.println("Client " + this.getCustomer().getName()+" dropped off ? (answer true when it is done)");
-				if(sc.hasNextBoolean()) {
-					Boolean answer2 = sc.nextBoolean();
-					if (answer2==true) {
-						this.setStatus("completed");
-						this.driver.setState("on-duty");
-						this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
-						this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
-						this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
-						this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
-						this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
-						this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
-						//this.rate=this.customer.giveARate(this);
-						//this.driver.computeNewRate(this);
-						MyUberBookOfRides.addRideToTheBook(this);
-					}
-				}
+				whenPicked();
 			}
+			else {manageRide();}
 		}
-		//sc.close();
+		else {manageRide();}
+		return true;
 	}
 
+	public void whenPicked() {
+		LocalDateTime departureTime = LocalDateTime.now();
+		this.setStatus("ongoing");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Client " + this.getCustomer().getName()+" dropped off ? (answer true when it is done)");
+		if(sc.hasNextBoolean()) {
+			Boolean answer2 = sc.nextBoolean();
+			if (answer2==true) {
+				whenDropped(departureTime);
+			}
+			else {whenPicked();}
+		}
+		else {whenPicked();}
+	}
+	
+	public void whenDropped(LocalDateTime departureTime) {
+		this.setStatus("completed");
+		this.setDuration(Duration.between(departureTime, LocalDateTime.now()));
+		this.driver.setTotalDrivingCustomersTime(this.driver.getTotalDrivingCustomersTime().plus(this.duration));
+		this.customer.setTotalTimeSpentOnCar(this.customer.getTotalTimeSpentOnCar().plus(this.duration));
+		this.customer.setTotalAmountOfCashSpent(this.customer.getTotalAmountOfCashSpent() + this.price);
+		this.getCustomer().setTotalNumberOfRides(this.customer.getTotalNumberOfRides()+1);
+		this.getDriver().setTotalNumberOfRides(this.driver.getTotalNumberOfRides()+1);
+		//this.rate=this.customer.giveARate(this);
+		//this.driver.computeNewRate(this);
+		MyUberBookOfRides.addRideToTheBook(this);
+		return;
+	}
+	
 	public double getRate() {
 		return rate;
 	}

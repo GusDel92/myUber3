@@ -102,7 +102,7 @@ public class PoolRequest implements Request{
 	}
 	
 	
-	public void sortPotentialCars() {
+	public ArrayList<Car> sortPotentialCars() {
 		int n = potentialCars.size();
 		for (int i=1;i<=n;i++) {
 			for (int j=1;j<=n-2;j++) {
@@ -116,66 +116,71 @@ public class PoolRequest implements Request{
 				}
 			}
 		}
+		return(potentialCars);
 	}
 
 	
 	public void proposeRequestToDrivers(){
-		PoolRequests.currentRequests.remove(this);
 		this.recoverPotentialCars();
-		this.sortPotentialCars();
-		while (this.status=="unconfirmed") {	
-			for (Car potentialCar : this.potentialCars) {
-				if (potentialCar.getCurrentDriver().getState()=="on-duty") {
-					Scanner sc = new Scanner(System.in);
-					System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an UberPool ride ?");
+		potentialCars=this.sortPotentialCars();
+		while (this.status=="unconfirmed" & !potentialCars.isEmpty()) {	
+			Car potentialCar = this.potentialCars.get(0);
+			if (potentialCar.getCurrentDriver().getState()=="on-duty") {
+				Scanner sc = new Scanner(System.in);
+				System.out.println(potentialCar.getCurrentDriver().getName()+" do you want to take an UberPool ride ?");
+				if(sc.hasNextBoolean()) {
 					Boolean answer = sc.nextBoolean();
-					//Thread.sleep(10000);
 					if (answer==true){
-						PoolRequests.deleteRequest(this);
-						this.car=potentialCar;
 						this.status="confirmed";
-						this.driver=this.car.getCurrentDriver();
+						this.driver=potentialCar.getCurrentDriver();
 						this.driver.setState("on-a-ride");
 						for (Ride ride : ridesOfTheRequest) {
 							ride.setCar(potentialCar);
 							ride.setStatus("confirmed");
-							ride.setDriver(this.car.getCurrentDriver());
-							ride.getDriver().setState("on-a-ride");
+							ride.setDriver(potentialCar.getCurrentDriver());
 							ride.manageRide();}
-						//potentialCars.removeAll(potentialCars);
-						break;
+						potentialCars.removeAll(potentialCars);
+						this.driver.setState("on-duty");
+						return;
 					}
-					
+					else if (answer==false) {
+						potentialCars.remove(potentialCar);
+					}
 				}
+				else {System.out.println("ERROR: Please enter true or false.");}
 			}
-			//System.out.println("There is no available driver for your ride. Please try again.");
-			
-		}	
+		}
+	}	
 		
-	}
+
 
 	@Override
 	public void visit(StandardCar standardCar) {
-		if (standardCar.getCurrentDriver().getState()=="on-duty" & standardCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
-			this.potentialCars.add(standardCar);
+		if(standardCar.getCurrentDriver()!=null & standardCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (standardCar.getCurrentDriver().getState().equalsIgnoreCase("on-duty") & standardCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+				this.potentialCars.add(standardCar);
+			}
+			else {}
 		}
-		else {}
 	}
-
+		
 	@Override
 	public void visit(BerlineCar berlineCar) {
-		if (berlineCar.getCurrentDriver().getState()=="on-duty" & berlineCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
-			this.potentialCars.add(berlineCar);
+		if(berlineCar.getCurrentDriver()!=null & berlineCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (berlineCar.getCurrentDriver().getState().equalsIgnoreCase("on-duty") & berlineCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+				this.potentialCars.add(berlineCar);
+			}
+			else {}
 		}
-		else {}
 	}
-
+		
 	@Override
 	public void visit(VanCar vanCar) {
-		if (vanCar.getCurrentDriver().getState()=="on-duty" & vanCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
-			this.potentialCars.add(vanCar);
+		if(vanCar.getCurrentDriver()!=null & vanCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (vanCar.getCurrentDriver().getState().equalsIgnoreCase("on-duty") & vanCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("UBERPOOL")) {
+				this.potentialCars.add(vanCar);
+			}
+			else {}
 		}
-		else {}
 	}
-	
 }

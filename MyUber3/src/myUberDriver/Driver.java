@@ -41,7 +41,6 @@ public class Driver {
 		this.totalOffDutyTime=Duration.ZERO;
 		this.totalOnDutyTime=Duration.ZERO;
 		this.totalDrivingCustomersTime=Duration.ZERO;
-		
 		Drivers.getInstance().addDriver(this);
 	}
 
@@ -84,7 +83,7 @@ public class Driver {
 
 	public boolean setState(String state) {
 		if (Drivers.getInstance().getPossibleStates().contains(state)) {
-			if (this.state.equals(state)) {System.out.println("Error: You are already "+ this.state);return(false);}
+			if (this.state.equals(state)) {System.out.println("Error: The driver "+this.name+" is already "+ this.state);return(true);}
 			else {
 				if(state.equals("offline")){this.actualCar.setCurrentDriver(null);}
 				this.state = state;

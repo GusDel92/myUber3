@@ -29,11 +29,7 @@ public class UberPool extends Ride {
 	
 	@Override
 	public void proposeRideToDrivers() {
-		PoolRequests.manageNewRide(this);
-		//request.proposeRequestToDrivers(request);
-		//System.out.println("There is no available driver for your ride. Please try again.");
-			//supprimer la ride
-			
+		PoolRequests.getInstance().manageNewRide(this);
 	}
 
 

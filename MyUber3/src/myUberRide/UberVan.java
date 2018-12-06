@@ -32,8 +32,10 @@ public class UberVan extends Ride {
 
 	@Override
 	public void visit(VanCar vanCar) {
-		if (vanCar.getCurrentDriver().getState() == "on-duty" & vanCar.getActualTypeOfRideDesiredByDriver() == "uberVan"){
-			this.potentialCars.add(vanCar);}
-		else {}
+		if(vanCar.getCurrentDriver()!=null & vanCar.getActualTypeOfRideDesiredByDriver()!=null) {
+			if (vanCar.getCurrentDriver().getState().equalsIgnoreCase("on-duty") & vanCar.getActualTypeOfRideDesiredByDriver().equalsIgnoreCase("uberVan")){
+				this.potentialCars.add(vanCar);}
+			else {}
+		}
 	}
 }

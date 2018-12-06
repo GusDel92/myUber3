@@ -178,10 +178,12 @@ public class Customer {
 	public Ride selectRide(String type) {
 		
 		try {
-			int k=0;
-			if (type=="uberVan") {k=1;}
-			if (type=="uberBlack") {k=2;}
-			if (type=="uberPool") {k=3;}
+			int k = -1;
+			if (type.equalsIgnoreCase("uberX")) {k=0;}
+			else if (type.equalsIgnoreCase("uberVan")) {k=1;}
+			else if (type.equalsIgnoreCase("uberBlack")) {k=2;}
+			else if (type.equalsIgnoreCase("uberPool")) {k=3;}
+			else {System.out.println("Wrong parameter: type of ride"); return null;}
 			Ride selectedRide=this.potentialRideOrder.get(k);
 			for (Ride potentialRide : this.potentialRideOrder) {
 				if (potentialRide.equals(selectedRide)) {

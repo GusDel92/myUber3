@@ -1,1 +1,102 @@
-Setup done with 2 standard cars, 3 berlines, 2 vans, 6 customers.
+Setup done with 10 standard cars, 5 berlines, 5 vans, 5 customers.
+Alan Turing has been added.
+The ID 3 does not belong to any car.
+Michel Turbo has been added and associated to the new berline car.
+Error: there is no car with such ID.
+
+The customer 1 has been moved to 20, 30
+driverName0 driverSurname0 is riding the car standard1 with rides of type uberX.
+The driver 21 does not own the car berline6.
+
+There is no available driver for your ride.
+There is no available driver for your ride.
+Unknown error in your command's parameters.
+The information of the system has been printed.
+
+Drivers sorted by appreciation:
+DriverID, Name, Surname, Number of Rides, Total Amount Cashed
+1, driverName0, driverSurname0, 0, 0.0
+2, driverName1, driverSurname1, 0, 0.0
+3, driverName2, driverSurname2, 0, 0.0
+4, driverName3, driverSurname3, 0, 0.0
+5, driverName4, driverSurname4, 0, 0.0
+6, driverName5, driverSurname5, 0, 0.0
+7, driverName6, driverSurname6, 0, 0.0
+8, driverName7, driverSurname7, 0, 0.0
+9, driverName8, driverSurname8, 0, 0.0
+10, driverName9, driverSurname9, 0, 0.0
+11, driverName101, driverSurname101, 0, 0.0
+12, driverName111, driverSurname111, 0, 0.0
+13, driverName121, driverSurname121, 0, 0.0
+14, driverName131, driverSurname131, 0, 0.0
+15, driverName141, driverSurname141, 0, 0.0
+16, driverName151, driverSurname151, 0, 0.0
+17, driverName161, driverSurname161, 0, 0.0
+18, driverName171, driverSurname171, 0, 0.0
+19, driverName181, driverSurname181, 0, 0.0
+20, driverName191, driverSurname191, 0, 0.0
+21, driverName0, driverSurname0, 0, 0.0
+22, driverName1, driverSurname1, 0, 0.0
+23, driverName2, driverSurname2, 0, 0.0
+24, driverName3, driverSurname3, 0, 0.0
+25, driverName4, driverSurname4, 0, 0.0
+26, driverName5, driverSurname5, 0, 0.0
+27, driverName6, driverSurname6, 0, 0.0
+28, driverName7, driverSurname7, 0, 0.0
+29, driverName8, driverSurname8, 0, 0.0
+30, driverName9, driverSurname9, 0, 0.0
+31, driverName101, driverSurname101, 0, 0.0
+32, driverName111, driverSurname111, 0, 0.0
+33, driverName121, driverSurname121, 0, 0.0
+34, driverName131, driverSurname131, 0, 0.0
+35, driverName141, driverSurname141, 0, 0.0
+36, driverName151, driverSurname151, 0, 0.0
+37, driverName161, driverSurname161, 0, 0.0
+38, driverName171, driverSurname171, 0, 0.0
+39, driverName181, driverSurname181, 0, 0.0
+40, driverName191, driverSurname191, 0, 0.0
+41, Michel, Turbo, 0, 0.0
+
+Drivers sorted by occupation:
+DriverID, Name, Surname, Number of Rides, Total Amount Cashed
+1, driverName0, driverSurname0, 0, 0.0
+2, driverName1, driverSurname1, 0, 0.0
+3, driverName2, driverSurname2, 0, 0.0
+4, driverName3, driverSurname3, 0, 0.0
+5, driverName4, driverSurname4, 0, 0.0
+6, driverName5, driverSurname5, 0, 0.0
+7, driverName6, driverSurname6, 0, 0.0
+8, driverName7, driverSurname7, 0, 0.0
+9, driverName8, driverSurname8, 0, 0.0
+10, driverName9, driverSurname9, 0, 0.0
+11, driverName101, driverSurname101, 0, 0.0
+12, driverName111, driverSurname111, 0, 0.0
+13, driverName121, driverSurname121, 0, 0.0
+14, driverName131, driverSurname131, 0, 0.0
+15, driverName141, driverSurname141, 0, 0.0
+16, driverName151, driverSurname151, 0, 0.0
+17, driverName161, driverSurname161, 0, 0.0
+18, driverName171, driverSurname171, 0, 0.0
+19, driverName181, driverSurname181, 0, 0.0
+20, driverName191, driverSurname191, 0, 0.0
+21, driverName0, driverSurname0, 0, 0.0
+22, driverName1, driverSurname1, 0, 0.0
+23, driverName2, driverSurname2, 0, 0.0
+24, driverName3, driverSurname3, 0, 0.0
+25, driverName4, driverSurname4, 0, 0.0
+26, driverName5, driverSurname5, 0, 0.0
+27, driverName6, driverSurname6, 0, 0.0
+28, driverName7, driverSurname7, 0, 0.0
+29, driverName8, driverSurname8, 0, 0.0
+30, driverName9, driverSurname9, 0, 0.0
+31, driverName101, driverSurname101, 0, 0.0
+32, driverName111, driverSurname111, 0, 0.0
+33, driverName121, driverSurname121, 0, 0.0
+34, driverName131, driverSurname131, 0, 0.0
+35, driverName141, driverSurname141, 0, 0.0
+36, driverName151, driverSurname151, 0, 0.0
+37, driverName161, driverSurname161, 0, 0.0
+38, driverName171, driverSurname171, 0, 0.0
+39, driverName181, driverSurname181, 0, 0.0
+40, driverName191, driverSurname191, 0, 0.0
+41, Michel, Turbo, 0, 0.0

@@ -12,6 +12,7 @@ import myUberCustomer.Customers;
 import myUberDriver.Driver;
 import myUberDriver.Drivers;
 import myUberRide.Ride;
+import myUberRide.RideFactory;
 import myUberStatistics.CustomerBalance;
 import myUberStatistics.DriverBalance;
 import myUberTools.Coordinates;
@@ -86,8 +87,10 @@ public class CLUI {
 				Customer customers[] = new Customer[nbrOfCustomers];
 				
 				for (int i=0; i<nbrOfStandardCars; i++) {
-					String name = "driverName"+i;
-					String surname = "driverSurname"+i;
+					int id=i+1;
+					
+					String name = "driverName"+id;
+					String surname = "driverSurname"+id;
 					drivers[i] = new Driver(name,surname);
 					standardCars[i] = (StandardCar) CarFactory.getInstance().createCar("standard", drivers[i]);
 					standardCars[i].setCarPosition(new Coordinates(rn.nextInt(101),rn.nextInt(101)));
@@ -96,9 +99,10 @@ public class CLUI {
 				for (int i=0; i<nbrOfBerlineCars; i++) {
 					//index of the driver
 					int j = nbrOfStandardCars+i;
+					int id = j+1;
 					
-					String name = "driverName"+j;
-					String surname = "driverSurname"+j;
+					String name = "driverName"+id;
+					String surname = "driverSurname"+id;
 					drivers[j] = new Driver(name,surname);
 					berlineCars[i] = (BerlineCar) CarFactory.getInstance().createCar("berline", drivers[j]);
 					berlineCars[i].setCarPosition(new Coordinates(rn.nextInt(101),rn.nextInt(101)));
@@ -107,17 +111,19 @@ public class CLUI {
 				for (int i=0; i<nbrOfVanCars; i++) {
 					//index of the driver
 					int j = nbrOfStandardCars+nbrOfBerlineCars+i;
+					int id = j+1;
 					
-					String name = "driverName"+j;
-					String surname = "driverSurname"+j;
+					String name = "driverName"+id;
+					String surname = "driverSurname"+id;
 					drivers[j] = new Driver(name,surname);
 					vanCars[i] = (VanCar) CarFactory.getInstance().createCar("van", drivers[j]);
 					vanCars[i].setCarPosition(new Coordinates(rn.nextInt(101),rn.nextInt(101)));
 				}
 				
 				for (int i=0; i<nbrOfCustomers; i++) {
-					String name = "customerName"+i;
-					String surname = "customerSurname"+i;
+					int id=i+1;
+					String name = "customerName"+id;
+					String surname = "customerSurname"+id;
 					customers[i] = new Customer(name,surname);
 					customers[i].setCoordinates(new Coordinates(rn.nextInt(101),rn.nextInt(101)));
 				}
@@ -334,7 +340,7 @@ public class CLUI {
 								customer.comparePrices(dest,time);
 								//Selecting the ride
 								Ride selectedRide = customer.selectRide(typeOfTheRide);
-								if(selectedRide.getStatus()=="confirmed") {
+								if(selectedRide.getStatus()=="completed") {
 									//Giving the mark
 									selectedRide.setRate(mark);
 									selectedRide.getDriver().computeNewRate(selectedRide);
@@ -375,11 +381,16 @@ public class CLUI {
 								System.out.println("What type of ride do you want?");
 								String typeOfTheRide = scan.next();
 								Ride selectedRide = customer.selectRide(typeOfTheRide);
-								//Giving the mark
-								selectedRide.setRate(customer.giveARate(selectedRide));
-								selectedRide.getDriver().computeNewRate(selectedRide);
-								done=true;
-								return("The ride has been run.");
+								if(selectedRide.getStatus()=="completed") {
+									//Giving the mark
+									selectedRide.setRate(customer.giveARate(selectedRide));
+									selectedRide.getDriver().computeNewRate(selectedRide);
+									done=true;
+									System.out.println("The ride has been run.");
+									return("The ride has been run.");
+								}
+							System.out.println("There is no available driver for your ride. Please try again.");
+							return("There is no available driver for your ride.");
 							}
 						}
 					}
@@ -406,6 +417,7 @@ public class CLUI {
 					else {System.out.println("Wrong parameter. Try 'mostappreciated' or 'mostoccupied'");}} 
 				catch (Exception e) {
 					System.out.println("Failed to display driver command.");
+					e.printStackTrace();
 				}
 			}
 			
@@ -424,8 +436,9 @@ public class CLUI {
 				}
 			}
 			
-			else if (command[0].equalsIgnoreCase("setActualDriver")) {
+			else if (command[0].equalsIgnoreCase("setActualDriverOfACar")) {
 				int driverID = Integer.parseInt(command[1]); String carID = command[2] ; String desiredTypeOfRide = command[3];
+				if(!RideFactory.getInstance().getTypeOfRides().contains(desiredTypeOfRide)) {System.out.println("The type of ride "+desiredTypeOfRide+" does not exist.");return("The type of ride "+desiredTypeOfRide+" doesnot exist.");}
 				for(Car existingCar : CarFactory.getInstance().getAllCars()) {
 					if(existingCar.getCarID().equals(carID)) {
 						for(Driver owner : existingCar.getOwnersList()) {
@@ -490,8 +503,8 @@ public class CLUI {
 						writer.close();
 						}	
 					
-					System.out.println("Completed");
-					return("Completed");
+					System.out.println("Test completed");
+					return("Test completed");
 				} catch (FileNotFoundException e) {
 					System.out.print("The init file has not been found.");
 				}
@@ -510,11 +523,9 @@ public class CLUI {
 		
 	    catch( Exception e ) {
 		    System.out.println( "Unknown error in your command's parameters." );
-		    e.printStackTrace();
+		    //e.printStackTrace();
 		    return( "Unknown error in your command's parameters." );
 		}
 		return null;
 	}
-
 }
-
