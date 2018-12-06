@@ -1,4 +1,4 @@
-package myUberCLItest;
+package myUberCLUI;
 
 import java.util.Scanner;
 
