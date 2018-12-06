@@ -126,6 +126,7 @@ public class CLUI {
 				return("Setup done with "+nbrOfStandardCars+" standard cars, "+nbrOfBerlineCars+" berlines, "+nbrOfVanCars+" vans, "+nbrOfCustomers+" customers.");
 			}
 			
+			
 			else if(command[0].equalsIgnoreCase( "addCustomer" ) ) {
 				String name = command[1];
 				String surname = command[2];
