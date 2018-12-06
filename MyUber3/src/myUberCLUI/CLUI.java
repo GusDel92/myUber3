@@ -38,14 +38,14 @@ public class CLUI {
 		String[] command = new String[2];
 		command[0] = "init";
 		command[1] = "my_uber.ini";
-		nextcommand(command);
+		nextCommand(command);
 		
 		do {
 			
 			String s = sc.nextLine();
 			command = s.split(" ");
 			try {
-				nextcommand(command);
+				nextCommand(command);
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -63,7 +63,7 @@ public class CLUI {
 		
 	}
 		
-	public static String nextcommand(String[] command) throws IOException {
+	public static String nextCommand(String[] command) throws IOException {
 		Random rn = new Random();
 		
 		try {
@@ -487,7 +487,7 @@ public class CLUI {
 
 					for (String[] command1 : commands) {
 						
-						r = nextcommand(command1);
+						r = nextCommand(command1);
 						answers.add(r);
 					}
 					
