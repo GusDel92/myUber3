@@ -270,6 +270,7 @@ public class CLUI {
 				}
 			}
 		
+			
 			else if(command[0].equalsIgnoreCase( "displayState" )) {
 				//General Information
 				System.out.println("\nInfo of the system:\nNumber of Customers: "+Customers.getInstance().getCustomersList().size()+"\nNumber of Drivers: "+Drivers.getInstance().getDriversList().size()+"\nNumber of Cars: "+CarFactory.getInstance().getAllCars().size());
