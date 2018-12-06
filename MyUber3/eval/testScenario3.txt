@@ -1,0 +1,5 @@
+addCarDriver Vin Diesel berline
+addCustomer Cristobal Colom
+setActualDriverOfACar 21 berline6 uberBlack
+simRide 6 14;92 18 uberBlack 5
+//This test shows the behaviour of the system when the customer Christobal Colom wants to take a uberBlack ride.

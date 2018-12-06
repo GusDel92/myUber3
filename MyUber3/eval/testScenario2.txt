@@ -1,0 +1,5 @@
+setActualDriverOfACar 2 standard2 uberX
+setActualDriverOfACar 15 berline5 uberX
+setActualDriverOfACar 16 van1 uberX
+simRide 2 3;4 -1 uberX 4
+//this test is useful to show the process when a driver answers "false" to a ride (when he does not want to take it). NYou can also notice that the ride dos not have any problem if an input given by the driven during the ride is not "true".
